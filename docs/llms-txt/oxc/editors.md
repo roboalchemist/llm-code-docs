@@ -1,13 +1,8 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/editors.md
 
-# Source: https://oxc.rs/docs/guide/usage/formatter/editors.md
+## Source: https://oxc.rs/docs/guide/usage/formatter/editors.md
 
----
-url: /docs/guide/usage/formatter/editors.md
-description: 'Configure Oxfmt in VS Code, Zed, JetBrains, and other editors.'
----
-
-# Setup editors
+## Setup editors
 
 Editor extensions use `oxfmt --lsp` from your project, so `oxfmt` must be installed locally.
 
@@ -23,7 +18,7 @@ See [Quickstart](./quickstart) to install Oxfmt.
 
 ## VS Code
 
-### Install
+## Install
 
 Download the official Oxc VS Code extension from:
 
@@ -32,7 +27,7 @@ Download the official Oxc VS Code extension from:
 
 **The extension is compatible with other VS Code-based editors**, including Cursor.
 
-### Team setup
+## Team setup
 
 1. Recommend the extension for contributors:
 
@@ -44,7 +39,7 @@ Download the official Oxc VS Code extension from:
 }
 ```
 
-2. Enable format on save in `.vscode/settings.json`:
+1. Enable format on save in `.vscode/settings.json`:
 
 ```json [.vscode/settings.json]
 {
@@ -69,17 +64,17 @@ To set per language:
 }
 ```
 
-### Reference
+## Reference
 
 * [oxc-project/oxc/editors/vscode](https://github.com/oxc-project/oxc/tree/main/editors/vscode)
 
 ## Zed
 
-### Install
+## Install
 
 * [Oxc Zed Extension](https://zed.dev/extensions/oxc)
 
-### Reference
+## Reference
 
 * [oxc-project/oxc-zed](https://github.com/oxc-project/oxc-zed)
 
@@ -87,23 +82,23 @@ To set per language:
 
 IntelliJ IDEA and WebStorm.
 
-### Install
+## Install
 
 * [Oxc in JetBrains Marketplace](https://plugins.jetbrains.com/plugin/27061-oxc)
 
-### Reference
+## Reference
 
 * [oxc-project/oxc-intellij-plugin](https://github.com/oxc-project/oxc-intellij-plugin)
 
 ## coc.nvim
 
-### Install
+## Install
 
 ```vim
 :CocInstall coc-oxc
 ```
 
-### Reference
+## Reference
 
 * [oxc-project/coc-oxc](https://github.com/oxc-project/coc-oxc)
 
@@ -115,7 +110,7 @@ For editors with LSP support (Neovim, Emacs, Helix, Sublime), configure:
 oxfmt --lsp
 ```
 
-### Via stdin
+## Via stdin
 
 For editors without LSP support:
 

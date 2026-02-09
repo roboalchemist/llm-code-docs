@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/error-message.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/error-message.md
----
-
-### What it does
+## What it does
 
 Enforces providing a `message` when creating built-in `Error` objects to
 improve readability and debugging.
 
-### Why is this bad?
+## Why is this bad?
 
 Throwing an `Error` without a message, like `throw new Error()`, provides no context
 on what went wrong, making debugging harder. A clear error message improves
 code clarity and helps developers quickly identify issues.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

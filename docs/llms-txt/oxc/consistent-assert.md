@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/consistent-assert.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/consistent-assert.md
----
-
-### What it does
+## What it does
 
 Enforces consistent usage of the `assert` module.
 
-### Why is this bad?
+## Why is this bad?
 
 Inconsistent usage of the `assert` module can lead to confusion and errors.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/adjacent-overload-signatures.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/adjacent-overload-signatures.md
----
-
-### What it does
+## What it does
 
 Require that function overload signatures be consecutive.
 
-### Why is this bad?
+## Why is this bad?
 
 Function overload signatures represent multiple ways
 a function can be called, potentially with different return types.
 It's typical for an interface or type alias describing a function to place all overload signatures next to each other.
 If Signatures placed elsewhere in the type are easier to be missed by future developers reading the code.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

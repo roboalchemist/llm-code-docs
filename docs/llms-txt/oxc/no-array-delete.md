@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-array-delete.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-array-delete.md
----
-
-### What it does
+## What it does
 
 This rule disallows using the delete operator on array values.
 
-### Why is this bad?
+## Why is this bad?
 
 When using the delete operator on an array, the element is not actually removed, but instead the array slot is turned into undefined. This is usually not the intended behavior. Instead, you should use methods like Array.prototype.splice() to properly remove elements from an array.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

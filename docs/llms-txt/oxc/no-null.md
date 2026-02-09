@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-null.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-null.md
----
-
-### What it does
+## What it does
 
 Disallow the use of the `null` literal, to encourage using `undefined` instead.
 
-### Why is this bad?
+## Why is this bad?
 
 There are some reasons for using `undefined` instead of `null`.
 
@@ -16,7 +12,7 @@ There are some reasons for using `undefined` instead of `null`.
 * Supporting both `null` and `undefined` complicates input validation.
 * Using `null` makes TypeScript types more verbose: `type A = {foo?: string | null}` vs `type A = {foo?: string}`.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -34,7 +30,7 @@ let foo;
 
 This rule accepts a configuration object with the following properties:
 
-### checkStrictEquality
+## checkStrictEquality
 
 type: `boolean`
 

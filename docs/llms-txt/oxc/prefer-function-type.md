@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-function-type.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/prefer-function-type.md
----
-
-### What it does
+## What it does
 
 Enforce using function types instead of interfaces with call signatures.
 
-### Why is this bad?
+## Why is this bad?
 
 TypeScript allows for two common ways to declare a type for a function:
 
@@ -19,7 +15,7 @@ The function type form is generally preferred when possible for being
 more succinct and readable. Interfaces with only call signatures add
 unnecessary verbosity without providing additional functionality.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

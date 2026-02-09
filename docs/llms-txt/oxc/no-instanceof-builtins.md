@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-instanceof-builtins.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-instanceof-builtins.md
----
-
-### What it does
+## What it does
 
 Disallows the use of `instanceof` with ECMAScript built-in constructors because:
 
@@ -12,12 +8,12 @@ Disallows the use of `instanceof` with ECMAScript built-in constructors because:
 * it is often misleading (e.g. `instanceof Array` fails for a subclass);
 * there is always a clearer and safer alternative (`Array.isArray`, `typeof`, `Buffer.isBuffer`, …).
 
-### Why is this bad?
+## Why is this bad?
 
 `instanceof` breaks across execution contexts (`iframe`, Web Worker, Node `vm`),
 and may give misleading results for subclasses or exotic objects.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -37,7 +33,7 @@ if (el?.nodeType === 1) { … }
 
 This rule accepts a configuration object with the following properties:
 
-### exclude
+## exclude
 
 type: `string[]`
 
@@ -45,7 +41,7 @@ default: `[]`
 
 Constructor names to exclude from checking.
 
-### include
+## include
 
 type: `string[]`
 
@@ -54,7 +50,7 @@ default: `[]`
 Additional constructor names to check beyond the default set.
 Use this to extend the rule with additional constructors.
 
-### strategy
+## strategy
 
 type: `"strict" | "loose"`
 
@@ -65,7 +61,7 @@ Controls which built-in constructors are checked.
 * `"loose"` (default): Only checks Array, Function, Error (if `useErrorIsError` is true), and primitive wrappers
 * `"strict"`: Additionally checks Error types, collections, typed arrays, and other built-in constructors
 
-### useErrorIsError
+## useErrorIsError
 
 type: `boolean`
 

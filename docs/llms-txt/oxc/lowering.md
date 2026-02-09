@@ -1,9 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/transformer/lowering.md
 
----
-url: /docs/guide/usage/transformer/lowering.md
----
-# Syntax Lowering
+## Syntax Lowering
 
 Oxc transformer supports lowering ESNext to ES2015 syntax.
 
@@ -41,36 +38,36 @@ const result = await transform("lib.js", "const foo = a ?? b;", {
 
 Oxc supports lowering the syntaxes below. Note that RegExp related transformations only transforms the RegExp literal (`/foo/v`) to use a RegExp constructor (`new RegExp('foo', 'v')`). You will need to use a polyfill together to support older browsers.
 
-### ES2026
+## ES2026
 
 * Explicit Resource Management (`using a = foo()`)
 
-### ES2024
+## ES2024
 
 * RegExp v flag with set notation + properties of strings (`/\p{Emoji}--\p{ASCII}/v`)
 
-### ES2022
+## ES2022
 
 * Class Static Block (`class A { static { foo() } }`)
 * Class Fields (`class A { foo = 1; #bar = 2; static baz = 3; static qux = 4; foobar(a) { return #bar in a } }`)
 * RegExp Match Indices (`/foo/d`)
 
-### ES2021
+## ES2021
 
 * Logical Assignment Operators (`foo ||= bar`)
 * Numeric separators (Note: this is not implemented as a transform, but the codegen always removes the separators)
 
-### ES2020
+## ES2020
 
 * Nullish coalescing operator (`foo ?? bar`)
 * Optional Chaining (`foo?.bar`)
 * Export namespace from (`export * as foo from "bar"`)
 
-### ES2019
+## ES2019
 
 * Optional `catch` binding (`try {} catch {}`)
 
-### ES2018
+## ES2018
 
 * Rest/Spread Properties (`const foo = { a, b, ...c }`, `const { x, y, ...z } = foo;`)
 * Asynchronous Iteration (`for await (const x of y) {}`, `async function* foo() {}`)
@@ -79,15 +76,15 @@ Oxc supports lowering the syntaxes below. Note that RegExp related transformatio
 * RegExp named capture groups (`/(?<foo>bar)/`)
 * `s` (`dotAll`) flag for regular expressions (`/foo./s`)
 
-### ES2017
+## ES2017
 
 * Async functions (`async function foo() {}`)
 
-### ES2016
+## ES2016
 
 * Exponentiation operator (`foo ** bar`)
 
-### ES2015
+## ES2015
 
 * Arrow functions (`const foo = () => {}`)
 * RegExp sticky flag (`/foo/y`)
@@ -97,12 +94,12 @@ Oxc supports lowering the syntaxes below. Note that RegExp related transformatio
 
 Oxc transformer emits warnings for the syntaxes below if the target runtime does not support them.
 
-### ES2022
+## ES2022
 
 * Top level await (`await foo()`)
 * Arbitrary module namespace identifiers (`import * as "f o o" from "bar"`)
 
-### ES2020
+## ES2020
 
 * BigInt (`1n`)
 
@@ -123,15 +120,15 @@ const result = await transform("lib.js", "const foo = a ?? b;", {
 
 The following assumptions are supported.
 
-### `noDocumentAll`
+## `noDocumentAll`
 
 Assume that the deprecated `document.all` with its special behavior is not used.
 
-### `pureGetters`
+## `pureGetters`
 
 Assume that getters does not have side effects.
 
-### `setPublicClassFields`
+## `setPublicClassFields`
 
 When using public class fields, assume that they don't shadow any getter in the current class,
 in its subclasses or in its superclass. Thus, it's safe to assign them rather than using `Object.defineProperty`.

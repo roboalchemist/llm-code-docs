@@ -1,12 +1,8 @@
 # Source: https://oxc.rs/docs/guide/usage/resolver.md
 
-# Source: https://oxc.rs/docs/contribute/resolver.md
+## Source: https://oxc.rs/docs/contribute/resolver.md
 
----
-url: /docs/contribute/resolver.md
----
-
-# Resolver
+## Resolver
 
 The Oxc resolver is a high-performance Node.js module resolution implementation that's compatible with webpack's enhanced-resolve. It's maintained in [its own GitHub repository](https://github.com/oxc-project/oxc_resolver).
 

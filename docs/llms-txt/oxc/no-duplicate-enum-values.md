@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-duplicate-enum-values.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-duplicate-enum-values.md
----
-
-### What it does
+## What it does
 
 Disallow duplicate enum member values.
 
-### Why is this bad?
+## Why is this bad?
 
 Although TypeScript supports duplicate enum member values, people
 usually expect members to have unique values within the same enum.
 Duplicate values can lead to bugs that are hard to track down.
 
-### Examples
+## Examples
 
 This rule disallows defining an enum with multiple members initialized
 to the same value. Members without initializers will not be checked.

@@ -1,15 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unnecessary-template-expression.md
 
----
-url: >-
-  /docs/guide/usage/linter/rules/typescript/no-unnecessary-template-expression.md
----
-
-### What it does
+## What it does
 
 Disallows unnecessary template expressions (interpolations) that can be simplified.
 
-### Why is this bad?
+## Why is this bad?
 
 Template literals with substitution expressions that are unnecessary add complexity
 without providing any benefit. Static string literal expressions or expressions that
@@ -18,7 +13,7 @@ are already strings can be simplified.
 Note: This rule does not flag template literals without substitution expressions.
 For example, `` `hello` `` is allowed even though it could be written as `'hello'`.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

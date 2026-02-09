@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-restricted-types.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-restricted-types.md
----
-
-### What it does
+## What it does
 
 Disallow certain types from being used.
 
-### Why is this bad?
+## Why is this bad?
 
 Some built-in types have aliases, while some types are considered dangerous or harmful.
 It's often a good idea to ban certain types to help with consistency and safety.
 
-### Examples
+## Examples
 
 Given `{ "types": { "Foo": { "message": "Use Bar instead", "fixWith": "Bar" } } }`:
 
@@ -32,10 +28,10 @@ let value: Bar;
 Other examples of configuration option setups for this rule:
 
 * Banning the `Foo` type with just a message, no fixes or suggestions:
-  `{ "types": { "Foo": "Use `OtherType` instead." } }`
+  `{ "types": { "Foo": "Use OtherType instead." } }`
 
 * Banning `Bar` type with suggestion:
-  `{ "types": { "Bar": { "message": "Avoid using `Bar`.", "suggest": "BazQux" } } }`
+  `{ "types": { "Bar": { "message": "Avoid using Bar.", "suggest": "BazQux" } } }`
 
 * Banning `Object` type with a generic message:
   `{ "types": { "Object": true } }`
@@ -44,7 +40,7 @@ Other examples of configuration option setups for this rule:
 
 This rule accepts a configuration object with the following properties:
 
-### types
+## types
 
 type: `object`
 

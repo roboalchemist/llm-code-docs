@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/unbound-method.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/unbound-method.md
----
-
-### What it does
+## What it does
 
 This rule enforces unbound methods are called with their expected scope.
 
-### Why is this bad?
+## Why is this bad?
 
 When you extract a method from an object and call it separately, the `this` context is lost. This can lead to runtime errors or unexpected behavior, especially with methods that rely on `this` to access instance properties or other methods.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -88,7 +84,7 @@ getValue(); // Correct
 
 This rule accepts a configuration object with the following properties:
 
-### ignoreStatic
+## ignoreStatic
 
 type: `boolean`
 

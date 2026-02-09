@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-confusing-void-expression.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-confusing-void-expression.md
----
-
-### What it does
+## What it does
 
 This rule forbids using void expressions in confusing locations such as arrow function returns.
 
-### Why is this bad?
+## Why is this bad?
 
 The void operator is useful when you want to execute an expression while evaluating to undefined. However, it can be confusing when used in places where the return value is meaningful, particularly in arrow functions and conditional expressions.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -54,7 +50,7 @@ void (function () {
 
 This rule accepts a configuration object with the following properties:
 
-### ignoreArrowShorthand
+## ignoreArrowShorthand
 
 type: `boolean`
 
@@ -63,7 +59,7 @@ default: `false`
 Whether to ignore arrow function shorthand that returns void.
 When true, allows expressions like `() => someVoidFunction()`.
 
-### ignoreVoidOperator
+## ignoreVoidOperator
 
 type: `boolean`
 
@@ -72,7 +68,7 @@ default: `false`
 Whether to ignore expressions using the void operator.
 When true, allows `void someExpression`.
 
-### ignoreVoidReturningFunctions
+## ignoreVoidReturningFunctions
 
 type: `boolean`
 

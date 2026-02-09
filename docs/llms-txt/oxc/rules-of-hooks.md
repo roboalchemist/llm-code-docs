@@ -1,27 +1,23 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/rules-of-hooks.md
 
----
-url: /docs/guide/usage/linter/rules/react/rules-of-hooks.md
----
-
-### What it does
+## What it does
 
 Enforces the Rules of Hooks, ensuring that React Hooks are only called
 in valid contexts and in the correct order.
 
-### Why is this bad?
+## Why is this bad?
 
 React Hooks must follow specific rules to ensure they work correctly:
 
 1. Only call Hooks at the top level (never inside loops, conditions,
    or nested functions)
-2. Only call Hooks from React function components or custom Hooks
-3. Hooks must be called in the same order every time a component renders
+1. Only call Hooks from React function components or custom Hooks
+1. Hooks must be called in the same order every time a component renders
 
 Breaking these rules can lead to bugs where state gets corrupted or
 component behavior becomes unpredictable.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

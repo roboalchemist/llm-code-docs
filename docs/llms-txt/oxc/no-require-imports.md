@@ -1,35 +1,31 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-require-imports.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-require-imports.md
----
-
-### What it does
+## What it does
 
 Forbids the use of CommonJS `require` calls.
 
-### Why is this bad?
+## Why is this bad?
 
 `require` imports, while functional in Node.js and older JavaScript environments, are generally
 considered less desirable than ES modules (`import`) for several key reasons in modern JavaScript development:
 
 1. **Static vs. Dynamic**: `require` is a **runtime** function. It executes when the code runs, which means errors related to missing modules or incorrect paths are only discovered during runtime. ES modules (`import`) are static imports. Their resolution and potential errors are checked during the compilation or bundling process, making them easier to catch during development.
 
-2. **Code Organization and Readability**: `require` statements are scattered throughout the code, potentially making it harder to quickly identify the dependencies of a given module. `import` statements are typically grouped at the top of a file, improving code organization and readability.
+1. **Code Organization and Readability**: `require` statements are scattered throughout the code, potentially making it harder to quickly identify the dependencies of a given module. `import` statements are typically grouped at the top of a file, improving code organization and readability.
 
-3. **Tree Shaking and Optimization**: Modern bundlers like Webpack and Rollup use tree-shaking to remove unused code from the final bundle. Tree-shaking works significantly better with ES modules because their dependencies are declared statically and explicitly. `require` makes it harder for bundlers to accurately identify and remove unused code, resulting in larger bundle sizes and slower load times.
+1. **Tree Shaking and Optimization**: Modern bundlers like Webpack and Rollup use tree-shaking to remove unused code from the final bundle. Tree-shaking works significantly better with ES modules because their dependencies are declared statically and explicitly. `require` makes it harder for bundlers to accurately identify and remove unused code, resulting in larger bundle sizes and slower load times.
 
-4. **Cyclic Dependencies**: Handling cyclic dependencies (where module A imports B, and B imports A) is significantly more challenging with `require`. ES modules, through their declarative nature and the use of dynamic imports (`import()`), provide better mechanisms to handle cyclic imports and manage asynchronous loading.
+1. **Cyclic Dependencies**: Handling cyclic dependencies (where module A imports B, and B imports A) is significantly more challenging with `require`. ES modules, through their declarative nature and the use of dynamic imports (`import()`), provide better mechanisms to handle cyclic imports and manage asynchronous loading.
 
-5. **Maintainability and Refactoring**: Changing module names or paths is simpler with ES modules because the changes are declared directly and the compiler or bundler catches any errors. With `require`, you might have to track down all instances of a specific `require` statement for a particular module, making refactoring more error-prone.
+1. **Maintainability and Refactoring**: Changing module names or paths is simpler with ES modules because the changes are declared directly and the compiler or bundler catches any errors. With `require`, you might have to track down all instances of a specific `require` statement for a particular module, making refactoring more error-prone.
 
-6. Modern JavaScript Standards: import is the standard way to import modules in modern JavaScript, aligned with current best practices and language specifications. Using require necessitates additional build steps or tools to translate it to a format that the browser or modern JavaScript environments can understand.
+1. Modern JavaScript Standards: import is the standard way to import modules in modern JavaScript, aligned with current best practices and language specifications. Using require necessitates additional build steps or tools to translate it to a format that the browser or modern JavaScript environments can understand.
 
-7. Error Handling: ES modules provide a more structured way to handle errors during module loading using `try...catch` blocks with dynamic imports, enhancing error management. `require` errors can be less predictable.
+1. Error Handling: ES modules provide a more structured way to handle errors during module loading using `try...catch` blocks with dynamic imports, enhancing error management. `require` errors can be less predictable.
 
 In summary, while `require` works, the benefits of ES modules in terms of static analysis, better bundling, improved code organization, and easier maintainability make it the preferred method for importing modules in modern JavaScript projects.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -51,7 +47,7 @@ import * as lib3 from "lib3";
 
 This rule accepts a configuration object with the following properties:
 
-### allow
+## allow
 
 type: `string[]`
 
@@ -70,7 +66,7 @@ Examples of **correct** code for this rule:
 console.log(require("../package.json").version);
 ```
 
-### allowAsImport
+## allowAsImport
 
 type: `boolean`
 

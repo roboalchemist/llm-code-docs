@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/style-prop-object.md
 
----
-url: /docs/guide/usage/linter/rules/react/style-prop-object.md
----
-
-### What it does
+## What it does
 
 Require that the value of the prop `style` be an object or a variable that is an object.
 
-### Why is this bad?
+## Why is this bad?
 
 The `style` prop expects an object mapping from style properties to values when using JSX.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -48,7 +44,7 @@ React.createElement("div", { style: styles });
 
 This rule accepts a configuration object with the following properties:
 
-### allow
+## allow
 
 type: `string[]`
 

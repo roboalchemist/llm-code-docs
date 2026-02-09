@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-is-mounted.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-is-mounted.md
----
-
-### What it does
+## What it does
 
 This rule prevents using `isMounted` in class components.
 
-### Why is this bad?
+## Why is this bad?
 
 `isMounted` is an anti-pattern, and is not available
 when using classes or function components.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

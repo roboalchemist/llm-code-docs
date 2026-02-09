@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/restrict-plus-operands.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/restrict-plus-operands.md
----
-
-### What it does
+## What it does
 
 This rule requires both operands of addition to be the same type and be number, string, or any.
 
-### Why is this bad?
+## Why is this bad?
 
 JavaScript's + operator can be used for both numeric addition and string concatenation. When the operands are of different types, JavaScript's type coercion rules can lead to unexpected results. This rule helps prevent these issues by requiring both operands to be of compatible types.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -62,7 +58,7 @@ const strResult = "hello" + "world"; // string + string
 
 This rule accepts a configuration object with the following properties:
 
-### allowAny
+## allowAny
 
 type: `boolean`
 
@@ -70,7 +66,7 @@ default: `true`
 
 Whether to allow `any` type in plus operations.
 
-### allowBoolean
+## allowBoolean
 
 type: `boolean`
 
@@ -78,7 +74,7 @@ default: `true`
 
 Whether to allow `boolean` types in plus operations.
 
-### allowNullish
+## allowNullish
 
 type: `boolean`
 
@@ -86,7 +82,7 @@ default: `true`
 
 Whether to allow nullish types (`null` or `undefined`) in plus operations.
 
-### allowNumberAndString
+## allowNumberAndString
 
 type: `boolean`
 
@@ -94,7 +90,7 @@ default: `true`
 
 Whether to allow mixed number and string operands in plus operations.
 
-### allowRegExp
+## allowRegExp
 
 type: `boolean`
 
@@ -102,7 +98,7 @@ default: `true`
 
 Whether to allow `RegExp` types in plus operations.
 
-### skipCompoundAssignments
+## skipCompoundAssignments
 
 type: `boolean`
 

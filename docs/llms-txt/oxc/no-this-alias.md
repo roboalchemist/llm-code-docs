@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-this-alias.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-this-alias.md
----
-
-### What it does
+## What it does
 
 Disallow aliasing of `this`.
 
-### Why is this bad?
+## Why is this bad?
 
 Assigning a variable to `this` instead of properly using
 arrow lambdas may be a symptom of pre-ES2015 practices or not managing scope well.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -37,7 +33,7 @@ setTimeout(() => {
 
 This rule accepts a configuration object with the following properties:
 
-### allowDestructuring
+## allowDestructuring
 
 type: `boolean`
 
@@ -45,7 +41,7 @@ default: `true`
 
 Whether to allow destructuring of `this` to local variables.
 
-### allowedNames
+## allowedNames
 
 type: `string[]`
 

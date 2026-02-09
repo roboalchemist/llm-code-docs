@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/consistent-type-imports.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/consistent-type-imports.md
----
-
-### What it does
+## What it does
 
 Enforce consistent usage of type imports.
 
-### Why is this bad?
+## Why is this bad?
 
 Inconsistent usage of type imports can make the code harder to read and understand.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -29,7 +25,7 @@ Examples of **correct** code for this rule:
 import type { Foo } from "Foo";
 ```
 
-#### Examples with `"prefer": "type-imports"` (default)
+### Examples with `"prefer": "type-imports"` (default)
 
 Examples of **incorrect** code:
 
@@ -45,7 +41,7 @@ import type { Foo } from "foo";
 let foo: Foo;
 ```
 
-#### Examples with `"prefer": "no-type-imports"`
+### Examples with `"prefer": "no-type-imports"`
 
 Examples of **incorrect** code:
 
@@ -61,7 +57,7 @@ import { Foo } from "foo";
 let foo: Foo;
 ```
 
-#### Examples with `"fixStyle": "inline-type-imports"`
+### Examples with `"fixStyle": "inline-type-imports"`
 
 When fixing type imports, this option will use inline `type` modifiers:
 
@@ -77,7 +73,7 @@ type T = A;
 const b = B;
 ```
 
-#### Examples with `"disallowTypeAnnotations": false`
+### Examples with `"disallowTypeAnnotations": false`
 
 When set to `false`, allows `import()` type annotations:
 
@@ -89,7 +85,7 @@ type T = import("foo").Bar;
 
 This rule accepts a configuration object with the following properties:
 
-### disallowTypeAnnotations
+## disallowTypeAnnotations
 
 type: `boolean`
 
@@ -97,7 +93,7 @@ default: `true`
 
 Disallow using `import()` in type annotations, like `type T = import('foo')`
 
-### fixStyle
+## fixStyle
 
 type: `"separate-type-imports" | "inline-type-imports"`
 
@@ -105,15 +101,15 @@ default: `"separate-type-imports"`
 
 Control how type imports are added when auto-fixing.
 
-#### `"separate-type-imports"`
+### `"separate-type-imports"`
 
 Will add the type keyword after the import keyword `import type { A } from '...'`
 
-#### `"inline-type-imports"`
+### `"inline-type-imports"`
 
 Will inline the type keyword `import { type A } from '...'` (only available in TypeScript 4.5+)
 
-### prefer
+## prefer
 
 type: `"type-imports" | "no-type-imports"`
 
@@ -121,11 +117,11 @@ default: `"type-imports"`
 
 Control whether to enforce type imports or value imports.
 
-#### `"type-imports"`
+### `"type-imports"`
 
 Will enforce that you always use `import type Foo from '...'` except referenced by metadata of decorators.
 
-#### `"no-type-imports"`
+### `"no-type-imports"`
 
 Will enforce that you always use `import Foo from '...'`
 

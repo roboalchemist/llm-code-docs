@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-this-in-sfc.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-this-in-sfc.md
----
-
-### What it does
+## What it does
 
 Prevents using `this` in stateless functional components.
 
-### Why is this bad?
+## Why is this bad?
 
 In React, stateless functional components (SFCs) receive props and context as function parameters,
 not through `this`. Using `this` in an SFC typically indicates a mistake when converting from
 class components or unfamiliarity with the two component styles.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-unary-minus.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unsafe-unary-minus.md
----
-
-### What it does
+## What it does
 
 This rule disallows using the unary minus operator on a value which is not of type 'number' | 'bigint'.
 
-### Why is this bad?
+## Why is this bad?
 
 The unary minus operator should only be used on numeric values. Using it on other types can lead to unexpected behavior due to JavaScript's type coercion rules.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

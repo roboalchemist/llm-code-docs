@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-max-depth.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-max-depth.md
----
-
-### What it does
+## What it does
 
 Enforces a maximum depth for nested JSX elements and fragments.
 
-### Why is this bad?
+## Why is this bad?
 
 Excessively nested JSX makes components harder to read and maintain.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -44,7 +40,7 @@ const Component = () => (
 
 This rule accepts a configuration object with the following properties:
 
-### max
+## max
 
 type: `integer`
 

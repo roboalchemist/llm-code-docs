@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-empty-interface.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-empty-interface.md
----
-
-### What it does
+## What it does
 
 Disallow the declaration of empty interfaces.
 
-### Why is this bad?
+## Why is this bad?
 
 An empty interface in TypeScript does very little: any non-nullable value is assignable to {}.
 Using an empty interface is often a sign of programmer error, such as misunderstanding the concept of {} or forgetting to fill in fields.
 This rule aims to ensure that only meaningful interfaces are declared in the code.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -38,7 +34,7 @@ interface Bar extends Foo {
 
 This rule accepts a configuration object with the following properties:
 
-### allowSingleExtends
+## allowSingleExtends
 
 type: `boolean`
 

@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-implied-eval.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-implied-eval.md
----
-
-### What it does
+## What it does
 
 This rule disallows the use of eval-like methods.
 
-### Why is this bad?
+## Why is this bad?
 
 It's considered a good practice to avoid using eval() in JavaScript. There are security and performance implications involved with doing so, which is why many linters recommend disallowing eval(). However, there are some other ways to pass a string and have it interpreted as JavaScript code that have similar concerns.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-no-script-url.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-no-script-url.md
----
-
-### What it does
+## What it does
 
 Disallow usage of `javascript:` URLs.
 
-### Why is this bad?
+## Why is this bad?
 
 URLs starting with `javascript:` are a dangerous attack surface because it’s easy to accidentally
 include unsanitized output in a tag like `<a href>` and create a security hole.
@@ -18,7 +14,7 @@ Starting in React 16.9, any URLs starting with `javascript:` log a warning.
 In React 19, `javascript:` URLs are
 [disallowed entirely](https://react.dev/blog/2024/04/25/react-19-upgrade-guide#other-breaking-changes).
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -36,7 +32,7 @@ Examples of **correct** code for this rule:
 
 This rule accepts a configuration object with the following properties:
 
-### components
+## components
 
 type: `Record<string, array>`
 
@@ -44,7 +40,7 @@ default: `{}`
 
 Additional components to check.
 
-### includeFromSettings
+## includeFromSettings
 
 type: `boolean`
 

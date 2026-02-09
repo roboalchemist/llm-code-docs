@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-array-reduce.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-array-reduce.md
----
-
-### What it does
+## What it does
 
 Disallow `Array#reduce()` and `Array#reduceRight()`.
 
-### Why is this bad?
+## Why is this bad?
 
 `Array#reduce()` and `Array#reduceRight()` usually result in [hard-to-read](https://twitter.com/jaffathecake/status/1213077702300852224) and [less performant](https://www.richsnapp.com/article/2019/06-09-reduce-spread-anti-pattern) code. In almost every case, it can be replaced by `.map`, `.filter`, or a `for-of` loop.
 
 It's only somewhat useful in the rare case of summing up numbers, which is allowed by default.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -27,7 +23,7 @@ array.reduceRight(reducer, initialValue);
 
 This rule accepts a configuration object with the following properties:
 
-### allowSimpleOperations
+## allowSimpleOperations
 
 type: `boolean`
 

@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unnecessary-type-assertion.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unnecessary-type-assertion.md
----
-
-### What it does
+## What it does
 
 This rule disallows type assertions that do not change the type of an expression.
 
-### Why is this bad?
+## Why is this bad?
 
 Type assertions that don't actually change the type of an expression are unnecessary and can be safely removed. They add visual noise without providing any benefit and may indicate confusion about TypeScript's type system.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -52,7 +48,7 @@ const num: number = 42;
 
 This rule accepts a configuration object with the following properties:
 
-### checkLiteralConstAssertions
+## checkLiteralConstAssertions
 
 type: `boolean`
 
@@ -62,7 +58,7 @@ Whether to check literal const assertions like `'foo' as const`.
 When `false` (default), const assertions on literal types are not flagged.
 When `true`, these will be reported as unnecessary since the type is already a literal.
 
-### typesToIgnore
+## typesToIgnore
 
 type: `string[]`
 

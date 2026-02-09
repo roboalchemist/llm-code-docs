@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-array-sort.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-array-sort.md
----
-
-### What it does
+## What it does
 
 Prefer using `Array#toSorted()` over `Array#sort()`.
 
-### Why is this bad?
+## Why is this bad?
 
 `Array#sort()` modifies the original array in place, which can lead to unintended side effects—especially
 when the original array is used elsewhere in the code.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -31,7 +27,7 @@ const sorted = [...array].toSorted();
 
 This rule accepts a configuration object with the following properties:
 
-### allowExpressionStatement
+## allowExpressionStatement
 
 type: `boolean`
 

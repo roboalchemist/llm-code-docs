@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/react-in-jsx-scope.md
 
----
-url: /docs/guide/usage/linter/rules/react/react-in-jsx-scope.md
----
-
-### What it does
+## What it does
 
 Enforces that React is imported and in-scope when using JSX syntax.
 
@@ -19,12 +15,12 @@ For JavaScript projects using Babel, you are using the new JSX Transform if your
 For more information, see
 [the React blog post on JSX Transform](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint).
 
-### Why is this bad?
+## Why is this bad?
 
 When using JSX, `<a />` expands to `React.createElement("a")`. Therefore
 the `React` variable must be in scope.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

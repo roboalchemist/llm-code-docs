@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-call.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unsafe-call.md
----
-
-### What it does
+## What it does
 
 This rule disallows calling a value with type `any`.
 
-### Why is this bad?
+## Why is this bad?
 
 The `any` type in TypeScript disables type checking. When you call a value typed as `any`, TypeScript cannot verify that it's actually a function, what parameters it expects, or what it returns. This can lead to runtime errors.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/restrict-template-expressions.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/restrict-template-expressions.md
----
-
-### What it does
+## What it does
 
 This rule restricts the types allowed in template literal expressions.
 
-### Why is this bad?
+## Why is this bad?
 
 Template literals will call toString() on the interpolated values. Some types don't have meaningful string representations (like objects that become "\[object Object]") or may not have a toString method at all. This rule helps ensure that only appropriate types are used in template expressions.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -70,7 +66,7 @@ const result8 = typeof unknown === "string" ? `Value: ${unknown}` : "Invalid";
 
 This rule accepts a configuration object with the following properties:
 
-### allow
+## allow
 
 type: `array`
 
@@ -79,7 +75,7 @@ default: `[{"from":"lib", "name":["Error", "URL", "URLSearchParams"]}]`
 An array of type or value specifiers for additional types that are allowed in template expressions.
 Defaults include Error, URL, and URLSearchParams from lib.
 
-#### allow\[n]
+### allow\[n]
 
 type: `string`
 
@@ -93,7 +89,7 @@ Supports four types of specifiers:
 "Promise"
 ```
 
-2. **File specifier**: Match types/values declared in local files
+1. **File specifier**: Match types/values declared in local files
 
 ```json
 { "from": "file", "name": "MyType" }
@@ -101,21 +97,21 @@ Supports four types of specifiers:
 { "from": "file", "name": "MyType", "path": "./types.ts" }
 ```
 
-3. **Lib specifier**: Match TypeScript built-in lib types
+1. **Lib specifier**: Match TypeScript built-in lib types
 
 ```json
 { "from": "lib", "name": "Promise" }
 { "from": "lib", "name": ["Promise", "PromiseLike"] }
 ```
 
-4. **Package specifier**: Match types/values from npm packages
+1. **Package specifier**: Match types/values from npm packages
 
 ```json
 { "from": "package", "name": "Observable", "package": "rxjs" }
 { "from": "package", "name": ["Observable", "Subject"], "package": "rxjs" }
 ```
 
-### allowAny
+## allowAny
 
 type: `boolean`
 
@@ -123,7 +119,7 @@ default: `true`
 
 Whether to allow `any` typed values in template expressions.
 
-### allowArray
+## allowArray
 
 type: `boolean`
 
@@ -131,7 +127,7 @@ default: `false`
 
 Whether to allow array types in template expressions.
 
-### allowBoolean
+## allowBoolean
 
 type: `boolean`
 
@@ -139,7 +135,7 @@ default: `true`
 
 Whether to allow boolean types in template expressions.
 
-### allowNever
+## allowNever
 
 type: `boolean`
 
@@ -147,7 +143,7 @@ default: `false`
 
 Whether to allow `never` type in template expressions.
 
-### allowNullish
+## allowNullish
 
 type: `boolean`
 
@@ -155,7 +151,7 @@ default: `true`
 
 Whether to allow nullish types (`null` or `undefined`) in template expressions.
 
-### allowNumber
+## allowNumber
 
 type: `boolean`
 
@@ -163,7 +159,7 @@ default: `true`
 
 Whether to allow number and bigint types in template expressions.
 
-### allowRegExp
+## allowRegExp
 
 type: `boolean`
 

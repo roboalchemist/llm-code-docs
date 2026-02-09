@@ -1,22 +1,18 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/require-render-return.md
 
----
-url: /docs/guide/usage/linter/rules/react/require-render-return.md
----
-
-### What it does
+## What it does
 
 Enforce ES5 or ES2015 class for returning value in the `render` function.
 
 This rule is not relevant for function components, and so can potentially be
 disabled for modern React codebases.
 
-### Why is this bad?
+## Why is this bad?
 
 When writing the `render` method in a component it is easy to forget to return the
 JSX content. This rule will warn if the `return` statement is missing.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

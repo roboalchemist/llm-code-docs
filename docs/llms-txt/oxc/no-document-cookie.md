@@ -1,15 +1,11 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-document-cookie.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-document-cookie.md
----
-
-### What it does
+## What it does
 
 Disallow direct use of
 [`document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie).
 
-### Why is this bad?
+## Why is this bad?
 
 It's not recommended to use
 [`document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
@@ -18,7 +14,7 @@ the [Cookie Store
 API](https://developer.mozilla.org/en-US/docs/Web/API/Cookie_Store_API)
 or a [cookie library](https://www.npmjs.com/search?q=cookie).
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

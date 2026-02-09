@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/promise/spec-only.md
 
----
-url: /docs/guide/usage/linter/rules/promise/spec-only.md
----
-
-### What it does
+## What it does
 
 Disallow use of non-standard Promise static methods.
 
-### Why is this bad?
+## Why is this bad?
 
 Non-standard Promises may cost more maintenance work.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -30,7 +26,7 @@ Promise.resolve();
 
 This rule accepts a configuration object with the following properties:
 
-### allowedMethods
+## allowedMethods
 
 type: `string[]`
 

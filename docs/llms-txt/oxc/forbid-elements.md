@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/forbid-elements.md
 
----
-url: /docs/guide/usage/linter/rules/react/forbid-elements.md
----
-
-### What it does
+## What it does
 
 Allows you to configure a list of forbidden elements and to specify their desired replacements.
 
-### Why is this bad?
+## Why is this bad?
 
 You may want to forbid usage of certain elements in favor of others, e.g.
 forbid all `<div />` and use `<Box />` instead.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -52,7 +48,7 @@ Examples of **correct** code for this rule:
 
 This rule accepts a configuration object with the following properties:
 
-### forbid
+## forbid
 
 type: `array`
 
@@ -64,17 +60,17 @@ Examples:
 * `["error, { "forbid": [{ "element": "button", "message": "Use <Button> instead." }] }]`
 * `["error, { "forbid": [{ "element": "input" }] }]`
 
-#### forbid\[n]
+### forbid\[n]
 
 type: `object | string`
 
 A forbidden element, either as a plain element name or with a custom message.
 
-##### forbid\[n].element
+#### forbid\[n].element
 
 type: `string`
 
-##### forbid\[n].message
+#### forbid\[n].message
 
 type: `string`
 

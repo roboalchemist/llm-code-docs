@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-mixed-enums.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-mixed-enums.md
----
-
-### What it does
+## What it does
 
 This rule disallows enums from having both string and numeric members.
 
-### Why is this bad?
+## Why is this bad?
 
 TypeScript enums can have string, numeric, or computed members. Having mixed string and numeric members in the same enum can lead to confusion and unexpected runtime behavior due to how TypeScript compiles enums.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

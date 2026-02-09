@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-key.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-key.md
----
-
-### What it does
+## What it does
 
 Enforce `key` prop for elements in array
 
-### Why is this bad?
+## Why is this bad?
 
 React requires a `key` prop for elements in an array to help identify which items have changed, are added, or are removed.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -32,7 +28,7 @@ Examples of **correct** code for this rule:
 
 This rule accepts a configuration object with the following properties:
 
-### checkFragmentShorthand
+## checkFragmentShorthand
 
 type: `boolean`
 
@@ -40,7 +36,7 @@ default: `true`
 
 When true, check fragment shorthand `<>` for keys
 
-### checkKeyMustBeforeSpread
+## checkKeyMustBeforeSpread
 
 type: `boolean`
 
@@ -48,7 +44,7 @@ default: `true`
 
 When true, require key prop to be placed before any spread props
 
-### warnOnDuplicates
+## warnOnDuplicates
 
 type: `boolean`
 

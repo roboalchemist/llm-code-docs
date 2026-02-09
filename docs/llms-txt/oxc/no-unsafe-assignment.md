@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-assignment.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unsafe-assignment.md
----
-
-### What it does
+## What it does
 
 This rule disallows assigning a value with type `any` to variables and properties.
 
-### Why is this bad?
+## Why is this bad?
 
 The `any` type in TypeScript disables type checking and can lead to runtime errors. When you assign an `any` value to a typed variable, you're essentially bypassing TypeScript's type safety without any guarantees about the actual value.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

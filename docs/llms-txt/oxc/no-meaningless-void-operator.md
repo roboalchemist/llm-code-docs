@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-meaningless-void-operator.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-meaningless-void-operator.md
----
-
-### What it does
+## What it does
 
 This rule disallows the void operator when its argument is already of type void or undefined.
 
-### Why is this bad?
+## Why is this bad?
 
 The void operator is useful when you want to execute an expression and force it to evaluate to undefined. However, using void on expressions that are already of type void or undefined is meaningless and adds unnecessary complexity to the code.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -52,7 +48,7 @@ processData(); // no void needed since we don't care about return value
 
 This rule accepts a configuration object with the following properties:
 
-### checkNever
+## checkNever
 
 type: `boolean`
 

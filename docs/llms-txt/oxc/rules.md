@@ -1,12 +1,8 @@
 # Source: https://oxc.rs/docs/contribute/rules.md
 
-# Source: https://oxc.rs/docs/guide/usage/linter/rules.md
+## Source: https://oxc.rs/docs/guide/usage/linter/rules.md
 
----
-url: /docs/guide/usage/linter/rules.md
----
-
-# Rules
+## Rules
 
 The progress of all rule implementations is tracked [here](https://github.com/oxc-project/oxc/issues/481).
 
@@ -24,4 +20,4 @@ The progress of all rule implementations is tracked [here](https://github.com/ox
 
 :::
 
-***
+---

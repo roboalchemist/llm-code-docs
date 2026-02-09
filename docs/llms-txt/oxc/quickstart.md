@@ -1,13 +1,8 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/quickstart.md
 
-# Source: https://oxc.rs/docs/guide/usage/formatter/quickstart.md
+## Source: https://oxc.rs/docs/guide/usage/formatter/quickstart.md
 
----
-url: /docs/guide/usage/formatter/quickstart.md
-description: Install Oxfmt and learn the common workflows.
----
-
-# Quickstart
+## Quickstart
 
 Recommended setup and common workflows.
 
@@ -74,7 +69,7 @@ For the complete list of options, see the [CLI reference](/docs/guide/usage/form
 
 ## Common workflows
 
-### Pre-commit with lint-staged
+## Pre-commit with lint-staged
 
 ```json [package.json]
 {
@@ -86,7 +81,7 @@ For the complete list of options, see the [CLI reference](/docs/guide/usage/form
 
 `--no-error-on-unmatched-pattern` prevents errors when no files match the pattern.
 
-### Create a config file
+## Create a config file
 
 Initialize `.oxfmtrc.json` with defaults:
 
@@ -94,7 +89,7 @@ Initialize `.oxfmtrc.json` with defaults:
 oxfmt --init
 ```
 
-### Migrate from Prettier
+## Migrate from Prettier
 
 ```sh
 oxfmt --migrate prettier
@@ -102,7 +97,7 @@ oxfmt --migrate prettier
 
 See [migrate from prettier](./migrate-from-prettier) for details.
 
-### List files that differ
+## List files that differ
 
 ```sh
 oxfmt --list-different
@@ -110,7 +105,7 @@ oxfmt --list-different
 
 This is useful for configuring [files to ignore](./ignore-files).
 
-### Piping file contents
+## Piping file contents
 
 ```sh
 echo 'const   x   =   1' | oxfmt --stdin-filepath test.ts
@@ -118,7 +113,7 @@ echo 'const   x   =   1' | oxfmt --stdin-filepath test.ts
 
 Prints `const x = 1;`
 
-### Node.js API
+## Node.js API
 
 ```ts
 import { format, type FormatOptions } from "oxfmt";

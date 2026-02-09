@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/ban-ts-comment.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/ban-ts-comment.md
----
-
-### What it does
+## What it does
 
 This rule lets you set which directive comments you want to allow in your codebase.
 
-### Why is this bad?
+## Why is this bad?
 
 Using TypeScript directives to suppress TypeScript compiler errors
 reduces the effectiveness of TypeScript overall.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -50,7 +46,7 @@ For example:
 
 This rule accepts a configuration object with the following properties:
 
-### minimumDescriptionLength
+## minimumDescriptionLength
 
 type: `integer`
 
@@ -58,19 +54,19 @@ default: `3`
 
 Minimum description length required when using directives with `allow-with-description`.
 
-### ts-check
+## ts-check
 
 How to handle the `@ts-check` directive.
 
-### ts-expect-error
+## ts-expect-error
 
 How to handle the `@ts-expect-error` directive.
 
-### ts-ignore
+## ts-ignore
 
 How to handle the `@ts-ignore` directive.
 
-### ts-nocheck
+## ts-nocheck
 
 How to handle the `@ts-nocheck` directive.
 

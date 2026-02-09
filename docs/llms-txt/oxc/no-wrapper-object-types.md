@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-wrapper-object-types.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-wrapper-object-types.md
----
-
-### What it does
+## What it does
 
 Disallow the use of wrapper object types.
 
-### Why is this bad?
+## Why is this bad?
 
 Wrapper object types are types that are defined in the global scope and are not primitive types. These types are not recommended to be used in TypeScript code.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

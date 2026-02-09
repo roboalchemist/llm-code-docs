@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-string-refs.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-string-refs.md
----
-
-### What it does
+## What it does
 
 This rule prevents using the deprecated behavior of string literals in ref attributes.
 
-### Why is this bad?
+## Why is this bad?
 
 Using string literals in ref attributes has been deprecated since React 16.3.0.
 
 String refs are [removed entirely in React 19](https://react.dev/blog/2024/04/25/react-19-upgrade-guide#removed-string-refs),
 and so this rule can be disabled if on React 19+.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -63,7 +59,7 @@ var Hello = createReactClass({
 
 This rule accepts a configuration object with the following properties:
 
-### noTemplateLiterals
+## noTemplateLiterals
 
 type: `boolean`
 

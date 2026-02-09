@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/explicit-function-return-type.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/explicit-function-return-type.md
----
-
-### What it does
+## What it does
 
 This rule enforces that functions have an explicit return type annotation.
 
-### Why is this bad?
+## Why is this bad?
 
 Explicit return types make it clearer what type is returned by a function. Making the
 type returned by a function obvious allows the reader to infer what the function does
@@ -17,7 +13,7 @@ and how it can be used from a quick glance.
 Another benefit of explicit return types is the potential for a speed up of type
 checking in large codebases with many large functions.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -71,7 +67,7 @@ class Test {
 
 This rule accepts a configuration object with the following properties:
 
-### allowConciseArrowFunctionExpressionsStartingWithVoid
+## allowConciseArrowFunctionExpressionsStartingWithVoid
 
 type: `boolean`
 
@@ -79,7 +75,7 @@ default: `false`
 
 Whether to allow concise arrow functions that start with the `void` keyword.
 
-### allowDirectConstAssertionInArrowFunctions
+## allowDirectConstAssertionInArrowFunctions
 
 type: `boolean`
 
@@ -87,7 +83,7 @@ default: `true`
 
 Whether to allow arrow functions that use `as const` assertion on their return value.
 
-### allowExpressions
+## allowExpressions
 
 type: `boolean`
 
@@ -95,7 +91,7 @@ default: `false`
 
 Whether to allow expressions as function return types. When `true`, allows functions that immediately return an expression without a return type annotation.
 
-### allowFunctionsWithoutTypeParameters
+## allowFunctionsWithoutTypeParameters
 
 type: `boolean`
 
@@ -103,7 +99,7 @@ default: `false`
 
 Whether to allow functions that do not have generic type parameters.
 
-### allowHigherOrderFunctions
+## allowHigherOrderFunctions
 
 type: `boolean`
 
@@ -111,7 +107,7 @@ default: `true`
 
 Whether to allow higher-order functions (functions that return another function) without return type annotations.
 
-### allowIIFEs
+## allowIIFEs
 
 type: `boolean`
 
@@ -119,7 +115,7 @@ default: `false`
 
 Whether to allow immediately invoked function expressions (IIFEs) without return type annotations.
 
-### allowTypedFunctionExpressions
+## allowTypedFunctionExpressions
 
 type: `boolean`
 
@@ -127,7 +123,7 @@ default: `true`
 
 Whether to allow typed function expressions. When `true`, allows function expressions that are assigned to a typed variable or parameter.
 
-### allowedNames
+## allowedNames
 
 type: `string[]`
 

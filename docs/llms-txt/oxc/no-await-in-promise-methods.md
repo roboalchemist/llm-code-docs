@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-await-in-promise-methods.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-await-in-promise-methods.md
----
-
-### What it does
+## What it does
 
 Disallow using `await` in `Promise` method parameters
 
-### Why is this bad?
+## Why is this bad?
 
 Using `await` on promises passed as arguments to `Promise.all()`,
 `Promise.allSettled()`, `Promise.any()`, or `Promise.race()` is likely a
 mistake.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

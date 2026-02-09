@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-unsafe.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-unsafe.md
----
-
-### What it does
+## What it does
 
 This rule identifies and restricts the use of unsafe React lifecycle methods.
 
-### Why is this bad?
+## Why is this bad?
 
 Certain lifecycle methods (`componentWillMount`, `componentWillReceiveProps`, and `componentWillUpdate`)
 are considered unsafe and have been deprecated since React 16.9. They are frequently misused and cause
 problems in async rendering. Using their `UNSAFE_` prefixed versions or the deprecated names themselves
 should be avoided.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -49,7 +45,7 @@ class Foo extends React.Component {
 
 This rule accepts a configuration object with the following properties:
 
-### checkAliases
+## checkAliases
 
 type: `boolean`
 

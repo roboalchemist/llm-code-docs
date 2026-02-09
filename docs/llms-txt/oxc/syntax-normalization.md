@@ -1,9 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/minifier/syntax-normalization.md
 
----
-url: /docs/guide/usage/minifier/syntax-normalization.md
----
-# Syntax Normalization
+## Syntax Normalization
 
 Oxc minifier supports transforming syntaxes to make the output shorter and repetitive.
 

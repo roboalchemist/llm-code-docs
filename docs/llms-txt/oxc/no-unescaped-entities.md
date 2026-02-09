@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-unescaped-entities.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-unescaped-entities.md
----
-
-### What it does
+## What it does
 
 This rule prevents characters that you may have meant as JSX escape characters from being accidentally injected as a text node in JSX statements.
 
-### Why is this bad?
+## Why is this bad?
 
 JSX escape characters are used to inject characters into JSX statements that would otherwise be interpreted as code.
 
-### Example
+## Example
 
 Incorrect
 

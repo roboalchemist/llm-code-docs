@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-new-array.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-new-array.md
----
-
-### What it does
+## What it does
 
 Disallow `new Array()`.
 
-### Why is this bad?
+## Why is this bad?
 
 When using the `Array` constructor with one argument, it's not clear whether the argument is meant to be the length of the array or the only element.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

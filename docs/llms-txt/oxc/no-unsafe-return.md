@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-return.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unsafe-return.md
----
-
-### What it does
+## What it does
 
 This rule disallows returning a value with type `any` from a function.
 
-### Why is this bad?
+## Why is this bad?
 
 The `any` type in TypeScript disables type checking. When you return a value typed as `any` from a function, you're essentially passing the type-safety problem to the caller without providing any guarantees about what the function actually returns.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

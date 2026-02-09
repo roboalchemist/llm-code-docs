@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/non-nullable-type-assertion-style.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/non-nullable-type-assertion-style.md
----
-
-### What it does
+## What it does
 
 This rule prefers a non-null assertion over an explicit type cast for non-nullable types.
 
-### Why is this bad?
+## Why is this bad?
 
 When you know that a value cannot be null or undefined, you can use either a non-null assertion (`!`) or a type assertion (`as Type`). The non-null assertion is more concise and clearly communicates the intent that you're asserting the value is not null/undefined.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-empty-object-type.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-empty-object-type.md
----
-
-### What it does
+## What it does
 
 To avoid confusion around the `{}` type allowing any non-nullish value, this rule bans usage of the `{}` type. That includes interfaces and object type aliases with no fields.
 
-### Why is this bad?
+## Why is this bad?
 
 The `{}`, or "empty object" type in TypeScript is a common source of confusion for developers unfamiliar with TypeScript's structural typing. `{}` represents any non-nullish value, including literals like 0 and "".
 Often, developers writing `{}` actually mean either:
@@ -22,7 +18,7 @@ Note that this rule does not report on:
 * `{}` as a type constituent in an intersection type (e.g. types like TypeScript's built-in `type NonNullable<T> = T & {}`), as this can be useful in type system operations.
 * Interfaces that extend from multiple other interfaces.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -55,7 +51,7 @@ type TypeWith = { property: boolean };
 
 This rule accepts a configuration object with the following properties:
 
-### allowInterfaces
+## allowInterfaces
 
 type: `"never" | "always" | "with-single-extends"`
 
@@ -78,7 +74,7 @@ interface Base {
 interface Derived extends Base {}
 ```
 
-### allowObjectTypes
+## allowObjectTypes
 
 type: `"never" | "always"`
 
@@ -91,7 +87,7 @@ Allowed values are:
 * `'always'`: to always allow object type literals with no fields
 * `'never'` *(default)*: to never allow object type literals with no fields
 
-### allowWithName
+## allowWithName
 
 type: `string`
 

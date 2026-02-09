@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-pascal-case.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-pascal-case.md
----
-
-### What it does
+## What it does
 
 Enforce PascalCase for user-defined JSX components
 
-### Why is this bad?
+## Why is this bad?
 
 It enforces coding style that user-defined JSX components are defined and referenced in PascalCase. Note that since React's JSX uses the upper vs. lower case convention
 to distinguish between local component classes and HTML tags this rule will not warn on components that start with a lower case letter.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -66,7 +62,7 @@ Examples of **correct** code for the "allowLeadingUnderscore" option:
 
 This rule accepts a configuration object with the following properties:
 
-### allowAllCaps
+## allowAllCaps
 
 type: `boolean`
 
@@ -74,7 +70,7 @@ default: `false`
 
 Whether to allow all-caps component names.
 
-### allowLeadingUnderscore
+## allowLeadingUnderscore
 
 type: `boolean`
 
@@ -82,7 +78,7 @@ default: `false`
 
 Whether to allow leading underscores in component names.
 
-### allowNamespace
+## allowNamespace
 
 type: `boolean`
 
@@ -90,7 +86,7 @@ default: `false`
 
 Whether to allow namespaced component names.
 
-### ignore
+## ignore
 
 type: `string[]`
 

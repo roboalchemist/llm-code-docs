@@ -1,22 +1,18 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/catch-error-name.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/catch-error-name.md
----
-
-### What it does
+## What it does
 
 This rule enforces consistent and descriptive naming for error variables
 in `catch` statements, preventing the use of vague names like `badName`
 or `_` when the error is used.
 
-### Why is this bad?
+## Why is this bad?
 
 Using non-descriptive names like `badName` or `_` makes the code harder
 to read and understand, especially when debugging. It's important to use
 clear, consistent names to represent errors.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -56,14 +52,14 @@ promise.then(undefined, (error) => {});
 
 This rule accepts a configuration object with the following properties:
 
-### ignore
+## ignore
 
 type: `string[]`
 
 A list of patterns to ignore when checking `catch` variable names. The pattern
 can be a string or regular expression.
 
-### name
+## name
 
 type: `string`
 

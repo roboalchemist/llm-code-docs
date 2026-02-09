@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-redundant-type-constituents.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-redundant-type-constituents.md
----
-
-### What it does
+## What it does
 
 This rule disallows type constituents of unions and intersections that are redundant.
 
-### Why is this bad?
+## Why is this bad?
 
 Some constituents of union and intersection types can be redundant due to TypeScript's type system rules. These redundant constituents don't add any value and can make types harder to read and understand.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -1,22 +1,18 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-did-mount-set-state.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-did-mount-set-state.md
----
-
-### What it does
+## What it does
 
 Disallows using `setState` in the `componentDidMount` lifecycle method.
 
 This rule is not relevant for function components, and so can potentially be
 disabled for modern React codebases.
 
-### Why is this bad?
+## Why is this bad?
 
 Updating the state after a component mount will trigger a second `render()` call and can lead to property/layout thrashing.
 This can cause performance issues and unexpected behavior.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -54,11 +50,11 @@ var Hello = createReactClass({
 
 This rule accepts one of the following string values:
 
-### `"allowed"`
+## `"allowed"`
 
 Allow `setState` calls in nested functions within `componentDidMount`, the default behavior.
 
-### `"disallow-in-func"`
+## `"disallow-in-func"`
 
 When set, also disallows `setState` calls in nested functions within `componentDidMount`.
 

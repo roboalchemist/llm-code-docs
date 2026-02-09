@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-return-this-type.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/prefer-return-this-type.md
----
-
-### What it does
+## What it does
 
 This rule enforces using `this` types for return types when possible.
 
-### Why is this bad?
+## Why is this bad?
 
 Classes that have methods which return the instance itself should use `this` as the return type instead of the class name. This provides better type safety for inheritance, as the return type will be the actual subclass type rather than the base class type.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-enum-comparison.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unsafe-enum-comparison.md
----
-
-### What it does
+## What it does
 
 This rule disallows comparing an enum value with a non-enum value.
 
-### Why is this bad?
+## Why is this bad?
 
 Enum values should only be compared with other values of the same enum type or their underlying literal values in a type-safe manner. Comparing enums with unrelated values can lead to unexpected behavior and defeats the purpose of using enums for type safety.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

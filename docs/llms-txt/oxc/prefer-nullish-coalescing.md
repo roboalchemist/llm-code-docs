@@ -1,15 +1,11 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-nullish-coalescing.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/prefer-nullish-coalescing.md
----
-
-### What it does
+## What it does
 
 Enforce using the nullish coalescing operator (`??`) instead of logical OR (`||`)
 or conditional expressions when the left operand might be `null` or `undefined`.
 
-### Why is this bad?
+## Why is this bad?
 
 The `||` operator returns the right-hand side when the left-hand side is any
 falsy value (`false`, `0`, `''`, `null`, `undefined`, `NaN`). This can lead
@@ -20,7 +16,7 @@ The nullish coalescing operator (`??`) only returns the right-hand side when
 the left-hand side is `null` or `undefined`, making the intent clearer and
 avoiding bugs with other falsy values.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -61,7 +57,7 @@ const bool = Boolean(x || y);
 
 This rule accepts a configuration object with the following properties:
 
-### allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing
+## allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing
 
 type: `boolean`
 
@@ -73,7 +69,7 @@ Unless this is set to `true`, the rule will error on every file whose
 
 It is *not* recommended to enable this config option.
 
-### ignoreBooleanCoercion
+## ignoreBooleanCoercion
 
 type: `boolean`
 
@@ -81,7 +77,7 @@ default: `false`
 
 Whether to ignore arguments to the `Boolean` constructor.
 
-### ignoreConditionalTests
+## ignoreConditionalTests
 
 type: `boolean`
 
@@ -89,7 +85,7 @@ default: `true`
 
 Whether to ignore cases that are located within a conditional test.
 
-### ignoreIfStatements
+## ignoreIfStatements
 
 type: `boolean`
 
@@ -98,7 +94,7 @@ default: `false`
 Whether to ignore any if statements that could be simplified by using
 the nullish coalescing operator.
 
-### ignoreMixedLogicalExpressions
+## ignoreMixedLogicalExpressions
 
 type: `boolean`
 
@@ -107,7 +103,7 @@ default: `false`
 Whether to ignore any logical or expressions that are part of a mixed
 logical expression (with `&&`).
 
-### ignorePrimitives
+## ignorePrimitives
 
 type: `boolean`
 
@@ -117,7 +113,7 @@ Can be:
 * `true` - ignore all primitive types
 * An object specifying which primitives to ignore
 
-### ignoreTernaryTests
+## ignoreTernaryTests
 
 type: `boolean`
 

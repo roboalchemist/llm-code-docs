@@ -1,19 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/use-unknown-in-catch-callback-variable.md
 
----
-url: >-
-  /docs/guide/usage/linter/rules/typescript/use-unknown-in-catch-callback-variable.md
----
-
-### What it does
+## What it does
 
 This rule enforces using `unknown` for catch clause variables instead of `any`.
 
-### Why is this bad?
+## Why is this bad?
 
 In TypeScript 4.0+, catch clause variables can be typed as `unknown` instead of `any`. Using `unknown` is safer because it forces you to perform type checking before using the error, preventing potential runtime errors.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

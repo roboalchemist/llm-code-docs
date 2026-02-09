@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-array-method-this-argument.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-array-method-this-argument.md
----
-
-### What it does
+## What it does
 
 Disallows the use of the `thisArg` parameter in array iteration methods such as
 `map`, `filter`, `some`, `every`, and similar.
 
-### Why is this bad?
+## Why is this bad?
 
 The `thisArg` parameter makes code harder to understand and reason about. Instead,
 prefer arrow functions or bind explicitly in a clearer way. Arrow functions inherit
 `this` from the lexical scope, which is more intuitive and less error-prone.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

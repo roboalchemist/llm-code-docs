@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-abusive-eslint-disable.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-abusive-eslint-disable.md
----
-
-### What it does
+## What it does
 
 Disallows `oxlint-disable` or `eslint-disable` comments without specifying rules.
 
-### Why is this bad?
+## Why is this bad?
 
 A general `oxlint-disable` or `eslint-disable` comment suppresses all lint errors, not just the intended one,
 potentially hiding useful warnings and making debugging harder.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-var-requires.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-var-requires.md
----
-
-### What it does
+## What it does
 
 Disallow `require` statements except in import statements.
 
@@ -12,7 +8,7 @@ Disallow `require` statements except in import statements.
 This rule is deprecated in the upstream plugin and the `typescript/no-require-imports` rule should be
 used instead.
 
-### Why is this bad?
+## Why is this bad?
 
 In other words, the use of forms such as var foo = require("foo") are banned. Instead use ES module imports or import foo = require("foo") imports.
 

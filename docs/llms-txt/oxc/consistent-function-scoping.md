@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/consistent-function-scoping.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/consistent-function-scoping.md
----
-
-### What it does
+## What it does
 
 Disallow functions that are declared in a scope which does not capture
 any variables from the outer scope.
 
-### Why is this bad?
+## Why is this bad?
 
 Moving function declarations to the highest possible scope improves
 readability, directly [improves performance](https://stackoverflow.com/questions/80802/does-use-of-anonymous-functions-affect-performance/81329#81329)
 and allows JavaScript engines to better [optimize your performance](https://ponyfoo.com/articles/javascript-performance-pitfalls-v8#optimization-limit).
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -54,7 +50,7 @@ export function doFoo(foo) {
 }
 ```
 
-### Limitations
+## Limitations
 
 This rule does not detect or remove extraneous code blocks inside of functions:
 
@@ -96,7 +92,7 @@ function doFoo(FooComponent) {
 
 This rule accepts a configuration object with the following properties:
 
-### checkArrowFunctions
+## checkArrowFunctions
 
 type: `boolean`
 

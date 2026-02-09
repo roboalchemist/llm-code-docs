@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/promise/valid-params.md
 
----
-url: /docs/guide/usage/linter/rules/promise/valid-params.md
----
-
-### What it does
+## What it does
 
 Enforces the proper number of arguments are passed to Promise functions.
 
 This rule is generally unnecessary if using TypeScript.
 
-### Why is this bad?
+## Why is this bad?
 
 Calling a Promise function with the incorrect number of arguments can lead to unexpected
 behavior or hard to spot bugs.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
