@@ -1,31 +1,37 @@
-# Source: https://mikro-orm.io/api/sqlite/function/defineConfig.md
+# Source: https://mikro-orm.io/api/core/namespace/DefineConfig.md
 
-# Source: https://mikro-orm.io/api/postgresql/function/defineConfig.md
+# DefineConfig<!-- -->
 
-# Source: https://mikro-orm.io/api/mysql/function/defineConfig.md
+## Index[**](#Index)
 
-# Source: https://mikro-orm.io/api/mssql/function/defineConfig.md
+### Interfaces
 
-# Source: https://mikro-orm.io/api/mongodb/function/defineConfig.md
+* [**Brand](https://mikro-orm.io/api/core/namespace/DefineConfig.md#Brand)
 
-# Source: https://mikro-orm.io/api/mariadb/function/defineConfig.md
+### Variables
 
-# Source: https://mikro-orm.io/api/libsql/function/defineConfig.md
+* [**\_\_config](https://mikro-orm.io/api/core/namespace/DefineConfig.md#__config)
 
-# Source: https://mikro-orm.io/api/core/function/defineConfig.md
+## Interfaces<!-- -->[**](#Interfaces)
 
-# Source: https://mikro-orm.io/api/better-sqlite/function/defineConfig.md
+### [**](#Brand)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/typings.ts#L112)Brand
 
-# defineConfig<!-- -->
+**Brand:
 
-### Callable
+### [**](#\[___config])[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/typings.ts#L113)optional\[\_\_\_config]
 
-* ****defineConfig**(options): [Options](https://mikro-orm.io/api/core.md#Options)<[BetterSqliteDriver](https://mikro-orm.io/api/better-sqlite/class/BetterSqliteDriver.md), [SqlEntityManager](https://mikro-orm.io/api/knex/class/EntityManager.md)<[BetterSqliteDriver](https://mikro-orm.io/api/better-sqlite/class/BetterSqliteDriver.md)> & [EntityManager](https://mikro-orm.io/api/core/class/EntityManager.md)<[IDatabaseDriver](https://mikro-orm.io/api/core/interface/IDatabaseDriver.md)<[Connection](https://mikro-orm.io/api/core/class/Connection.md)>>>
+**\[\_\_\_config]?
 
-***
+<!-- -->
 
-* #### Parameters
+: 1
 
-  * ##### options: [BetterSqliteOptions](https://mikro-orm.io/api/better-sqlite.md#Options)
+## Variables<!-- -->[**](#Variables)
 
-  #### Returns [Options](https://mikro-orm.io/api/core.md#Options)<[BetterSqliteDriver](https://mikro-orm.io/api/better-sqlite/class/BetterSqliteDriver.md), [SqlEntityManager](https://mikro-orm.io/api/knex/class/EntityManager.md)<[BetterSqliteDriver](https://mikro-orm.io/api/better-sqlite/class/BetterSqliteDriver.md)> & [EntityManager](https://mikro-orm.io/api/core/class/EntityManager.md)<[IDatabaseDriver](https://mikro-orm.io/api/core/interface/IDatabaseDriver.md)<[Connection](https://mikro-orm.io/api/core/class/Connection.md)>>>
+### [**](#__config)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/typings.ts#L111)const\_\_config
+
+**\_\_config: unique
+
+<!-- -->
+
+symbol

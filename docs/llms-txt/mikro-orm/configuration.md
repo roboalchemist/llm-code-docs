@@ -1,725 +1,611 @@
-# Source: https://mikro-orm.io/docs/configuration.md
+# Source: https://mikro-orm.io/api/core/class/Configuration.md
 
-# Configuration
+# Configuration<!-- --> \<D, EM>
 
-## Entity Discovery[​](#entity-discovery "Direct link to Entity Discovery")
+## Index[**](#Index)
 
-You can either provide array of entity instances via `entities`, or let the ORM look up your entities in selected folders.
+### Constructors
 
-```
-MikroORM.init({
-  entities: [Author, Book, Publisher, BookTag],
-});
-```
+* [**constructor](#constructor)
 
-We can also use folder based discovery by providing list of paths to the entities we want to discover (globs are supported as well). This way we also need to specify `entitiesTs`, where we point the paths to the TS source files instead of the JS compiled files (see more at [Metadata Providers](https://mikro-orm.io/docs/metadata-providers.md)).
+### Properties
 
-> The `entitiesTs` option is used when running the app via `ts-node`, as the ORM needs to discover the TS files. Always specify this option if you use folder/file based discovery.
+* [**DEFAULTS](#DEFAULTS)
 
-```
-MikroORM.init({
-  entities: ['./dist/modules/users/entities', './dist/modules/projects/entities'],
-  entitiesTs: ['./src/modules/users/entities', './src/modules/projects/entities'],
-  // optionally you can override the base directory (defaults to `process.cwd()`)
-  baseDir: process.cwd(),
-});
-```
+### Methods
 
-> Be careful when overriding the `baseDir` with dynamic values like `__dirname`, as you can end up with valid paths from `ts-node`, but invalid paths from `node`. Ideally you should keep the default of `process.cwd()` there to always have the same base path regardless of how you run the app.
+* [**get](#get)
+* [**getAll](#getAll)
+* [**getCachedService](#getCachedService)
+* [**getClientUrl](#getClientUrl)
+* [**getComparator](#getComparator)
+* [**getDriver](#getDriver)
+* [**getExtension](#getExtension)
+* [**getHydrator](#getHydrator)
+* [**getLogger](#getLogger)
+* [**getMetadataCacheAdapter](#getMetadataCacheAdapter)
+* [**getMetadataProvider](#getMetadataProvider)
+* [**getNamingStrategy](#getNamingStrategy)
+* [**getPlatform](#getPlatform)
+* [**getRepositoryClass](#getRepositoryClass)
+* [**getResultCacheAdapter](#getResultCacheAdapter)
+* [**getSchema](#getSchema)
+* [**registerExtension](#registerExtension)
+* [**reset](#reset)
+* [**resetServiceCache](#resetServiceCache)
+* [**set](#set)
 
-By default, `ReflectMetadataProvider` is used that leverages the `reflect-metadata`. You can also use `TsMorphMetadataProvider` by installing `@mikro-orm/reflection`. This provider will analyse your entity source files (or `.d.ts` type definition files). If you aim to use plain JavaScript instead of TypeScript, use `EntitySchema`.
+## Constructors<!-- -->[**](#Constructors)
 
-> You can also implement your own metadata provider and use it instead. To do so, extend the `MetadataProvider` class.
+### [**](#constructor)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L183)constructor
 
-```
-import { MikroORM } from '@mikro-orm/core';
-import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
+* ****new Configuration**\<D, EM>(options, validate): [Configuration](https://mikro-orm.io/api/core/class/Configuration.md)\<D, EM>
 
-MikroORM.init({
-  metadataProvider: TsMorphMetadataProvider,
-});
-```
+- #### Parameters
 
-There are also some additional options how you can adjust the discovery process:
+  * ##### options: [Options](https://mikro-orm.io/api/core.md#Options)<[IDatabaseDriver](https://mikro-orm.io/api/core/interface/IDatabaseDriver.md)<[Connection](https://mikro-orm.io/api/core/class/Connection.md)>, [EntityManager](https://mikro-orm.io/api/core/class/EntityManager.md)<[IDatabaseDriver](https://mikro-orm.io/api/core/interface/IDatabaseDriver.md)<[Connection](https://mikro-orm.io/api/core/class/Connection.md)>>>
+  * ##### validate: boolean = <!-- -->true
 
-```
-MikroORM.init({
-  discovery: {
-    warnWhenNoEntities: false, // by default, discovery throws when no entity is processed
-    requireEntitiesArray: true, // force usage of class references in `entities` instead of paths
-    alwaysAnalyseProperties: false, // do not analyse properties when not needed (with ts-morph)
-  },
-});
-```
+  #### Returns [Configuration](https://mikro-orm.io/api/core/class/Configuration.md)\<D, EM>
 
-> If you disable `discovery.alwaysAnalyseProperties` option, you will need to explicitly provide `nullable` and `ref` parameters (where applicable).
+## Properties<!-- -->[**](#Properties)
 
-Read more about this in [Metadata Providers](https://mikro-orm.io/docs/metadata-providers.md) sections.
+### [**](#DEFAULTS)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L48)staticreadonlyDEFAULTS
 
-### Adjusting default type mapping[​](#adjusting-default-type-mapping "Direct link to Adjusting default type mapping")
+**DEFAULTS: { allowGlobalContext: false; assign: { ignoreUndefined: false; mergeEmbeddedProperties: true; mergeObjectProperties: false; updateByPrimaryKey: true; updateNestedEntities: true }; autoJoinOneToOneOwner: true; autoJoinRefsForFilters: true; baseDir: string; batchSize: number; colors: true; connect: true; context: (name) => undefined | [EntityManager](https://mikro-orm.io/api/core/class/EntityManager.md)<[IDatabaseDriver](https://mikro-orm.io/api/core/interface/IDatabaseDriver.md)<[Connection](https://mikro-orm.io/api/core/class/Connection.md)>>; contextName: string; dataloader: NONE; debug: false; discovery: { alwaysAnalyseProperties: true; checkDuplicateEntities: true; checkDuplicateFieldNames: true; checkDuplicateTableNames: true; checkNonPersistentCompositeProps: true; disableDynamicFileAccess: false; inferDefaultValues: true; requireEntitiesArray: false; warnWhenNoEntities: true }; driverOptions: {}; dynamicImportProvider: (id) => Promise\<any>; embeddables: { prefixMode: absolute }; ensureDatabase: true; ensureIndexes: false; entities: never\[]; entitiesTs: never\[]; entityGenerator: { bidirectionalRelations: false; entityDefinition: decorators; enumMode: ts-enum; fileName: (className) => string; forceUndefined: true; identifiedReferences: false; onlyPurePivotTables: false; outputPurePivotTables: false; readOnlyPivotTables: false; scalarPropertiesForRelations: never; scalarTypeInDecorator: false; undefinedDefaults: false; useCoreBaseEntity: false }; extensions: never\[]; filters: {}; filtersOnRelations: true; findExactlyOneOrFailHandler: (entityName, where) => [NotFoundError](https://mikro-orm.io/api/core/class/NotFoundError.md)\<Partial\<any>>; findOneOrFailHandler: (entityName, where) => [NotFoundError](https://mikro-orm.io/api/core/class/NotFoundError.md)\<Partial\<any>>; flushMode: AUTO; forceEntityConstructor: false; forceUndefined: false; hashAlgorithm: md5; highlighter: [NullHighlighter](https://mikro-orm.io/api/core/class/NullHighlighter.md); hydrator: typeof [ObjectHydrator](https://mikro-orm.io/api/core/class/ObjectHydrator.md); ignoreDeprecations: false; ignoreUndefinedInQuery: false; loadStrategy: JOINED; logger: (message, ...optionalParams) => void; metadataCache: { adapter: typeof [FileCacheAdapter](https://mikro-orm.io/api/core/class/FileCacheAdapter.md); options: { cacheDir: string }; pretty: false }; metadataProvider: typeof [ReflectMetadataProvider](https://mikro-orm.io/api/core/class/ReflectMetadataProvider.md); migrations: { allOrNothing: true; disableForeignKeys: false; dropTables: true; emit: ts; fileName: (timestamp, name) => string; glob: string; path: string; safe: false; silent: false; snapshot: true; tableName: string; transactional: true }; onQuery: (sql) => string; persistOnCreate: true; pool: {}; populateAfterFlush: true; populateWhere: ALL; preferReadReplicas: true; processOnCreateHooksEarly: false; propagationOnPrototype: true; resultCache: { adapter: typeof [MemoryCacheAdapter](https://mikro-orm.io/api/core/class/MemoryCacheAdapter.md); expiration: number; options: {} }; schemaGenerator: { createForeignKeyConstraints: true; disableForeignKeys: false; ignoreSchema: never\[]; skipColumns: {}; skipTables: never\[] }; seeder: { defaultSeeder: string; emit: ts; fileName: (className) => string; glob: string; path: string }; serialization: { includePrimaryKeys: true }; strict: false; subscribers: never\[]; upsertManaged: true; validate: false; validateRequired: true; verbose: false } =
 
-Since v5.2 we can alter how the ORM picks the default mapped type representation based on the inferred type of a property. One example is a mapping of `foo: string` to `varchar(255)`. If we wanted to change this default to a `text` type in postgres, we can use the `discover.getMappedType` callback:
+<!-- -->
 
-```
-import { MikroORM, Platform, Type } from '@mikro-orm/core';
+...
 
-const orm = await MikroORM.init({
-  discovery: {
-    getMappedType(type: string, platform: Platform) {
-      // override the mapping for string properties only
-      if (type === 'string') {
-        return Type.getType(TextType);
-      }
+#### Type declaration
 
-      return platform.getDefaultMappedType(type);
-    },
-  },
-});
-```
+* ##### allowGlobalContext: false
 
-### `onMetadata` hook[​](#onmetadata-hook "Direct link to onmetadata-hook")
+* ##### assign: { ignoreUndefined: false; mergeEmbeddedProperties: true; mergeObjectProperties: false; updateByPrimaryKey: true; updateNestedEntities: true }
 
-Sometimes you might want to alter some behavior of the ORM on metadata level. You can use the `onMetadata` hook to modify the metadata. Let's say you want to use your entities with different drivers, and you want to use some driver specific feature. Using the `onMetadata` hook, you can modify the metadata dynamically to fit the drivers requirements.
+  * ##### ignoreUndefined: false
+  * ##### mergeEmbeddedProperties: true
+  * ##### mergeObjectProperties: false
+  * ##### updateByPrimaryKey: true
+  * ##### updateNestedEntities: true
 
-The hook will be executed before the internal process of filling defaults, so you can think of it as modifying the property options in your entity definitions, they will be respected e.g. when inferring the column type.
+* ##### autoJoinOneToOneOwner: true
 
-> The hook can be async, but it will be awaited only if you use the async `MikroORM.init()` method, not with the `MikroORM.initSync()`.
+* ##### autoJoinRefsForFilters: true
 
-```
-import { EntityMetadata, MikroORM, Platform } from '@mikro-orm/sqlite';
+* ##### baseDir: string
 
-const orm = await MikroORM.init({
-  // ...
-  discovery: {
-    onMetadata(meta: EntityMetadata, platform: Platform) {
-      // sqlite driver does not support schemas
-      delete meta.schema;
-    },
-  },
-});
-```
+* ##### batchSize: number
 
-Alternatively, you can also use the `afterDiscovered` hook, which is fired after the discovery process ends. You can access all the metadata there, and add or remove them as you wish.
-
-```
-import { EntityMetadata, MikroORM, Platform } from '@mikro-orm/sqlite';
-
-const orm = await MikroORM.init({
-  // ...
-  discovery: {
-    afterDiscovered(storage: MetadataStorage) {
-      // ignore FooBar entity in schema generator
-      storage.reset('FooBar');
-    },
-  },
-});
-```
-
-## Extensions[​](#extensions "Direct link to Extensions")
-
-Since v5.6, the ORM extensions like `SchemaGenerator`, `Migrator` or `EntityGenerator` can be registered via the `extensions` config option. This will be the only supported way to have the shortcuts like `orm.migrator` available in v6, so we no longer need to dynamically require those dependencies or specify them as optional peer dependencies (both of those things cause issues with various bundling tools like Webpack, or those used in Remix or Next.js).
-
-```
-import { defineConfig } from '@mikro-orm/postgresql';
-import { Migrator } from '@mikro-orm/migrations';
-import { EntityGenerator } from '@mikro-orm/entity-generator';
-import { SeedManager } from '@mikro-orm/seeder';
-
-export default defineConfig({
-  dbName: 'test',
-  extensions: [Migrator, EntityGenerator, SeedManager],
-});
-```
-
-> The `SchemaGenerator` (as well as `MongoSchemaGenerator`) is registered automatically as it does not require any 3rd party dependencies to be installed.
-
-Since v6.3, the extensions are again checked dynamically if not explicitly registered, so it should be enough to have the given package (e.g. `@mikro-orm/seeder`) installed as in v5.
-
-## Driver[​](#driver "Direct link to Driver")
-
-To select driver, you can either use `type` option, or provide the driver class reference.
-
-| type            | driver name          | dependency       | note                        |
-| --------------- | -------------------- | ---------------- | --------------------------- |
-| `mongo`         | `MongoDriver`        | `mongodb`        | -                           |
-| `mysql`         | `MySqlDriver`        | `mysql2`         | compatible with MariaDB     |
-| `mariadb`       | `MariaDbDriver`      | `mariadb`        | compatible with MySQL       |
-| `postgresql`    | `PostgreSqlDriver`   | `pg`             | compatible with CockroachDB |
-| `mssql`         | `MsSqlDriver`        | `tedious`        | -                           |
-| `sqlite`        | `SqliteDriver`       | `sqlite3`        | -                           |
-| `better-sqlite` | `BetterSqliteDriver` | `better-sqlite3` | -                           |
-| `libsql`        | `LibSqlDriver`       | `libsql`         | -                           |
-
-> Driver and connection implementations are not directly exported from `@mikro-orm/core` module. You can import them from the driver packages (e.g. `import { PostgreSqlDriver } from '@mikro-orm/postgresql'`).
-
-> You can pass additional options to the underlying driver (e.g. `mysql2`) via `driverOptions`. The object will be deeply merged, overriding all internally used options.
-
-```
-import { MySqlDriver } from '@mikro-orm/mysql';
-
-MikroORM.init({
-  driver: MySqlDriver,
-  driverOptions: { connection: { timezone: '+02:00' } },
-});
-```
-
-> From v3.5.1 you can also set the timezone directly in the ORM configuration:
->
-> ```
-> MikroORM.init({
->   timezone: '+02:00',
-> });
-> ```
-
-## Connection[​](#connection "Direct link to Connection")
-
-Each platform (driver) provides default connection string, you can override it as a whole through `clientUrl`, or partially through one of following options:
-
-```
-export interface DynamicPassword {
-  password: string;
-  expirationChecker?: () => boolean;
-}
-
-export interface ConnectionOptions {
-  dbName?: string;
-  name?: string; // for logging only (when replicas are used)
-  clientUrl?: string;
-  host?: string;
-  port?: number;
-  user?: string;
-  password?: string | (() => string | Promise<string> | DynamicPassword | Promise<DynamicPassword>);
-  charset?: string;
-  multipleStatements?: boolean; // for mysql driver
-  pool?: PoolConfig; // provided by `knex`
-}
-```
-
-Following table shows default client connection strings:
-
-| type         | default connection url                 |
-| ------------ | -------------------------------------- |
-| `mongo`      | `mongodb://127.0.0.1:27017`            |
-| `mysql`      | `mysql://root@127.0.0.1:3306`          |
-| `mariadb`    | `mysql://root@127.0.0.1:3306`          |
-| `postgresql` | `postgresql://postgres@127.0.0.1:5432` |
-
-### Read Replicas[​](#read-replicas "Direct link to Read Replicas")
-
-To set up read replicas, you can use `replicas` option. You can provide only those parts of the `ConnectionOptions` interface, they will be used to override the `master` connection options.
-
-```
-MikroORM.init({
-  dbName: 'my_db_name',
-  user: 'write-user',
-  host: 'master.db.example.com',
-  port: 3306,
-  replicas: [
-    { user: 'read-user-1', host: 'read-1.db.example.com', port: 3307 },
-    { user: 'read-user-2', host: 'read-2.db.example.com', port: 3308 },
-    { user: 'read-user-3', host: 'read-3.db.example.com', port: 3309 },
-  ],
-});
-```
+* ##### colors: true
 
-Read more about this in [Installation](https://mikro-orm.io/docs/quick-start.md) and [Read Connections](https://mikro-orm.io/docs/read-connections.md) sections.
-
-### Using short-lived tokens[​](#using-short-lived-tokens "Direct link to Using short-lived tokens")
-
-Many cloud providers include alternative methods for connecting to database instances using short-lived authentication tokens. MikroORM supports dynamic passwords via a callback function, either synchronous or asynchronous. The callback function must resolve to a string.
-
-```
-MikroORM.init({
-  dbName: 'my_db_name',
-  password: async () => someCallToGetTheToken(),
-});
-```
+* ##### connect: true
 
-The password callback value will be cached, to invalidate this cache we can specify `expirationChecker` callback:
+* ##### context: (name) => undefined | [EntityManager](https://mikro-orm.io/api/core/class/EntityManager.md)<[IDatabaseDriver](https://mikro-orm.io/api/core/interface/IDatabaseDriver.md)<[Connection](https://mikro-orm.io/api/core/class/Connection.md)>>
 
-```
-MikroORM.init({
-  dbName: 'my_db_name',
-  password: async () => {
-    const { token, tokenExpiration } = await someCallToGetTheToken();
-    return { password: token, expirationChecker: () => tokenExpiration <= Date.now() }
-  },
-});
-```
+  * * **(name): undefined | [EntityManager](https://mikro-orm.io/api/core/class/EntityManager.md)<[IDatabaseDriver](https://mikro-orm.io/api/core/interface/IDatabaseDriver.md)<[Connection](https://mikro-orm.io/api/core/class/Connection.md)>>
 
-### `onQuery` hook and observability[​](#onquery-hook-and-observability "Direct link to onquery-hook-and-observability")
+    - #### Parameters
 
-Sometimes you might want to alter the generated queries. One use case for that might be adding contextual query hints to allow observability. Before a more native approach is added to the ORM, you can use the `onQuery` hook to modify all the queries by hand. The hook will be fired for every query before its execution.
+      * ##### name: string
 
-```
-import { AsyncLocalStorage } from 'node:async_hooks';
+      #### Returns undefined | [EntityManager](https://mikro-orm.io/api/core/class/EntityManager.md)<[IDatabaseDriver](https://mikro-orm.io/api/core/interface/IDatabaseDriver.md)<[Connection](https://mikro-orm.io/api/core/class/Connection.md)>>
 
-const ctx = new AsyncLocalStorage();
+* ##### contextName: string
 
-// provide the necessary data to the store in some middleware
-app.use((req, res, next) => {
-  const store = { endpoint: req.url };
-  ctx.run(store, next);
-});
+* ##### dataloader: NONE
 
-MikroORM.init({
-  onQuery: (sql: string, params: unknown[]) => {
-    const store = ctx.getStore();
+* ##### debug: false
 
-    if (!store) {
-      return sql;
-    }
+* ##### discovery: { alwaysAnalyseProperties: true; checkDuplicateEntities: true; checkDuplicateFieldNames: true; checkDuplicateTableNames: true; checkNonPersistentCompositeProps: true; disableDynamicFileAccess: false; inferDefaultValues: true; requireEntitiesArray: false; warnWhenNoEntities: true }
 
-    // your function that generates the necessary query hint
-    const hint = createQueryHint(store);
+  * ##### alwaysAnalyseProperties: true
+  * ##### checkDuplicateEntities: true
+  * ##### checkDuplicateFieldNames: true
+  * ##### checkDuplicateTableNames: true
+  * ##### checkNonPersistentCompositeProps: true
+  * ##### disableDynamicFileAccess: false
+  * ##### inferDefaultValues: true
+  * ##### requireEntitiesArray: false
+  * ##### warnWhenNoEntities: true
 
-    return sql + hint;
-  },
-});
-```
+* ##### driverOptions: {}
 
-## Naming Strategy[​](#naming-strategy "Direct link to Naming Strategy")
 
-When mapping your entities to database tables and columns, their names will be defined by naming strategy. There are 3 basic naming strategies you can choose from:
 
-* `UnderscoreNamingStrategy` - default of all SQL drivers
-* `MongoNamingStrategy` - default of `MongoDriver`
-* `EntityCaseNamingStrategy` - uses unchanged entity and property names
+* ##### dynamicImportProvider: (id) => Promise\<any>
 
-> You can also define your own custom `NamingStrategy` implementation.
+  * * **(id): Promise\<any>
 
-```
-MikroORM.init({
-  namingStrategy: EntityCaseNamingStrategy,
-});
-```
+    - #### Parameters
 
-Read more about this in [Naming Strategy](https://mikro-orm.io/docs/naming-strategy.md) section.
+      * ##### id: string
 
-## Auto-join of 1:1 owners[​](#auto-join-of-11-owners "Direct link to Auto-join of 1:1 owners")
+      #### Returns Promise\<any>
 
-By default, owning side of 1:1 relation will be auto-joined when you select the inverse side so we can have the reference to it. You can disable this behaviour via `autoJoinOneToOneOwner` configuration toggle.
+* ##### embeddables: { prefixMode: absolute }
 
-```
-MikroORM.init({
-  autoJoinOneToOneOwner: false,
-});
-```
+  * ##### prefixMode: absolute
 
-## Auto-join of M:1 and 1:1 relations with filters[​](#auto-join-of-m1-and-11-relations-with-filters "Direct link to Auto-join of M:1 and 1:1 relations with filters")
+* ##### ensureDatabase: true
 
-Since v6, filters are applied to the relations too, as part of `JOIN ON` condition. If a filter exists on a M:1 or 1:1 relation target, such an entity will be automatically joined, and when the foreign key is defined as `NOT NULL`, it will result in an `INNER JOIN` rather than `LEFT JOIN`. This is especially important for implementing soft deletes via filters, as the foreign key might point to a soft-deleted entity. When this happens, the automatic `INNER JOIN` will result in such a record not being returned at all. You can disable this behavior via `autoJoinRefsForFilters` ORM option.
+* ##### ensureIndexes: false
 
-```
-MikroORM.init({
-  autoJoinRefsForFilters: false,
-});
-```
+* ##### entities: never\[]
 
-## Forcing UTC Timezone[​](#forcing-utc-timezone "Direct link to Forcing UTC Timezone")
+* ##### entitiesTs: never\[]
 
-Use `forceUtcTimezone` option to force the `Date`s to be saved in UTC in datetime columns without timezone. It works for MySQL (`datetime` type) and PostgreSQL (`timestamp` type). SQLite does this by default.
+* ##### entityGenerator: { bidirectionalRelations: false; entityDefinition: decorators; enumMode: ts-enum; fileName: (className) => string; forceUndefined: true; identifiedReferences: false; onlyPurePivotTables: false; outputPurePivotTables: false; readOnlyPivotTables: false; scalarPropertiesForRelations: never; scalarTypeInDecorator: false; undefinedDefaults: false; useCoreBaseEntity: false }
 
-```
-MikroORM.init({
-  forceUtcTimezone: true,
-});
-```
+  * ##### bidirectionalRelations: false
 
-## Mapping `null` values to `undefined`[​](#mapping-null-values-to-undefined "Direct link to mapping-null-values-to-undefined")
+  * ##### entityDefinition: decorators
 
-By default `null` values from nullable database columns are hydrated as `null`. Using `forceUndefined` we can tell the ORM to convert those `null` values to `undefined` instead.
+  * ##### enumMode: ts-enum
 
-```
-MikroORM.init({
-  forceUndefined: true,
-});
-```
+  * ##### fileName: (className) => string
 
-## Ignoring `undefined` values in Find Queries[​](#ignoring-undefined-values-in-find-queries "Direct link to ignoring-undefined-values-in-find-queries")
+    * * **(className): string
 
-The ORM will treat explicitly defined `undefined` values in your `em.find()` queries as `null`s. If you want to ignore them instead, use `ignoreUndefinedInQuery` option:
+      - #### Parameters
 
-```
-MikroORM.init({
-  ignoreUndefinedInQuery: true,
-});
+        * ##### className: string
 
-// resolves to `em.find(User, {})`
-await em.find(User, { email: undefined, { profiles: { foo: undefined } } });
-```
+        #### Returns string
 
-## Serialization of new entities[​](#serialization-of-new-entities "Direct link to Serialization of new entities")
+  * ##### forceUndefined: true
 
-After flushing a new entity, all relations are marked as populated, just like if the entity was loaded from the db. This aligns the serialized output of `e.toJSON()` of a loaded entity and just-inserted one.
+  * ##### identifiedReferences: false
 
-In v4 this behaviour was disabled by default, so even after the new entity was flushed, the serialized form contained only FKs for its relations. We can opt in to this old behaviour via `populateAfterFlush: false`.
+  * ##### onlyPurePivotTables: false
 
-```
-MikroORM.init({
-  populateAfterFlush: false,
-});
-```
+  * ##### outputPurePivotTables: false
 
-## Population where condition[​](#population-where-condition "Direct link to Population where condition")
+  * ##### readOnlyPivotTables: false
 
-> This applies only to SELECT\_IN strategy, as JOINED strategy implies the inference.
+  * ##### scalarPropertiesForRelations: never
 
-In v4, when we used populate hints in `em.find()` and similar methods, the query for our entity would be analysed and parts of it extracted and used for the population. Following example would find all authors that have books with given IDs, and populate their books collection, again using this PK condition, resulting in only such books being in those collections.
+  * ##### scalarTypeInDecorator: false
 
-```
-// this would end up with `Author.books` collections having only books of PK 1, 2, 3
-const a = await em.find(Author, { books: [1, 2, 3] }, { populate: ['books'] });
-```
+  * ##### undefinedDefaults: false
 
-Following this example, if we wanted to load all books, we would need a separate `em.populate()` call:
+  * ##### useCoreBaseEntity: false
 
-```
-const a = await em.find(Author, { books: [1, 2, 3] });
-await em.populate(a, ['books']);
-```
+* ##### extensions: never\[]
 
-This behaviour changed and is now configurable both globally and locally, via `populateWhere` option. Globally we can specify one of `PopulateHint.ALL` and `PopulateHint.INFER`, the former being the default in v5, the latter being the default behaviour in v4. Locally (via `FindOptions`) we can also specify custom where condition that will be passed to `em.populate()` call.
+* ##### filters: {}
 
-```
-MikroORM.init({
-  // defaults to PopulateHint.ALL in v5
-  populateWhere: PopulateHint.INFER, // revert to v4 behaviour
-});
-```
 
-## Custom Hydrator[​](#custom-hydrator "Direct link to Custom Hydrator")
 
-Hydrator is responsible for assigning values from the database to entities. You can implement your custom `Hydrator` (by extending the abstract `Hydrator` class):
+* ##### filtersOnRelations: true
 
-```
-MikroORM.init({
-  hydrator: MyCustomHydrator,
-});
-```
+* ##### findExactlyOneOrFailHandler: (entityName, where) => [NotFoundError](https://mikro-orm.io/api/core/class/NotFoundError.md)\<Partial\<any>>
 
-## Custom Repository[​](#custom-repository "Direct link to Custom Repository")
+  * * **(entityName, where): [NotFoundError](https://mikro-orm.io/api/core/class/NotFoundError.md)\<Partial\<any>>
 
-You can also register custom base repository (for all entities where you do not specify `repository` option) globally:
+    - #### Parameters
 
-> You can still use entity specific repositories in combination with global base repository.
+      * ##### entityName: string
+      * ##### where: IPrimaryKeyValue | [Dictionary](https://mikro-orm.io/api/core.md#Dictionary)
 
-```
-MikroORM.init({
-  entityRepository: CustomBaseRepository,
-});
-```
+      #### Returns [NotFoundError](https://mikro-orm.io/api/core/class/NotFoundError.md)\<Partial\<any>>
 
-Read more about this in [Repositories](https://mikro-orm.io/docs/repositories.md) section.
+* ##### findOneOrFailHandler: (entityName, where) => [NotFoundError](https://mikro-orm.io/api/core/class/NotFoundError.md)\<Partial\<any>>
 
-## Strict Mode and property validation[​](#strict-mode-and-property-validation "Direct link to Strict Mode and property validation")
+  * * **(entityName, where): [NotFoundError](https://mikro-orm.io/api/core/class/NotFoundError.md)\<Partial\<any>>
 
-> Since v4.0.3 the validation needs to be explicitly enabled via `validate: true`. It has performance implications and usually should not be needed, as long as you don't modify your entities via `Object.assign()`.
+    - #### Parameters
 
-`MikroORM` will validate your properties before actual persisting happens. It will try to fix wrong data types for you automatically. If automatic conversion fails, it will throw an error. You can enable strict mode to disable this feature and let ORM throw errors instead. Validation is triggered when persisting the entity.
+      * ##### entityName: string
+      * ##### where: IPrimaryKeyValue | [Dictionary](https://mikro-orm.io/api/core.md#Dictionary)
 
-```
-MikroORM.init({
-  validate: true,
-  strict: true,
-});
-```
+      #### Returns [NotFoundError](https://mikro-orm.io/api/core/class/NotFoundError.md)\<Partial\<any>>
 
-Read more about this in [Property Validation](https://mikro-orm.io/docs/property-validation.md) section.
+* ##### flushMode: AUTO
 
-## Required properties validation[​](#required-properties-validation "Direct link to Required properties validation")
+* ##### forceEntityConstructor: false
 
-Since v5, new entities are validated on runtime (just before executing insert queries), based on the entity metadata. This means that mongo users now need to use `nullable: true` on their optional properties too).
+* ##### forceUndefined: false
 
-This behaviour can be disabled globally via `validateRequired: false` in the ORM config.
+* ##### hashAlgorithm: md5
 
-```
-MikroORM.init({
-  validateRequired: false,
-});
-```
+* ##### highlighter: [NullHighlighter](https://mikro-orm.io/api/core/class/NullHighlighter.md)
 
-## Debugging & Logging[​](#debugging--logging "Direct link to Debugging & Logging")
+* ##### hydrator: typeof [ObjectHydrator](https://mikro-orm.io/api/core/class/ObjectHydrator.md)
 
-You can enable logging with `debug` option. Either set it to `true` to log everything, or provide array of `'query' | 'query-params' | 'discovery' | 'info'` namespaces.
+* ##### ignoreDeprecations: false
 
-```
-MikroORM.init({
-  logger: (message: string) => myLogger.info(message), // defaults to `console.log()`
-  debug: true, // or provide array like `['query', 'query-params']`
-  highlight: false, // defaults to true
-  highlightTheme: { ... }, // you can also provide custom highlight there
-});
-```
+* ##### ignoreUndefinedInQuery: false
 
-Read more about this in [Debugging](https://mikro-orm.io/docs/logging.md) section.
+* ##### loadStrategy: JOINED
 
-## Custom Fail Handler[​](#custom-fail-handler "Direct link to Custom Fail Handler")
+* ##### logger: (message, ...optionalParams) => void
 
-When no entity is found during `em.findOneOrFail()` call, a `NotFoundError` will be thrown. You can customize how the `Error` instance is created via `findOneOrFailHandler` (or `findExactlyOneOrFailHandler` if [strict mode](#strict-mode-and-property-validation) is enabled):
+  * * **(message, ...optionalParams): void
 
-```
-MikroORM.init({
-  findOneOrFailHandler: (entityName: string, where: Dictionary | IPrimaryKey) => {
-    return new NotFoundException(`${entityName} not found!`);
-  },
-});
-```
+    - Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to [`printf(3)`](http://man7.org/linux/man-pages/man3/printf.3.html) (the arguments are all passed to [`util.format()`](https://nodejs.org/docs/latest-v24.x/api/util.html#utilformatformat-args)).
 
-Read more about this in [Entity Manager](https://mikro-orm.io/docs/entity-manager.md#handling-not-found-entities) docs.
+      ```
+      const count = 5;
+      console.log('count: %d', count);
+      // Prints: count: 5, to stdout
+      console.log('count:', count);
+      // Prints: count: 5, to stdout
+      ```
 
-## Schema Generator[​](#schema-generator "Direct link to Schema Generator")
+      See [`util.format()`](https://nodejs.org/docs/latest-v24.x/api/util.html#utilformatformat-args) for more information.
 
-Following example shows all possible options and their defaults:
+      * **@since**
 
-```
-MikroORM.init({
-  schemaGenerator: {
-    disableForeignKeys: true, // try to disable foreign_key_checks (or equivalent)
-    createForeignKeyConstraints: true, // do not generate FK constraints
-    ignoreSchema: [], // allows ignoring some schemas when diffing
-    skipTables: [], // ignore some database tables during schema generation
-    skipColumns: {}, // ignore some database table columns during schema generation
-  },
-});
-```
+        v0.1.100
 
-## Migrations[​](#migrations "Direct link to Migrations")
+      ***
 
-Under the `migrations` namespace, you can adjust how the integrated migrations support works. Following example shows all possible options and their defaults:
+      #### Parameters
 
-```
-MikroORM.init({
-  migrations: {
-    tableName: 'mikro_orm_migrations', // migrations table name
-    path: process.cwd() + '/migrations', // path to folder with migration files
-    glob: '!(*.d).{js,ts}', // how to match migration files (all .js and .ts files, but not .d.ts)
-    transactional: true, // run each migration inside transaction
-    disableForeignKeys: true, // try to disable foreign_key_checks (or equivalent)
-    allOrNothing: true, // run all migrations in current batch in master transaction
-    emit: 'ts', // migration generation mode
-  },
-});
-```
+      * ##### optionalmessage: any
+      * ##### rest...optionalParams: any\[]
 
-Read more about this in [Migrations](https://mikro-orm.io/docs/migrations.md) section.
+      #### Returns void
 
-## Seeder[​](#seeder "Direct link to Seeder")
+* ##### metadataCache: { adapter: typeof [FileCacheAdapter](https://mikro-orm.io/api/core/class/FileCacheAdapter.md); options: { cacheDir: string }; pretty: false }
 
-Following example shows all possible options and their defaults:
+  * ##### adapter: typeof [FileCacheAdapter](https://mikro-orm.io/api/core/class/FileCacheAdapter.md)
 
-```
-MikroORM.init({
-  seeder: {
-    path: './seeders',
-    defaultSeeder: 'DatabaseSeeder',
-  },
-});
-```
+  * ##### options: { cacheDir: string }
 
-Read more about this in [seeding docs](https://mikro-orm.io/docs/seeding.md).
+    * ##### cacheDir: string
 
-## Caching[​](#caching "Direct link to Caching")
+  * ##### pretty: false
 
-By default, metadata discovery results are cached. You can either disable caching, or adjust how it works. Following example shows all possible options and their defaults:
+* ##### metadataProvider: typeof [ReflectMetadataProvider](https://mikro-orm.io/api/core/class/ReflectMetadataProvider.md)
 
-```
-MikroORM.init({
-  metadataCache: {
-    enabled: true,
-    pretty: false, // allows to pretty print the JSON cache
-    adapter: FileCacheAdapter, // you can provide your own implementation here, e.g. with redis
-    options: { cacheDir: process.cwd() + '/temp' }, // options will be passed to the constructor of `adapter` class
-  },
-});
-```
+* ##### migrations: { allOrNothing: true; disableForeignKeys: false; dropTables: true; emit: ts; fileName: (timestamp, name) => string; glob: string; path: string; safe: false; silent: false; snapshot: true; tableName: string; transactional: true }
 
-Read more about this in [Metadata Cache](https://mikro-orm.io/docs/metadata-cache.md) section.
+  * ##### allOrNothing: true
 
-## Importing database dump files (MySQL and PostgreSQL)[​](#importing-database-dump-files-mysql-and-postgresql "Direct link to Importing database dump files (MySQL and PostgreSQL)")
+  * ##### disableForeignKeys: false
 
-Using the `mikro-orm database:import db-file.sql` you can import a database dump file. This can be useful when kickstarting an application or could be used in tests to reset the database. Database dumps often have queries spread over multiple lines, and therefore you need the following configuration.
+  * ##### dropTables: true
 
-```
-MikroORM.init({
-  ...
-  multipleStatements: true,
-  ...
-});
-```
+  * ##### emit: ts
 
-> This should be disabled in production environments for added security.
+  * ##### fileName: (timestamp, name) => string
 
-## Using native private properties[​](#using-native-private-properties "Direct link to Using native private properties")
+    * * **(timestamp, name): string
 
-If we want to use native private properties inside entities, the default approach of how MikroORM creates entity instances via `Object.create()` is not viable (more about this in the [issue](https://github.com/mikro-orm/mikro-orm/issues/1226)). To force usage of entity constructors, we can use `forceEntityConstructor` toggle:
+      - #### Parameters
 
-```
-MikroORM.init({
-  forceEntityConstructor: true, // or specify just some entities via `[Author, 'Book', ...]`
-});
-```
+        * ##### timestamp: string
+        * ##### optionalname: string
 
-## Persist created entities automatically[​](#persist-created-entities-automatically "Direct link to Persist created entities automatically")
+        #### Returns string
 
-When you create new entity instance via `em.create()`, it will be automatically marked for future persistence (`em.persist()` will be called on it before its returned to you). In case you want to disable this behavior, you can set `persistOnCreate: false` globally or override this locally via `em.create(Type, data, { persist: false })`.
+  * ##### glob: string
 
-> This flag affects only `em.create()`, entities created manually via constructor still need an explicit `em.persist()` call, or they need to be part of the entity graph of some already managed entity.
+  * ##### path: string
 
-```
-MikroORM.init({
-  persistOnCreate: false, // defaults to true since v5.5
-});
-```
+  * ##### safe: false
 
-## Processing property `onCreate` hooks in `em.create()`[​](#processing-property-oncreate-hooks-in-emcreate "Direct link to processing-property-oncreate-hooks-in-emcreate")
+  * ##### silent: false
 
-Property `onCreate` hooks are normally executed during `flush` operation. You can use the `processOnCreateHooksEarly` option to trigger them early inside the `em.create()` method. This option can also be overridden locally via `em.create(Type, data, { processOnCreateHooks: true })`.
+  * ##### snapshot: true
 
-> This flag affects only `em.create()`, `onCreate` property hooks for entities created manually via constructor will be processed during `flush` regardless of this option.
+  * ##### tableName: string
 
-```
-MikroORM.init({
-  processOnCreateHooksEarly: true,
-});
-```
+  * ##### transactional: true
 
-## Setting hashing algorithm[​](#setting-hashing-algorithm "Direct link to Setting hashing algorithm")
+* ##### onQuery: (sql) => string
 
-You can configure the hashing algorithm used for caching and metadata operations. This is particularly useful in security focused environments where SHA-256 is required instead of the default MD5.
+  * * **(sql): string
 
-```
-const orm = await MikroORM.init({
-  // Use SHA-256 instead of MD5 for hashing (FIPS compliant)
-  hashAlgorithm: 'sha256', // Options: 'md5' (default) | 'sha256'
-});
-```
+    - #### Parameters
 
-The `hashAlgorithm` option accepts:
+      * ##### sql: string
 
-* `'md5'` (default) - Uses MD5 hashing algorithm
-* `'sha256'` - Uses SHA-256 hashing algorithm (FIPS compliant)
+      #### Returns string
 
-## Using global Identity Map[​](#using-global-identity-map "Direct link to Using global Identity Map")
+* ##### persistOnCreate: true
 
-In v5, it is no longer possible to use the global identity map. This was a common issue that led to weird bugs, as using the global EM without request context is almost always wrong, we always need to have a dedicated context for each request, so they do not interfere.
+* ##### pool: {}
 
-We still can disable this check via `allowGlobalContext` configuration, or a connected environment variable `MIKRO_ORM_ALLOW_GLOBAL_CONTEXT` - this can be handy especially in unit tests.
 
-```
-MikroORM.init({
-  allowGlobalContext: true,
-});
-```
 
-## Deprecation warnings[​](#deprecation-warnings "Direct link to Deprecation warnings")
+* ##### populateAfterFlush: true
 
-By default, doing something that is deprecated will result in a deprecation warning being logged. The default logger will in turn show it on the console.
+* ##### populateWhere: ALL
 
-You can ignore all or only specific deprecation warnings. See [Logging's section on deprecation warnings](https://mikro-orm.io/docs/logging.md#deprecation-warnings) for details.
+* ##### preferReadReplicas: true
 
-The full list of deprecation warnings:
+* ##### processOnCreateHooksEarly: false
 
-| label | message                                                                                                                                                                                                                                                                              |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| D0001 | Path for config file was inferred from the command line arguments. Instead, you should set the `MIKRO_ORM_CLI_CONFIG` environment variable to specify the path, or if you really must use the command line arguments, import the config manually based on them, and pass it to init. |
+* ##### propagationOnPrototype: true
 
-## Using environment variables[​](#using-environment-variables "Direct link to Using environment variables")
+* ##### resultCache: { adapter: typeof [MemoryCacheAdapter](https://mikro-orm.io/api/core/class/MemoryCacheAdapter.md); expiration: number; options: {} }
 
-Since v4.5 it is possible to set most of the ORM options via environment variables. By default `.env` file from the root directory is loaded - it is also possible to set full path to the env file you want to use via `MIKRO_ORM_ENV` environment variable.
+  * ##### adapter: typeof [MemoryCacheAdapter](https://mikro-orm.io/api/core/class/MemoryCacheAdapter.md)
 
-> Only env vars with `MIKRO_ORM_` prefix are be loaded this way, all the others will be ignored. If you want to access all your env vars defined in the `.env` file, call `dotenv.register()` yourself in your app (or possibly in your ORM config file).
+  * ##### expiration: number
 
-> Environment variables always have precedence over the ORM config.
+  * ##### options: {}
 
-Example `.env` file:
 
-```
-MIKRO_ORM_TYPE = sqlite
-MIKRO_ORM_ENTITIES = ./dist/foo/*.entity.js, ./dist/bar/*.entity.js
-MIKRO_ORM_ENTITIES_TS = ./src/foo/*.entity.ts, ./src/bar/*.entity.ts
-MIKRO_ORM_DB_NAME = test.db
-MIKRO_ORM_MIGRATIONS_PATH = ./dist/migrations
-MIKRO_ORM_MIGRATIONS_PATH_TS = ./src/migrations
-MIKRO_ORM_POPULATE_AFTER_FLUSH = true
-MIKRO_ORM_FORCE_ENTITY_CONSTRUCTOR = true
-MIKRO_ORM_FORCE_UNDEFINED = true
-```
 
-Full list of supported options:
+* ##### schemaGenerator: { createForeignKeyConstraints: true; disableForeignKeys: false; ignoreSchema: never\[]; skipColumns: {}; skipTables: never\[] }
 
-| env variable                                                | config key                               |
-| ----------------------------------------------------------- | ---------------------------------------- |
-| `MIKRO_ORM_CONTEXT_NAME`                                    | `contextName`                            |
-| `MIKRO_ORM_BASE_DIR`                                        | `baseDir`                                |
-| `MIKRO_ORM_TYPE`                                            | `type`                                   |
-| `MIKRO_ORM_ENTITIES`                                        | `entities`                               |
-| `MIKRO_ORM_ENTITIES_TS`                                     | `entitiesTs`                             |
-| `MIKRO_ORM_CLIENT_URL`                                      | `clientUrl`                              |
-| `MIKRO_ORM_HOST`                                            | `host`                                   |
-| `MIKRO_ORM_PORT`                                            | `port`                                   |
-| `MIKRO_ORM_USER`                                            | `user`                                   |
-| `MIKRO_ORM_PASSWORD`                                        | `password`                               |
-| `MIKRO_ORM_DB_NAME`                                         | `dbName`                                 |
-| `MIKRO_ORM_SCHEMA`                                          | `schema`                                 |
-| `MIKRO_ORM_LOAD_STRATEGY`                                   | `loadStrategy`                           |
-| `MIKRO_ORM_BATCH_SIZE`                                      | `batchSize`                              |
-| `MIKRO_ORM_USE_BATCH_INSERTS`                               | `useBatchInserts`                        |
-| `MIKRO_ORM_USE_BATCH_UPDATES`                               | `useBatchUpdates`                        |
-| `MIKRO_ORM_STRICT`                                          | `strict`                                 |
-| `MIKRO_ORM_VALIDATE`                                        | `validate`                               |
-| `MIKRO_ORM_AUTO_JOIN_ONE_TO_ONE_OWNER`                      | `autoJoinOneToOneOwner`                  |
-| `MIKRO_ORM_PROPAGATE_TO_ONE_OWNER`                          | `propagateToOneOwner`                    |
-| `MIKRO_ORM_POPULATE_AFTER_FLUSH`                            | `populateAfterFlush`                     |
-| `MIKRO_ORM_FORCE_ENTITY_CONSTRUCTOR`                        | `forceEntityConstructor`                 |
-| `MIKRO_ORM_FORCE_UNDEFINED`                                 | `forceUndefined`                         |
-| `MIKRO_ORM_FORCE_UTC_TIMEZONE`                              | `forceUtcTimezone`                       |
-| `MIKRO_ORM_TIMEZONE`                                        | `timezone`                               |
-| `MIKRO_ORM_ENSURE_INDEXES`                                  | `ensureIndexes`                          |
-| `MIKRO_ORM_IMPLICIT_TRANSACTIONS`                           | `implicitTransactions`                   |
-| `MIKRO_ORM_DEBUG`                                           | `debug`                                  |
-| `MIKRO_ORM_COLORS`                                          | `colors`                                 |
-| `MIKRO_ORM_DISCOVERY_WARN_WHEN_NO_ENTITIES`                 | `discovery.warnWhenNoEntities`           |
-| `MIKRO_ORM_DISCOVERY_REQUIRE_ENTITIES_ARRAY`                | `discovery.requireEntitiesArray`         |
-| `MIKRO_ORM_DISCOVERY_ALWAYS_ANALYSE_PROPERTIES`             | `discovery.alwaysAnalyseProperties`      |
-| `MIKRO_ORM_DISCOVERY_DISABLE_DYNAMIC_FILE_ACCESS`           | `discovery.disableDynamicFileAccess`     |
-| `MIKRO_ORM_MIGRATIONS_TABLE_NAME`                           | `migrations.tableName`                   |
-| `MIKRO_ORM_MIGRATIONS_PATH`                                 | `migrations.path`                        |
-| `MIKRO_ORM_MIGRATIONS_PATH_TS`                              | `migrations.pathTs`                      |
-| `MIKRO_ORM_MIGRATIONS_GLOB`                                 | `migrations.glob`                        |
-| `MIKRO_ORM_MIGRATIONS_TRANSACTIONAL`                        | `migrations.transactional`               |
-| `MIKRO_ORM_MIGRATIONS_DISABLE_FOREIGN_KEYS`                 | `migrations.disableForeignKeys`          |
-| `MIKRO_ORM_MIGRATIONS_ALL_OR_NOTHING`                       | `migrations.allOrNothing`                |
-| `MIKRO_ORM_MIGRATIONS_DROP_TABLES`                          | `migrations.dropTables`                  |
-| `MIKRO_ORM_MIGRATIONS_SAFE`                                 | `migrations.safe`                        |
-| `MIKRO_ORM_MIGRATIONS_EMIT`                                 | `migrations.emit`                        |
-| `MIKRO_ORM_SCHEMA_GENERATOR_DISABLE_FOREIGN_KEYS`           | `migrations.disableForeignKeys`          |
-| `MIKRO_ORM_SCHEMA_GENERATOR_CREATE_FOREIGN_KEY_CONSTRAINTS` | `migrations.createForeignKeyConstraints` |
-| `MIKRO_ORM_SEEDER_PATH`                                     | `seeder.path`                            |
-| `MIKRO_ORM_SEEDER_PATH_TS`                                  | `seeder.pathTs`                          |
-| `MIKRO_ORM_SEEDER_GLOB`                                     | `seeder.glob`                            |
-| `MIKRO_ORM_SEEDER_EMIT`                                     | `seeder.emit`                            |
-| `MIKRO_ORM_SEEDER_DEFAULT_SEEDER`                           | `seeder.defaultSeeder`                   |
+  * ##### createForeignKeyConstraints: true
 
-Note that setting `MIKRO_ORM_CONTEXT_NAME` without also setting another configuration environment variable from the table above has a slightly different effect. When combined with other environment variables, the final configuration object is considered to have this `contextName`. Without other environment variables, it is a value of `contextName` to search within the config file. The final config object is picked based on this value.
+  * ##### disableForeignKeys: false
 
-For example, assume no `.env` file is present (or is present, but sets nothing from the table above) and you run:
+  * ##### ignoreSchema: never\[]
 
-```
-$ MIKRO_ORM_CONTEXT_NAME=example1 \
-  node ./dist/index.js
-```
+  * ##### skipColumns: {}
 
-This will look for a config file in the standard paths, and will expect the config file to be able to provide a config with `contextName` set to "example1".
 
-If you also set other environment variables, MikroORM will still search for a config file and try to a find a config with this `contextName`, but if it can't find one, it will create a config based on this `contextName` and the rest of the environment variables.
 
-There are also env vars you can use to control the CLI settings (those you can set in your `package.json`):
+  * ##### skipTables: never\[]
 
-| env variable                    | config key |
-| ------------------------------- | ---------- |
-| `MIKRO_ORM_CLI_CONFIG`          | (CLI only) |
-| `MIKRO_ORM_CLI_TS_CONFIG_PATH`  | (CLI only) |
-| `MIKRO_ORM_CLI_ALWAYS_ALLOW_TS` | (CLI only) |
-| `MIKRO_ORM_CLI_USE_TS_NODE`     | (CLI only) |
-| `MIKRO_ORM_CLI_VERBOSE`         | (CLI only) |
+* ##### seeder: { defaultSeeder: string; emit: ts; fileName: (className) => string; glob: string; path: string }
+
+  * ##### defaultSeeder: string
+
+  * ##### emit: ts
+
+  * ##### fileName: (className) => string
+
+    * * **(className): string
+
+      - #### Parameters
+
+        * ##### className: string
+
+        #### Returns string
+
+  * ##### glob: string
+
+  * ##### path: string
+
+* ##### serialization: { includePrimaryKeys: true }
+
+  * ##### includePrimaryKeys: true
+
+* ##### strict: false
+
+* ##### subscribers: never\[]
+
+* ##### upsertManaged: true
+
+* ##### validate: false
+
+* ##### validateRequired: true
+
+* ##### verbose: false
+
+## Methods<!-- -->[**](#Methods)
+
+### [**](#get)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L217)get
+
+* ****get**\<T, U>(key, defaultValue): U
+
+- Gets specific configuration option. Falls back to specified `defaultValue` if provided.
+
+  ***
+
+  #### Parameters
+
+  * ##### key: T
+  * ##### optionaldefaultValue: U
+
+  #### Returns U
+
+### [**](#getAll)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L225)getAll
+
+* ****getAll**(): [MikroORMOptions](https://mikro-orm.io/api/core/interface/MikroORMOptions.md)\<D, EM>
+
+- #### Returns [MikroORMOptions](https://mikro-orm.io/api/core/interface/MikroORMOptions.md)\<D, EM>
+
+### [**](#getCachedService)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L361)getCachedService
+
+* ****getCachedService**\<T>(cls, ...args): InstanceType\<T>
+
+- Creates instance of given service and caches it.
+
+  ***
+
+  #### Parameters
+
+  * ##### cls: T
+  * ##### rest...args: ConstructorParameters\<T>
+
+  #### Returns InstanceType\<T>
+
+### [**](#getClientUrl)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L258)getClientUrl
+
+* ****getClientUrl**(hidePassword): string
+
+- Gets current client URL (connection string).
+
+  ***
+
+  #### Parameters
+
+  * ##### hidePassword: boolean = <!-- -->false
+
+  #### Returns string
+
+### [**](#getComparator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L318)getComparator
+
+* ****getComparator**(metadata): [EntityComparator](https://mikro-orm.io/api/core/class/EntityComparator.md)
+
+- Gets instance of Comparator. (cached)
+
+  ***
+
+  #### Parameters
+
+  * ##### metadata: [MetadataStorage](https://mikro-orm.io/api/core/class/MetadataStorage.md)
+
+  #### Returns [EntityComparator](https://mikro-orm.io/api/core/class/EntityComparator.md)
+
+### [**](#getDriver)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L277)getDriver
+
+* ****getDriver**(): D
+
+- Gets current database driver instance.
+
+  ***
+
+  #### Returns D
+
+### [**](#getExtension)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L285)getExtension
+
+* ****getExtension**\<T>(name): undefined | T
+
+- #### Parameters
+
+  * ##### name: string
+
+  #### Returns undefined | T
+
+### [**](#getHydrator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L311)getHydrator
+
+* ****getHydrator**(metadata): IHydrator
+
+- Gets instance of Hydrator. (cached)
+
+  ***
+
+  #### Parameters
+
+  * ##### metadata: [MetadataStorage](https://mikro-orm.io/api/core/class/MetadataStorage.md)
+
+  #### Returns IHydrator
+
+### [**](#getLogger)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L247)getLogger
+
+* ****getLogger**(): [Logger](https://mikro-orm.io/api/core/interface/Logger.md)
+
+- Gets Logger instance.
+
+  ***
+
+  #### Returns [Logger](https://mikro-orm.io/api/core/interface/Logger.md)
+
+### [**](#getMetadataCacheAdapter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L332)getMetadataCacheAdapter
+
+* ****getMetadataCacheAdapter**(): [SyncCacheAdapter](https://mikro-orm.io/api/core/interface/SyncCacheAdapter.md)
+
+- Gets instance of metadata CacheAdapter. (cached)
+
+  ***
+
+  #### Returns [SyncCacheAdapter](https://mikro-orm.io/api/core/interface/SyncCacheAdapter.md)
+
+### [**](#getMetadataProvider)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L325)getMetadataProvider
+
+* ****getMetadataProvider**(): [MetadataProvider](https://mikro-orm.io/api/core/class/MetadataProvider.md)
+
+- Gets instance of MetadataProvider. (cached)
+
+  ***
+
+  #### Returns [MetadataProvider](https://mikro-orm.io/api/core/class/MetadataProvider.md)
+
+### [**](#getNamingStrategy)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L304)getNamingStrategy
+
+* ****getNamingStrategy**(): [NamingStrategy](https://mikro-orm.io/api/core/interface/NamingStrategy.md)
+
+- Gets instance of NamingStrategy. (cached)
+
+  ***
+
+  #### Returns [NamingStrategy](https://mikro-orm.io/api/core/interface/NamingStrategy.md)
+
+### [**](#getPlatform)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L251)getPlatform
+
+* ****getPlatform**(): [Platform](https://mikro-orm.io/api/core/class/Platform.md)
+
+- #### Returns [Platform](https://mikro-orm.io/api/core/class/Platform.md)
+
+### [**](#getRepositoryClass)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L346)getRepositoryClass
+
+* ****getRepositoryClass**(repository): undefined | [EntityClass](https://mikro-orm.io/api/core.md#EntityClass)<[EntityRepository](https://mikro-orm.io/api/core/class/EntityRepository.md)\<any>>
+
+- Gets EntityRepository class to be instantiated.
+
+  ***
+
+  #### Parameters
+
+  * ##### repository: () => [EntityClass](https://mikro-orm.io/api/core.md#EntityClass)<[EntityRepository](https://mikro-orm.io/api/core/class/EntityRepository.md)\<Partial\<any>>>
+
+
+  #### Returns undefined | [EntityClass](https://mikro-orm.io/api/core.md#EntityClass)<[EntityRepository](https://mikro-orm.io/api/core/class/EntityRepository.md)\<any>>
+
+### [**](#getResultCacheAdapter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L339)getResultCacheAdapter
+
+* ****getResultCacheAdapter**(): [CacheAdapter](https://mikro-orm.io/api/core/interface/CacheAdapter.md)
+
+- Gets instance of CacheAdapter for result cache. (cached)
+
+  ***
+
+  #### Returns [CacheAdapter](https://mikro-orm.io/api/core/interface/CacheAdapter.md)
+
+### [**](#getSchema)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L266)getSchema
+
+* ****getSchema**(skipDefaultSchema): undefined | string
+
+- #### Parameters
+
+  * ##### skipDefaultSchema: boolean = <!-- -->false
+
+  #### Returns undefined | string
+
+### [**](#registerExtension)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L281)registerExtension
+
+* ****registerExtension**(name, cb): void
+
+- #### Parameters
+
+  * ##### name: string
+  * ##### cb: () => unknown
+
+
+  #### Returns void
+
+### [**](#reset)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L240)reset
+
+* ****reset**\<T>(key): void
+
+- Resets the configuration to its default value
+
+  ***
+
+  #### Parameters
+
+  * ##### key: T
+
+  #### Returns void
+
+### [**](#resetServiceCache)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L370)resetServiceCache
+
+* ****resetServiceCache**(): void
+
+- #### Returns void
+
+### [**](#set)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L232)set
+
+* ****set**\<T, U>(key, value): void
+
+- Overrides specified configuration value.
+
+  ***
+
+  #### Parameters
+
+  * ##### key: T
+  * ##### value: U
+
+  #### Returns void

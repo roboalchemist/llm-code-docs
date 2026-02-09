@@ -1,3523 +1,1956 @@
-# Source: https://mikro-orm.io/api/knex/function/knex.md
+# Source: https://mikro-orm.io/api/knex/interface/Knex.md
 
-# Source: https://mikro-orm.io/api/knex.md
+# Knex<!-- --> \<TRecord, TResult>
 
-# @mikro-orm/knex<!-- -->
+### Hierarchy
+
+* QueryInterface\<TRecord, TResult>
+* EventEmitter
+  * *Knex*
+
+### Callable
+
+* ****Knex**\<TTable>(tableName, options): QueryBuilder\<TableType\<TTable>, DeferredKeySelection\<ResolveTableType\<TableType\<TTable>, base>, never, false, {}, false, {}, never>\[]>
+* ****Knex**\<TRecord2, TResult2>(tableName, options): QueryBuilder\<TRecord2, TResult2>
+
+***
+
+* #### Parameters
+
+  * ##### tableName: TTable
+  * ##### optionaloptions: PgTableOptions
+
+  #### Returns QueryBuilder\<TableType\<TTable>, DeferredKeySelection\<ResolveTableType\<TableType\<TTable>, base>, never, false, {}, false, {}, never>\[]>
 
 ## Index[**](#Index)
 
-### References
-
-* [**AbstractNamingStrategy](https://mikro-orm.io/api/knex.md#AbstractNamingStrategy)
-* [**AbstractSchemaGenerator](https://mikro-orm.io/api/knex.md#AbstractSchemaGenerator)
-* [**AfterCreate](https://mikro-orm.io/api/knex.md#AfterCreate)
-* [**AfterDelete](https://mikro-orm.io/api/knex.md#AfterDelete)
-* [**AfterUpdate](https://mikro-orm.io/api/knex.md#AfterUpdate)
-* [**AfterUpsert](https://mikro-orm.io/api/knex.md#AfterUpsert)
-* [**AnyEntity](https://mikro-orm.io/api/knex.md#AnyEntity)
-* [**AnyString](https://mikro-orm.io/api/knex.md#AnyString)
-* [**ARRAY\_OPERATORS](https://mikro-orm.io/api/knex.md#ARRAY_OPERATORS)
-* [**ArrayCollection](https://mikro-orm.io/api/knex.md#ArrayCollection)
-* [**ArrayType](https://mikro-orm.io/api/knex.md#ArrayType)
-* [**assign](https://mikro-orm.io/api/knex.md#assign)
-* [**AssignOptions](https://mikro-orm.io/api/knex.md#AssignOptions)
-* [**AutoPath](https://mikro-orm.io/api/knex.md#AutoPath)
-* [**BaseEntity](https://mikro-orm.io/api/knex.md#BaseEntity)
-* [**BeforeCreate](https://mikro-orm.io/api/knex.md#BeforeCreate)
-* [**BeforeDelete](https://mikro-orm.io/api/knex.md#BeforeDelete)
-* [**BeforeUpdate](https://mikro-orm.io/api/knex.md#BeforeUpdate)
-* [**BeforeUpsert](https://mikro-orm.io/api/knex.md#BeforeUpsert)
-* [**BigIntType](https://mikro-orm.io/api/knex.md#BigIntType)
-* [**BlobType](https://mikro-orm.io/api/knex.md#BlobType)
-* [**BooleanType](https://mikro-orm.io/api/knex.md#BooleanType)
-* [**CacheAdapter](https://mikro-orm.io/api/knex.md#CacheAdapter)
-* [**Cascade](https://mikro-orm.io/api/knex.md#Cascade)
-* [**Cast](https://mikro-orm.io/api/knex.md#Cast)
-* [**ChangeSet](https://mikro-orm.io/api/knex.md#ChangeSet)
-* [**ChangeSetComputer](https://mikro-orm.io/api/knex.md#ChangeSetComputer)
-* [**ChangeSetPersister](https://mikro-orm.io/api/knex.md#ChangeSetPersister)
-* [**ChangeSetType](https://mikro-orm.io/api/knex.md#ChangeSetType)
-* [**CharacterType](https://mikro-orm.io/api/knex.md#CharacterType)
-* [**Check](https://mikro-orm.io/api/knex.md#Check)
-* [**CheckCallback](https://mikro-orm.io/api/knex.md#CheckCallback)
-* [**CheckConstraintViolationException](https://mikro-orm.io/api/knex.md#CheckConstraintViolationException)
-* [**CheckOptions](https://mikro-orm.io/api/knex.md#CheckOptions)
-* [**ClearDatabaseOptions](https://mikro-orm.io/api/knex.md#ClearDatabaseOptions)
-* [**Collection](https://mikro-orm.io/api/knex.md#Collection)
-* [**compareArrays](https://mikro-orm.io/api/knex.md#compareArrays)
-* [**compareBooleans](https://mikro-orm.io/api/knex.md#compareBooleans)
-* [**compareBuffers](https://mikro-orm.io/api/knex.md#compareBuffers)
-* [**compareObjects](https://mikro-orm.io/api/knex.md#compareObjects)
-* [**Config](https://mikro-orm.io/api/knex.md#Config)
-* [**Configuration](https://mikro-orm.io/api/knex.md#Configuration)
-* [**Connection](https://mikro-orm.io/api/knex.md#Connection)
-* [**ConnectionConfig](https://mikro-orm.io/api/knex.md#ConnectionConfig)
-* [**ConnectionException](https://mikro-orm.io/api/knex.md#ConnectionException)
-* [**ConnectionOptions](https://mikro-orm.io/api/knex.md#ConnectionOptions)
-* [**ConnectionType](https://mikro-orm.io/api/knex.md#ConnectionType)
-* [**ConstraintViolationException](https://mikro-orm.io/api/knex.md#ConstraintViolationException)
-* [**Constructor](https://mikro-orm.io/api/knex.md#Constructor)
-* [**CountOptions](https://mikro-orm.io/api/knex.md#CountOptions)
-* [**CreateContextOptions](https://mikro-orm.io/api/knex.md#CreateContextOptions)
-* [**CreateOptions](https://mikro-orm.io/api/knex.md#CreateOptions)
-* [**CreateRequestContext](https://mikro-orm.io/api/knex.md#CreateRequestContext)
-* [**CreateSchemaOptions](https://mikro-orm.io/api/knex.md#CreateSchemaOptions)
-* [**createSqlFunction](https://mikro-orm.io/api/knex.md#createSqlFunction)
-* [**Cursor](https://mikro-orm.io/api/knex.md#Cursor)
-* [**CursorError](https://mikro-orm.io/api/knex.md#CursorError)
-* [**DatabaseDriver](https://mikro-orm.io/api/knex.md#DatabaseDriver)
-* [**DatabaseObjectExistsException](https://mikro-orm.io/api/knex.md#DatabaseObjectExistsException)
-* [**DatabaseObjectNotFoundException](https://mikro-orm.io/api/knex.md#DatabaseObjectNotFoundException)
-* [**DataloaderType](https://mikro-orm.io/api/knex.md#DataloaderType)
-* [**DataloaderUtils](https://mikro-orm.io/api/knex.md#DataloaderUtils)
-* [**DateTimeType](https://mikro-orm.io/api/knex.md#DateTimeType)
-* [**DateType](https://mikro-orm.io/api/knex.md#DateType)
-* [**DeadlockException](https://mikro-orm.io/api/knex.md#DeadlockException)
-* [**DecimalType](https://mikro-orm.io/api/knex.md#DecimalType)
-* [**DeepPartial](https://mikro-orm.io/api/knex.md#DeepPartial)
-* [**DefaultLogger](https://mikro-orm.io/api/knex.md#DefaultLogger)
-* [**DeferMode](https://mikro-orm.io/api/knex.md#DeferMode)
-* [**defineConfig](https://mikro-orm.io/api/knex.md#defineConfig)
-* [**DefineConfig](https://mikro-orm.io/api/knex.md#DefineConfig)
-* [**defineEntity](https://mikro-orm.io/api/knex.md#defineEntity)
-* [**DefineEntityHooks](https://mikro-orm.io/api/knex.md#DefineEntityHooks)
-* [**DeleteOptions](https://mikro-orm.io/api/knex.md#DeleteOptions)
-* [**Dictionary](https://mikro-orm.io/api/knex.md#Dictionary)
-* [**DoubleType](https://mikro-orm.io/api/knex.md#DoubleType)
-* [**DriverException](https://mikro-orm.io/api/knex.md#DriverException)
-* [**DriverMethodOptions](https://mikro-orm.io/api/knex.md#DriverMethodOptions)
-* [**DropSchemaOptions](https://mikro-orm.io/api/knex.md#DropSchemaOptions)
-* [**DynamicPassword](https://mikro-orm.io/api/knex.md#DynamicPassword)
-* [**EagerProps](https://mikro-orm.io/api/knex.md#EagerProps)
-* [**Edge](https://mikro-orm.io/api/knex.md#Edge)
-* [**Embeddable](https://mikro-orm.io/api/knex.md#Embeddable)
-* [**EmbeddableOptions](https://mikro-orm.io/api/knex.md#EmbeddableOptions)
-* [**Embedded](https://mikro-orm.io/api/knex.md#Embedded)
-* [**EmbeddedOptions](https://mikro-orm.io/api/knex.md#EmbeddedOptions)
-* [**EmbeddedPrefixMode](https://mikro-orm.io/api/knex.md#EmbeddedPrefixMode)
-* [**EmptyOptions](https://mikro-orm.io/api/knex.md#EmptyOptions)
-* [**EnsureDatabaseOptions](https://mikro-orm.io/api/knex.md#EnsureDatabaseOptions)
-* [**EnsureRequestContext](https://mikro-orm.io/api/knex.md#EnsureRequestContext)
-* [**Entity](https://mikro-orm.io/api/knex.md#Entity)
-* [**EntityAssigner](https://mikro-orm.io/api/knex.md#EntityAssigner)
-* [**EntityCaseNamingStrategy](https://mikro-orm.io/api/knex.md#EntityCaseNamingStrategy)
-* [**EntityClass](https://mikro-orm.io/api/knex.md#EntityClass)
-* [**EntityClassGroup](https://mikro-orm.io/api/knex.md#EntityClassGroup)
-* [**EntityComparator](https://mikro-orm.io/api/knex.md#EntityComparator)
-* [**EntityData](https://mikro-orm.io/api/knex.md#EntityData)
-* [**EntityDataValue](https://mikro-orm.io/api/knex.md#EntityDataValue)
-* [**EntityDictionary](https://mikro-orm.io/api/knex.md#EntityDictionary)
-* [**EntityDTO](https://mikro-orm.io/api/knex.md#EntityDTO)
-* [**EntityFactory](https://mikro-orm.io/api/knex.md#EntityFactory)
-* [**EntityField](https://mikro-orm.io/api/knex.md#EntityField)
-* [**EntityKey](https://mikro-orm.io/api/knex.md#EntityKey)
-* [**EntityLoader](https://mikro-orm.io/api/knex.md#EntityLoader)
-* [**EntityLoaderOptions](https://mikro-orm.io/api/knex.md#EntityLoaderOptions)
-* [**EntityManagerType](https://mikro-orm.io/api/knex.md#EntityManagerType)
-* [**EntityMetadata](https://mikro-orm.io/api/knex.md#EntityMetadata)
-* [**EntityName](https://mikro-orm.io/api/knex.md#EntityName)
-* [**EntityOptions](https://mikro-orm.io/api/knex.md#EntityOptions)
-* [**EntityProperty](https://mikro-orm.io/api/knex.md#EntityProperty)
-* [**EntityProps](https://mikro-orm.io/api/knex.md#EntityProps)
-* [**EntityRef](https://mikro-orm.io/api/knex.md#EntityRef)
-* [**EntityRepositoryType](https://mikro-orm.io/api/knex.md#EntityRepositoryType)
-* [**EntitySchema](https://mikro-orm.io/api/knex.md#EntitySchema)
-* [**EntitySchemaMetadata](https://mikro-orm.io/api/knex.md#EntitySchemaMetadata)
-* [**EntitySchemaProperty](https://mikro-orm.io/api/knex.md#EntitySchemaProperty)
-* [**EntitySerializer](https://mikro-orm.io/api/knex.md#EntitySerializer)
-* [**EntityTransformer](https://mikro-orm.io/api/knex.md#EntityTransformer)
-* [**EntityType](https://mikro-orm.io/api/knex.md#EntityType)
-* [**EntityValidator](https://mikro-orm.io/api/knex.md#EntityValidator)
-* [**EntityValue](https://mikro-orm.io/api/knex.md#EntityValue)
-* [**Enum](https://mikro-orm.io/api/knex.md#Enum)
-* [**EnumArrayType](https://mikro-orm.io/api/knex.md#EnumArrayType)
-* [**EnumOptions](https://mikro-orm.io/api/knex.md#EnumOptions)
-* [**EnumType](https://mikro-orm.io/api/knex.md#EnumType)
-* [**equals](https://mikro-orm.io/api/knex.md#equals)
-* [**EventArgs](https://mikro-orm.io/api/knex.md#EventArgs)
-* [**EventManager](https://mikro-orm.io/api/knex.md#EventManager)
-* [**EventSubscriber](https://mikro-orm.io/api/knex.md#EventSubscriber)
-* [**EventType](https://mikro-orm.io/api/knex.md#EventType)
-* [**EventTypeMap](https://mikro-orm.io/api/knex.md#EventTypeMap)
-* [**ExceptionConverter](https://mikro-orm.io/api/knex.md#ExceptionConverter)
-* [**ExpandHint](https://mikro-orm.io/api/knex.md#ExpandHint)
-* [**ExpandProperty](https://mikro-orm.io/api/knex.md#ExpandProperty)
-* [**ExpandQuery](https://mikro-orm.io/api/knex.md#ExpandQuery)
-* [**ExpandScalar](https://mikro-orm.io/api/knex.md#ExpandScalar)
-* [**FactoryOptions](https://mikro-orm.io/api/knex.md#FactoryOptions)
-* [**FileCacheAdapter](https://mikro-orm.io/api/knex.md#FileCacheAdapter)
-* [**Filter](https://mikro-orm.io/api/knex.md#Filter)
-* [**FilterItemValue](https://mikro-orm.io/api/knex.md#FilterItemValue)
-* [**FilterKey](https://mikro-orm.io/api/knex.md#FilterKey)
-* [**FilterObject](https://mikro-orm.io/api/knex.md#FilterObject)
-* [**FilterOptions](https://mikro-orm.io/api/knex.md#FilterOptions)
-* [**FilterQuery](https://mikro-orm.io/api/knex.md#FilterQuery)
-* [**FilterValue](https://mikro-orm.io/api/knex.md#FilterValue)
-* [**FindAllOptions](https://mikro-orm.io/api/knex.md#FindAllOptions)
-* [**FindByCursorOptions](https://mikro-orm.io/api/knex.md#FindByCursorOptions)
-* [**FindOneOptions](https://mikro-orm.io/api/knex.md#FindOneOptions)
-* [**FindOneOrFailOptions](https://mikro-orm.io/api/knex.md#FindOneOrFailOptions)
-* [**FindOptions](https://mikro-orm.io/api/knex.md#FindOptions)
-* [**FlatQueryOrderMap](https://mikro-orm.io/api/knex.md#FlatQueryOrderMap)
-* [**FloatType](https://mikro-orm.io/api/knex.md#FloatType)
-* [**FlushEventArgs](https://mikro-orm.io/api/knex.md#FlushEventArgs)
-* [**FlushMode](https://mikro-orm.io/api/knex.md#FlushMode)
-* [**ForeignKeyConstraintViolationException](https://mikro-orm.io/api/knex.md#ForeignKeyConstraintViolationException)
-* [**ForkOptions](https://mikro-orm.io/api/knex.md#ForkOptions)
-* [**Formula](https://mikro-orm.io/api/knex.md#Formula)
-* [**FormulaOptions](https://mikro-orm.io/api/knex.md#FormulaOptions)
-* [**FromEntityType](https://mikro-orm.io/api/knex.md#FromEntityType)
-* [**GeneratedCacheAdapter](https://mikro-orm.io/api/knex.md#GeneratedCacheAdapter)
-* [**GenerateOptions](https://mikro-orm.io/api/knex.md#GenerateOptions)
-* [**GetReferenceOptions](https://mikro-orm.io/api/knex.md#GetReferenceOptions)
-* [**GetRepository](https://mikro-orm.io/api/knex.md#GetRepository)
-* [**GroupOperator](https://mikro-orm.io/api/knex.md#GroupOperator)
-* [**Hidden](https://mikro-orm.io/api/knex.md#Hidden)
-* [**HiddenProps](https://mikro-orm.io/api/knex.md#HiddenProps)
-* [**Highlighter](https://mikro-orm.io/api/knex.md#Highlighter)
-* [**Hydrator](https://mikro-orm.io/api/knex.md#Hydrator)
-* [**IConfiguration](https://mikro-orm.io/api/knex.md#IConfiguration)
-* [**IDatabaseDriver](https://mikro-orm.io/api/knex.md#IDatabaseDriver)
-* [**IdentityMap](https://mikro-orm.io/api/knex.md#IdentityMap)
-* [**IEntityGenerator](https://mikro-orm.io/api/knex.md#IEntityGenerator)
-* [**IMigrationGenerator](https://mikro-orm.io/api/knex.md#IMigrationGenerator)
-* [**IMigrator](https://mikro-orm.io/api/knex.md#IMigrator)
-* [**ImportsResolver](https://mikro-orm.io/api/knex.md#ImportsResolver)
-* [**Index](https://mikro-orm.io/api/knex.md#Index)
-* [**IndexCallback](https://mikro-orm.io/api/knex.md#IndexCallback)
-* [**IndexOptions](https://mikro-orm.io/api/knex.md#IndexOptions)
-* [**InferEntity](https://mikro-orm.io/api/knex.md#InferEntity)
-* [**InferEntityFromProperties](https://mikro-orm.io/api/knex.md#InferEntityFromProperties)
-* [**InferPrimaryKey](https://mikro-orm.io/api/knex.md#InferPrimaryKey)
-* [**InitCollectionOptions](https://mikro-orm.io/api/knex.md#InitCollectionOptions)
-* [**IntegerType](https://mikro-orm.io/api/knex.md#IntegerType)
-* [**IntervalType](https://mikro-orm.io/api/knex.md#IntervalType)
-* [**InvalidFieldNameException](https://mikro-orm.io/api/knex.md#InvalidFieldNameException)
-* [**IPrimaryKey](https://mikro-orm.io/api/knex.md#IPrimaryKey)
-* [**ISchemaGenerator](https://mikro-orm.io/api/knex.md#ISchemaGenerator)
-* [**ISeedManager](https://mikro-orm.io/api/knex.md#ISeedManager)
-* [**IsolationLevel](https://mikro-orm.io/api/knex.md#IsolationLevel)
-* [**IsSubset](https://mikro-orm.io/api/knex.md#IsSubset)
-* [**IsUnknown](https://mikro-orm.io/api/knex.md#IsUnknown)
-* [**IType](https://mikro-orm.io/api/knex.md#IType)
-* [**IWrappedEntity](https://mikro-orm.io/api/knex.md#IWrappedEntity)
-* [**JSON\_KEY\_OPERATORS](https://mikro-orm.io/api/knex.md#JSON_KEY_OPERATORS)
-* [**JsonProperty](https://mikro-orm.io/api/knex.md#JsonProperty)
-* [**JsonType](https://mikro-orm.io/api/knex.md#JsonType)
-* [**LoadCountOptions](https://mikro-orm.io/api/knex.md#LoadCountOptions)
-* [**Loaded](https://mikro-orm.io/api/knex.md#Loaded)
-* [**LoadedCollection](https://mikro-orm.io/api/knex.md#LoadedCollection)
-* [**LoadedReference](https://mikro-orm.io/api/knex.md#LoadedReference)
-* [**LoadHint](https://mikro-orm.io/api/knex.md#LoadHint)
-* [**LoadReferenceOptions](https://mikro-orm.io/api/knex.md#LoadReferenceOptions)
-* [**LoadReferenceOrFailOptions](https://mikro-orm.io/api/knex.md#LoadReferenceOrFailOptions)
-* [**LoadStrategy](https://mikro-orm.io/api/knex.md#LoadStrategy)
-* [**LockMode](https://mikro-orm.io/api/knex.md#LockMode)
-* [**LockOptions](https://mikro-orm.io/api/knex.md#LockOptions)
-* [**LockWaitTimeoutException](https://mikro-orm.io/api/knex.md#LockWaitTimeoutException)
-* [**LogContext](https://mikro-orm.io/api/knex.md#LogContext)
-* [**Logger](https://mikro-orm.io/api/knex.md#Logger)
-* [**LoggerNamespace](https://mikro-orm.io/api/knex.md#LoggerNamespace)
-* [**LoggerOptions](https://mikro-orm.io/api/knex.md#LoggerOptions)
-* [**LoggingOptions](https://mikro-orm.io/api/knex.md#LoggingOptions)
-* [**ManyToMany](https://mikro-orm.io/api/knex.md#ManyToMany)
-* [**ManyToManyOptions](https://mikro-orm.io/api/knex.md#ManyToManyOptions)
-* [**ManyToOne](https://mikro-orm.io/api/knex.md#ManyToOne)
-* [**ManyToOneOptions](https://mikro-orm.io/api/knex.md#ManyToOneOptions)
-* [**MatchingOptions](https://mikro-orm.io/api/knex.md#MatchingOptions)
-* [**MaybePromise](https://mikro-orm.io/api/knex.md#MaybePromise)
-* [**MediumIntType](https://mikro-orm.io/api/knex.md#MediumIntType)
-* [**MemoryCacheAdapter](https://mikro-orm.io/api/knex.md#MemoryCacheAdapter)
-* [**MergeLoaded](https://mikro-orm.io/api/knex.md#MergeLoaded)
-* [**MergeOptions](https://mikro-orm.io/api/knex.md#MergeOptions)
-* [**MergeSelected](https://mikro-orm.io/api/knex.md#MergeSelected)
-* [**MetadataDiscovery](https://mikro-orm.io/api/knex.md#MetadataDiscovery)
-* [**MetadataDiscoveryOptions](https://mikro-orm.io/api/knex.md#MetadataDiscoveryOptions)
-* [**MetadataError](https://mikro-orm.io/api/knex.md#MetadataError)
-* [**MetadataProcessor](https://mikro-orm.io/api/knex.md#MetadataProcessor)
-* [**MetadataProvider](https://mikro-orm.io/api/knex.md#MetadataProvider)
-* [**MetadataStorage](https://mikro-orm.io/api/knex.md#MetadataStorage)
-* [**MigrateOptions](https://mikro-orm.io/api/knex.md#MigrateOptions)
-* [**MigrationDiff](https://mikro-orm.io/api/knex.md#MigrationDiff)
-* [**MigrationObject](https://mikro-orm.io/api/knex.md#MigrationObject)
-* [**MigrationResult](https://mikro-orm.io/api/knex.md#MigrationResult)
-* [**MigrationRow](https://mikro-orm.io/api/knex.md#MigrationRow)
-* [**MigrationsOptions](https://mikro-orm.io/api/knex.md#MigrationsOptions)
-* [**MigratorEvent](https://mikro-orm.io/api/knex.md#MigratorEvent)
-* [**MikroORM](https://mikro-orm.io/api/knex.md#MikroORM)
-* [**MikroORMOptions](https://mikro-orm.io/api/knex.md#MikroORMOptions)
-* [**MongoNamingStrategy](https://mikro-orm.io/api/knex.md#MongoNamingStrategy)
-* [**NamingStrategy](https://mikro-orm.io/api/knex.md#NamingStrategy)
-* [**NativeDeleteOptions](https://mikro-orm.io/api/knex.md#NativeDeleteOptions)
-* [**NativeInsertUpdateManyOptions](https://mikro-orm.io/api/knex.md#NativeInsertUpdateManyOptions)
-* [**NativeInsertUpdateOptions](https://mikro-orm.io/api/knex.md#NativeInsertUpdateOptions)
-* [**New](https://mikro-orm.io/api/knex.md#New)
-* [**Node](https://mikro-orm.io/api/knex.md#Node)
-* [**NodeState](https://mikro-orm.io/api/knex.md#NodeState)
-* [**NoInfer](https://mikro-orm.io/api/knex.md#NoInfer)
-* [**NonUniqueFieldNameException](https://mikro-orm.io/api/knex.md#NonUniqueFieldNameException)
-* [**NotFoundError](https://mikro-orm.io/api/knex.md#NotFoundError)
-* [**NotNullConstraintViolationException](https://mikro-orm.io/api/knex.md#NotNullConstraintViolationException)
-* [**NullCacheAdapter](https://mikro-orm.io/api/knex.md#NullCacheAdapter)
-* [**NullHighlighter](https://mikro-orm.io/api/knex.md#NullHighlighter)
-* [**ObjectBindingPattern](https://mikro-orm.io/api/knex.md#ObjectBindingPattern)
-* [**ObjectHydrator](https://mikro-orm.io/api/knex.md#ObjectHydrator)
-* [**ObjectQuery](https://mikro-orm.io/api/knex.md#ObjectQuery)
-* [**OneToMany](https://mikro-orm.io/api/knex.md#OneToMany)
-* [**OneToManyOptions](https://mikro-orm.io/api/knex.md#OneToManyOptions)
-* [**OneToOne](https://mikro-orm.io/api/knex.md#OneToOne)
-* [**OneToOneOptions](https://mikro-orm.io/api/knex.md#OneToOneOptions)
-* [**OnInit](https://mikro-orm.io/api/knex.md#OnInit)
-* [**OnLoad](https://mikro-orm.io/api/knex.md#OnLoad)
-* [**Opt](https://mikro-orm.io/api/knex.md#Opt)
-* [**OptimisticLockError](https://mikro-orm.io/api/knex.md#OptimisticLockError)
-* [**OptionalProps](https://mikro-orm.io/api/knex.md#OptionalProps)
-* [**Options](https://mikro-orm.io/api/knex.md#Options)
-* [**OrderDefinition](https://mikro-orm.io/api/knex.md#OrderDefinition)
-* [**p](https://mikro-orm.io/api/knex.md#p)
-* [**parseJsonSafe](https://mikro-orm.io/api/knex.md#parseJsonSafe)
-* [**PlainObject](https://mikro-orm.io/api/knex.md#PlainObject)
-* [**Platform](https://mikro-orm.io/api/knex.md#Platform)
-* [**PoolConfig](https://mikro-orm.io/api/knex.md#PoolConfig)
-* [**Populate](https://mikro-orm.io/api/knex.md#Populate)
-* [**PopulateHint](https://mikro-orm.io/api/knex.md#PopulateHint)
-* [**PopulateOptions](https://mikro-orm.io/api/knex.md#PopulateOptions)
-* [**PopulatePath](https://mikro-orm.io/api/knex.md#PopulatePath)
-* [**Primary](https://mikro-orm.io/api/knex.md#Primary)
-* [**PrimaryKey](https://mikro-orm.io/api/knex.md#PrimaryKey)
-* [**PrimaryKeyOptions](https://mikro-orm.io/api/knex.md#PrimaryKeyOptions)
-* [**PrimaryKeyProp](https://mikro-orm.io/api/knex.md#PrimaryKeyProp)
-* [**Property](https://mikro-orm.io/api/knex.md#Property)
-* [**PropertyOptions](https://mikro-orm.io/api/knex.md#PropertyOptions)
-* [**QBFilterQuery](https://mikro-orm.io/api/knex.md#QBFilterQuery)
-* [**QBQueryOrderMap](https://mikro-orm.io/api/knex.md#QBQueryOrderMap)
-* [**QueryFlag](https://mikro-orm.io/api/knex.md#QueryFlag)
-* [**QueryOperator](https://mikro-orm.io/api/knex.md#QueryOperator)
-* [**QueryOrder](https://mikro-orm.io/api/knex.md#QueryOrder)
-* [**QueryOrderKeys](https://mikro-orm.io/api/knex.md#QueryOrderKeys)
-* [**QueryOrderKeysFlat](https://mikro-orm.io/api/knex.md#QueryOrderKeysFlat)
-* [**QueryOrderMap](https://mikro-orm.io/api/knex.md#QueryOrderMap)
-* [**QueryOrderNumeric](https://mikro-orm.io/api/knex.md#QueryOrderNumeric)
-* [**QueryResult](https://mikro-orm.io/api/knex.md#QueryResult)
-* [**quote](https://mikro-orm.io/api/knex.md#quote)
-* [**RawQueryFragment](https://mikro-orm.io/api/knex.md#RawQueryFragment)
-* [**ReadOnlyException](https://mikro-orm.io/api/knex.md#ReadOnlyException)
-* [**ref](https://mikro-orm.io/api/knex.md#ref)
-* [**Ref](https://mikro-orm.io/api/knex.md#Ref)
-* [**Reference](https://mikro-orm.io/api/knex.md#Reference)
-* [**ReferenceKind](https://mikro-orm.io/api/knex.md#ReferenceKind)
-* [**ReferenceOptions](https://mikro-orm.io/api/knex.md#ReferenceOptions)
-* [**ReflectMetadataProvider](https://mikro-orm.io/api/knex.md#ReflectMetadataProvider)
-* [**RefreshDatabaseOptions](https://mikro-orm.io/api/knex.md#RefreshDatabaseOptions)
-* [**RegisterOptions](https://mikro-orm.io/api/knex.md#RegisterOptions)
-* [**rel](https://mikro-orm.io/api/knex.md#rel)
-* [**Rel](https://mikro-orm.io/api/knex.md#Rel)
-* [**RequestContext](https://mikro-orm.io/api/knex.md#RequestContext)
-* [**RequiredEntityData](https://mikro-orm.io/api/knex.md#RequiredEntityData)
-* [**RequiredNullable](https://mikro-orm.io/api/knex.md#RequiredNullable)
-* [**Scalar](https://mikro-orm.io/api/knex.md#Scalar)
-* [**SCALAR\_TYPES](https://mikro-orm.io/api/knex.md#SCALAR_TYPES)
-* [**ScalarRef](https://mikro-orm.io/api/knex.md#ScalarRef)
-* [**ScalarReference](https://mikro-orm.io/api/knex.md#ScalarReference)
-* [**SchemaGenerator](https://mikro-orm.io/api/knex.md#SchemaGenerator)
-* [**SeederOptions](https://mikro-orm.io/api/knex.md#SeederOptions)
-* [**Selected](https://mikro-orm.io/api/knex.md#Selected)
-* [**SerializationContext](https://mikro-orm.io/api/knex.md#SerializationContext)
-* [**serialize](https://mikro-orm.io/api/knex.md#serialize)
-* [**SerializedPrimaryKey](https://mikro-orm.io/api/knex.md#SerializedPrimaryKey)
-* [**SerializedPrimaryKeyOptions](https://mikro-orm.io/api/knex.md#SerializedPrimaryKeyOptions)
-* [**SerializeOptions](https://mikro-orm.io/api/knex.md#SerializeOptions)
-* [**ServerException](https://mikro-orm.io/api/knex.md#ServerException)
-* [**Settings](https://mikro-orm.io/api/knex.md#Settings)
-* [**SimpleColumnMeta](https://mikro-orm.io/api/knex.md#SimpleColumnMeta)
-* [**SimpleLogger](https://mikro-orm.io/api/knex.md#SimpleLogger)
-* [**SmallIntType](https://mikro-orm.io/api/knex.md#SmallIntType)
-* [**sql](https://mikro-orm.io/api/knex.md#sql)
-* [**SqlEntityManager](https://mikro-orm.io/api/knex.md#SqlEntityManager)
-* [**SqlEntityRepository](https://mikro-orm.io/api/knex.md#SqlEntityRepository)
-* [**StringType](https://mikro-orm.io/api/knex.md#StringType)
-* [**SyncCacheAdapter](https://mikro-orm.io/api/knex.md#SyncCacheAdapter)
-* [**SyntaxErrorException](https://mikro-orm.io/api/knex.md#SyntaxErrorException)
-* [**t](https://mikro-orm.io/api/knex.md#t)
-* [**TableExistsException](https://mikro-orm.io/api/knex.md#TableExistsException)
-* [**TableNotFoundException](https://mikro-orm.io/api/knex.md#TableNotFoundException)
-* [**TextType](https://mikro-orm.io/api/knex.md#TextType)
-* [**TimeType](https://mikro-orm.io/api/knex.md#TimeType)
-* [**TinyIntType](https://mikro-orm.io/api/knex.md#TinyIntType)
-* [**Transaction](https://mikro-orm.io/api/knex.md#Transaction)
-* [**Transactional](https://mikro-orm.io/api/knex.md#Transactional)
-* [**TransactionContext](https://mikro-orm.io/api/knex.md#TransactionContext)
-* [**TransactionEventArgs](https://mikro-orm.io/api/knex.md#TransactionEventArgs)
-* [**TransactionEventBroadcaster](https://mikro-orm.io/api/knex.md#TransactionEventBroadcaster)
-* [**TransactionEventType](https://mikro-orm.io/api/knex.md#TransactionEventType)
-* [**TransactionManager](https://mikro-orm.io/api/knex.md#TransactionManager)
-* [**TransactionOptions](https://mikro-orm.io/api/knex.md#TransactionOptions)
-* [**TransactionPropagation](https://mikro-orm.io/api/knex.md#TransactionPropagation)
-* [**TransactionStateError](https://mikro-orm.io/api/knex.md#TransactionStateError)
-* [**TransformContext](https://mikro-orm.io/api/knex.md#TransformContext)
-* [**Type](https://mikro-orm.io/api/knex.md#Type)
-* [**TypeConfig](https://mikro-orm.io/api/knex.md#TypeConfig)
-* [**types](https://mikro-orm.io/api/knex.md#types)
-* [**Uint8ArrayType](https://mikro-orm.io/api/knex.md#Uint8ArrayType)
-* [**UmzugMigration](https://mikro-orm.io/api/knex.md#UmzugMigration)
-* [**UnboxArray](https://mikro-orm.io/api/knex.md#UnboxArray)
-* [**UnderscoreNamingStrategy](https://mikro-orm.io/api/knex.md#UnderscoreNamingStrategy)
-* [**Unique](https://mikro-orm.io/api/knex.md#Unique)
-* [**UniqueConstraintViolationException](https://mikro-orm.io/api/knex.md#UniqueConstraintViolationException)
-* [**UniqueOptions](https://mikro-orm.io/api/knex.md#UniqueOptions)
-* [**UnitOfWork](https://mikro-orm.io/api/knex.md#UnitOfWork)
-* [**UniversalPropertyKeys](https://mikro-orm.io/api/knex.md#UniversalPropertyKeys)
-* [**UnknownType](https://mikro-orm.io/api/knex.md#UnknownType)
-* [**UpdateOptions](https://mikro-orm.io/api/knex.md#UpdateOptions)
-* [**UpdateSchemaOptions](https://mikro-orm.io/api/knex.md#UpdateSchemaOptions)
-* [**UpsertManyOptions](https://mikro-orm.io/api/knex.md#UpsertManyOptions)
-* [**UpsertOptions](https://mikro-orm.io/api/knex.md#UpsertOptions)
-* [**Utils](https://mikro-orm.io/api/knex.md#Utils)
-* [**UuidType](https://mikro-orm.io/api/knex.md#UuidType)
-* [**ValidationError](https://mikro-orm.io/api/knex.md#ValidationError)
-* [**wrap](https://mikro-orm.io/api/knex.md#wrap)
-* [**WrappedEntity](https://mikro-orm.io/api/knex.md#WrappedEntity)
-
-### Enumerations
-
-* [**JoinType](https://mikro-orm.io/api/knex/enum/JoinType.md)
-* [**QueryType](https://mikro-orm.io/api/knex/enum/QueryType.md)
-
-### Classes
-
-* [**AbstractSqlConnection](https://mikro-orm.io/api/knex/class/AbstractSqlConnection.md)
-* [**AbstractSqlDriver](https://mikro-orm.io/api/knex/class/AbstractSqlDriver.md)
-* [**AbstractSqlPlatform](https://mikro-orm.io/api/knex/class/AbstractSqlPlatform.md)
-* [**BaseSqliteConnection](https://mikro-orm.io/api/knex/class/BaseSqliteConnection.md)
-* [**BaseSqlitePlatform](https://mikro-orm.io/api/knex/class/BaseSqlitePlatform.md)
-* [**BaseSqliteSchemaHelper](https://mikro-orm.io/api/knex/class/BaseSqliteSchemaHelper.md)
-* [**BetterSqliteKnexDialect](https://mikro-orm.io/api/knex/class/BetterSqliteKnexDialect.md)
-* [**EntityManager](https://mikro-orm.io/api/knex/class/EntityManager.md)
-* [**EntityRepository](https://mikro-orm.io/api/knex/class/EntityRepository.md)
-* [**LibSqlKnexDialect](https://mikro-orm.io/api/knex/class/LibSqlKnexDialect.md)
-* [**MariaDbKnexDialect](https://mikro-orm.io/api/knex/class/MariaDbKnexDialect.md)
-* [**MsSqlKnexDialect](https://mikro-orm.io/api/knex/class/MsSqlKnexDialect.md)
-* [**MySqlConnection](https://mikro-orm.io/api/knex/class/MySqlConnection.md)
-* [**MySqlExceptionConverter](https://mikro-orm.io/api/knex/class/MySqlExceptionConverter.md)
-* [**MySqlKnexDialect](https://mikro-orm.io/api/knex/class/MySqlKnexDialect.md)
-* [**MySqlPlatform](https://mikro-orm.io/api/knex/class/MySqlPlatform.md)
-* [**MySqlSchemaHelper](https://mikro-orm.io/api/knex/class/MySqlSchemaHelper.md)
-* [**PostgreSqlKnexDialect](https://mikro-orm.io/api/knex/class/PostgreSqlKnexDialect.md)
-* [**QueryBuilder](https://mikro-orm.io/api/knex/class/QueryBuilder.md)
-* [**SchemaComparator](https://mikro-orm.io/api/knex/class/SchemaComparator.md)
-* [**SchemaHelper](https://mikro-orm.io/api/knex/class/SchemaHelper.md)
-* [**SqliteKnexDialect](https://mikro-orm.io/api/knex/class/SqliteKnexDialect.md)
-* [**SqliteTableCompiler](https://mikro-orm.io/api/knex/class/SqliteTableCompiler.md)
-* [**SqlSchemaGenerator](https://mikro-orm.io/api/knex/class/SqlSchemaGenerator.md)
-
-### Interfaces
-
-* [**Alias](https://mikro-orm.io/api/knex/interface/Alias.md)
-* [**CheckDef](https://mikro-orm.io/api/knex/interface/CheckDef.md)
-* [**Column](https://mikro-orm.io/api/knex/interface/Column.md)
-* [**ColumnDifference](https://mikro-orm.io/api/knex/interface/ColumnDifference.md)
-* [**CountQueryBuilder](https://mikro-orm.io/api/knex/interface/CountQueryBuilder.md)
-* [**DeleteQueryBuilder](https://mikro-orm.io/api/knex/interface/DeleteQueryBuilder.md)
-* [**ExecuteOptions](https://mikro-orm.io/api/knex/interface/ExecuteOptions.md)
-* [**ForeignKey](https://mikro-orm.io/api/knex/interface/ForeignKey.md)
-* [**ICriteriaNode](https://mikro-orm.io/api/knex/interface/ICriteriaNode.md)
-* [**ICriteriaNodeProcessOptions](https://mikro-orm.io/api/knex/interface/ICriteriaNodeProcessOptions.md)
-* [**IndexDef](https://mikro-orm.io/api/knex/interface/IndexDef.md)
-* [**InsertQueryBuilder](https://mikro-orm.io/api/knex/interface/InsertQueryBuilder.md)
-* [**IQueryBuilder](https://mikro-orm.io/api/knex/interface/IQueryBuilder.md)
-* [**JoinOptions](https://mikro-orm.io/api/knex/interface/JoinOptions.md)
-* [**Knex](https://mikro-orm.io/api/knex/interface/Knex.md)
-* [**MySqlTableBuilder](https://mikro-orm.io/api/knex/interface/MySqlTableBuilder.md)
-* [**RunQueryBuilder](https://mikro-orm.io/api/knex/interface/RunQueryBuilder.md)
-* [**SchemaDifference](https://mikro-orm.io/api/knex/interface/SchemaDifference.md)
-* [**SelectQueryBuilder](https://mikro-orm.io/api/knex/interface/SelectQueryBuilder.md)
-* [**Table](https://mikro-orm.io/api/knex/interface/Table.md)
-* [**TableDifference](https://mikro-orm.io/api/knex/interface/TableDifference.md)
-* [**TruncateQueryBuilder](https://mikro-orm.io/api/knex/interface/TruncateQueryBuilder.md)
-* [**UpdateQueryBuilder](https://mikro-orm.io/api/knex/interface/UpdateQueryBuilder.md)
-
-### Type Aliases
-
-* [**Field](https://mikro-orm.io/api/knex.md#Field)
-* [**KnexStringRef](https://mikro-orm.io/api/knex.md#KnexStringRef)
-* [**ModifyContext](https://mikro-orm.io/api/knex.md#ModifyContext)
-* [**ModifyHint](https://mikro-orm.io/api/knex.md#ModifyHint)
-* [**MySqlIncrementOptions](https://mikro-orm.io/api/knex.md#MySqlIncrementOptions)
-* [**QBField](https://mikro-orm.io/api/knex.md#QBField)
-* [**QBField2](https://mikro-orm.io/api/knex.md#QBField2)
-
-### Variables
-
-* [**MonkeyPatchable](https://mikro-orm.io/api/knex.md#MonkeyPatchable)
-
-### Functions
-
-* [**knex](https://mikro-orm.io/api/knex/function/knex.md)
-* [**raw](https://mikro-orm.io/api/knex/function/raw.md)
-
-## References<!-- -->[**](#References)
-
-### [**](#AbstractNamingStrategy)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/naming-strategy/AbstractNamingStrategy.ts#L6)AbstractNamingStrategy
-
-Re-exports
+### Properties
+
+* [**\_\_knex\_\_](#__knex__)
+* [**andHaving](#andHaving)
+* [**andHavingNotIn](#andHavingNotIn)
+* [**andWhere](#andWhere)
+* [**andWhereBetween](#andWhereBetween)
+* [**andWhereILike](#andWhereILike)
+* [**andWhereJsonNotSubsetOf](#andWhereJsonNotSubsetOf)
+* [**andWhereJsonNotSupersetOf](#andWhereJsonNotSupersetOf)
+* [**andWhereJsonObject](#andWhereJsonObject)
+* [**andWhereJsonPath](#andWhereJsonPath)
+* [**andWhereJsonSubsetOf](#andWhereJsonSubsetOf)
+* [**andWhereJsonSupersetOf](#andWhereJsonSupersetOf)
+* [**andWhereLike](#andWhereLike)
+* [**andWhereNot](#andWhereNot)
+* [**andWhereNotBetween](#andWhereNotBetween)
+* [**andWhereNotJsonObject](#andWhereNotJsonObject)
+* [**andWhereRaw](#andWhereRaw)
+* [**as](#as)
+* [**avg](#avg)
+* [**avgDistinct](#avgDistinct)
+* [**client](#client)
+* [**column](#column)
+* [**columns](#columns)
+* [**comment](#comment)
+* [**count](#count)
+* [**countDistinct](#countDistinct)
+* [**crossJoin](#crossJoin)
+* [**denseRank](#denseRank)
+* [**distinct](#distinct)
+* [**distinctOn](#distinctOn)
+* [**except](#except)
+* [**first](#first)
+* [**fn](#fn)
+* [**from](#from)
+* [**fromRaw](#fromRaw)
+* [**fullOuterJoin](#fullOuterJoin)
+* [**groupBy](#groupBy)
+* [**groupByRaw](#groupByRaw)
+* [**having](#having)
+* [**havingBetween](#havingBetween)
+* [**havingIn](#havingIn)
+* [**havingNotBetween](#havingNotBetween)
+* [**havingNotIn](#havingNotIn)
+* [**havingNotNull](#havingNotNull)
+* [**havingNull](#havingNull)
+* [**havingRaw](#havingRaw)
+* [**havingWrapped](#havingWrapped)
+* [**hintComment](#hintComment)
+* [**innerJoin](#innerJoin)
+* [**intersect](#intersect)
+* [**into](#into)
+* [**isTransaction](#isTransaction)
+* [**join](#join)
+* [**joinRaw](#joinRaw)
+* [**jsonExtract](#jsonExtract)
+* [**jsonInsert](#jsonInsert)
+* [**jsonRemove](#jsonRemove)
+* [**jsonSet](#jsonSet)
+* [**leftJoin](#leftJoin)
+* [**leftOuterJoin](#leftOuterJoin)
+* [**max](#max)
+* [**migrate](#migrate)
+* [**min](#min)
+* [**orderBy](#orderBy)
+* [**orderByRaw](#orderByRaw)
+* [**orHaving](#orHaving)
+* [**orHavingBetween](#orHavingBetween)
+* [**orHavingNotBetween](#orHavingNotBetween)
+* [**orHavingNotIn](#orHavingNotIn)
+* [**orHavingNotNull](#orHavingNotNull)
+* [**orHavingNull](#orHavingNull)
+* [**orHavingRaw](#orHavingRaw)
+* [**orWhere](#orWhere)
+* [**orWhereBetween](#orWhereBetween)
+* [**orWhereExists](#orWhereExists)
+* [**orWhereILike](#orWhereILike)
+* [**orWhereIn](#orWhereIn)
+* [**orWhereJsonNotSubsetOf](#orWhereJsonNotSubsetOf)
+* [**orWhereJsonNotSupersetOf](#orWhereJsonNotSupersetOf)
+* [**orWhereJsonObject](#orWhereJsonObject)
+* [**orWhereJsonPath](#orWhereJsonPath)
+* [**orWhereJsonSubsetOf](#orWhereJsonSubsetOf)
+* [**orWhereJsonSupersetOf](#orWhereJsonSupersetOf)
+* [**orWhereLike](#orWhereLike)
+* [**orWhereNot](#orWhereNot)
+* [**orWhereNotBetween](#orWhereNotBetween)
+* [**orWhereNotExists](#orWhereNotExists)
+* [**orWhereNotIn](#orWhereNotIn)
+* [**orWhereNotJsonObject](#orWhereNotJsonObject)
+* [**orWhereNotNull](#orWhereNotNull)
+* [**orWhereNull](#orWhereNull)
+* [**orWhereRaw](#orWhereRaw)
+* [**outerJoin](#outerJoin)
+* [**partitionBy](#partitionBy)
+* [**rank](#rank)
+* [**raw](#raw)
+* [**ref](#ref)
+* [**rightJoin](#rightJoin)
+* [**rightOuterJoin](#rightOuterJoin)
+* [**rowNumber](#rowNumber)
+* [**schema](#schema)
+* [**seed](#seed)
+* [**select](#select)
+* [**sum](#sum)
+* [**sumDistinct](#sumDistinct)
+* [**table](#table)
+* [**union](#union)
+* [**unionAll](#unionAll)
+* [**updateFrom](#updateFrom)
+* [**userParams](#userParams)
+* [**using](#using)
+* [**VERSION](#VERSION)
+* [**where](#where)
+* [**whereBetween](#whereBetween)
+* [**whereExists](#whereExists)
+* [**whereILike](#whereILike)
+* [**whereIn](#whereIn)
+* [**whereJsonNotSubsetOf](#whereJsonNotSubsetOf)
+* [**whereJsonNotSupersetOf](#whereJsonNotSupersetOf)
+* [**whereJsonObject](#whereJsonObject)
+* [**whereJsonPath](#whereJsonPath)
+* [**whereJsonSubsetOf](#whereJsonSubsetOf)
+* [**whereJsonSupersetOf](#whereJsonSupersetOf)
+* [**whereLike](#whereLike)
+* [**whereNot](#whereNot)
+* [**whereNotBetween](#whereNotBetween)
+* [**whereNotExists](#whereNotExists)
+* [**whereNotIn](#whereNotIn)
+* [**whereNotJsonObject](#whereNotJsonObject)
+* [**whereNotNull](#whereNotNull)
+* [**whereNull](#whereNull)
+* [**whereRaw](#whereRaw)
+* [**whereWrapped](#whereWrapped)
+* [**with](#with)
+* [**withMaterialized](#withMaterialized)
+* [**withNotMaterialized](#withNotMaterialized)
+* [**withRaw](#withRaw)
+* [**withRecursive](#withRecursive)
+* [**withSchema](#withSchema)
+* [**withWrapped](#withWrapped)
+
+### Methods
+
+* [**\[captureRejectionSymbol\]](#\[captureRejectionSymbol])
+* [**addListener](#addListener)
+* [**batchInsert](#batchInsert)
+* [**clear](#clear)
+* [**clearCounters](#clearCounters)
+* [**clearGroup](#clearGroup)
+* [**clearHaving](#clearHaving)
+* [**clearOrder](#clearOrder)
+* [**clearSelect](#clearSelect)
+* [**clearWhere](#clearWhere)
+* [**decrement](#decrement)
+* [**del](#del)
+* [**delete](#delete)
+* [**destroy](#destroy)
+* [**emit](#emit)
+* [**eventNames](#eventNames)
+* [**getMaxListeners](#getMaxListeners)
+* [**increment](#increment)
+* [**initialize](#initialize)
+* [**insert](#insert)
+* [**limit](#limit)
+* [**listenerCount](#listenerCount)
+* [**listeners](#listeners)
+* [**modify](#modify)
+* [**off](#off)
+* [**offset](#offset)
+* [**on](#on)
+* [**once](#once)
+* [**onConflict](#onConflict)
+* [**pluck](#pluck)
+* [**prependListener](#prependListener)
+* [**prependOnceListener](#prependOnceListener)
+* [**queryBuilder](#queryBuilder)
+* [**rawListeners](#rawListeners)
+* [**removeAllListeners](#removeAllListeners)
+* [**removeListener](#removeListener)
+* [**returning](#returning)
+* [**setMaxListeners](#setMaxListeners)
+* [**transaction](#transaction)
+* [**transactionProvider](#transactionProvider)
+* [**truncate](#truncate)
+* [**update](#update)
+* [**upsert](#upsert)
+* [**withUserParams](#withUserParams)
 
-<!-- -->
-
-[AbstractNamingStrategy](https://mikro-orm.io/api/core/class/AbstractNamingStrategy.md)
-
-### [**](#AbstractSchemaGenerator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/AbstractSchemaGenerator.ts#L17)AbstractSchemaGenerator
-
-Re-exports
-
-<!-- -->
-
-[AbstractSchemaGenerator](https://mikro-orm.io/api/core/class/AbstractSchemaGenerator.md)
-
-### [**](#AfterCreate)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/hooks.ts#L20)AfterCreate
-
-Re-exports
-
-<!-- -->
-
-[AfterCreate](https://mikro-orm.io/api/core/function/AfterCreate.md)
-
-### [**](#AfterDelete)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/hooks.ts#L58)AfterDelete
-
-Re-exports
-
-<!-- -->
-
-[AfterDelete](https://mikro-orm.io/api/core/function/AfterDelete.md)
-
-### [**](#AfterUpdate)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/hooks.ts#L28)AfterUpdate
-
-Re-exports
-
-<!-- -->
-
-[AfterUpdate](https://mikro-orm.io/api/core/function/AfterUpdate.md)
-
-### [**](#AfterUpsert)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/hooks.ts#L36)AfterUpsert
-
-Re-exports
-
-<!-- -->
-
-[AfterUpsert](https://mikro-orm.io/api/core/function/AfterUpsert.md)
-
-### [**](#AnyEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)AnyEntity
-
-Re-exports
-
-<!-- -->
-
-[AnyEntity](https://mikro-orm.io/api/core.md#AnyEntity)
-
-### [**](#AnyString)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)AnyString
-
-Re-exports
-
-<!-- -->
-
-[AnyString](https://mikro-orm.io/api/core.md#AnyString)
-
-### [**](#ARRAY_OPERATORS)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L55)ARRAY\_OPERATORS
-
-Re-exports
-
-<!-- -->
-
-[ARRAY\_OPERATORS](https://mikro-orm.io/api/core.md#ARRAY_OPERATORS)
-
-### [**](#ArrayCollection)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/ArrayCollection.ts#L9)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/ArrayCollection.ts#L511)ArrayCollection
-
-Re-exports
-
-<!-- -->
-
-[ArrayCollection](https://mikro-orm.io/api/core/class/ArrayCollection.md)
-
-### [**](#ArrayType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L28)ArrayType
-
-Re-exports
-
-<!-- -->
-
-[ArrayType](https://mikro-orm.io/api/core/class/ArrayType.md)
-
-### [**](#assign)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/EntityAssigner.ts#L311)assign
-
-Re-exports
-
-<!-- -->
-
-[assign](https://mikro-orm.io/api/core/function/assign.md)
-
-### [**](#AssignOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/EntityAssigner.ts#L313)AssignOptions
-
-Re-exports
-
-<!-- -->
-
-[AssignOptions](https://mikro-orm.io/api/core/interface/AssignOptions.md)
-
-### [**](#AutoPath)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)AutoPath
-
-Re-exports
-
-<!-- -->
-
-[AutoPath](https://mikro-orm.io/api/core.md#AutoPath)
-
-### [**](#BaseEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/BaseEntity.ts#L9)BaseEntity
-
-Re-exports
-
-<!-- -->
-
-[BaseEntity](https://mikro-orm.io/api/core/class/BaseEntity.md)
-
-### [**](#BeforeCreate)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/hooks.ts#L16)BeforeCreate
-
-Re-exports
-
-<!-- -->
-
-[BeforeCreate](https://mikro-orm.io/api/core/function/BeforeCreate.md)
-
-### [**](#BeforeDelete)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/hooks.ts#L51)BeforeDelete
-
-Re-exports
-
-<!-- -->
-
-[BeforeDelete](https://mikro-orm.io/api/core/function/BeforeDelete.md)
-
-### [**](#BeforeUpdate)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/hooks.ts#L24)BeforeUpdate
-
-Re-exports
-
-<!-- -->
-
-[BeforeUpdate](https://mikro-orm.io/api/core/function/BeforeUpdate.md)
-
-### [**](#BeforeUpsert)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/hooks.ts#L32)BeforeUpsert
-
-Re-exports
-
-<!-- -->
-
-[BeforeUpsert](https://mikro-orm.io/api/core/function/BeforeUpsert.md)
-
-### [**](#BigIntType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L28)BigIntType
-
-Re-exports
-
-<!-- -->
-
-[BigIntType](https://mikro-orm.io/api/core/class/BigIntType.md)
-
-### [**](#BlobType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L28)BlobType
-
-Re-exports
-
-<!-- -->
-
-[BlobType](https://mikro-orm.io/api/core/class/BlobType.md)
-
-### [**](#BooleanType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L29)BooleanType
-
-Re-exports
-
-<!-- -->
-
-[BooleanType](https://mikro-orm.io/api/core/class/BooleanType.md)
-
-### [**](#CacheAdapter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/cache/CacheAdapter.ts#L1)CacheAdapter
-
-Re-exports
-
-<!-- -->
-
-[CacheAdapter](https://mikro-orm.io/api/core/interface/CacheAdapter.md)
-
-### [**](#Cascade)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L131)Cascade
-
-Re-exports
-
-<!-- -->
-
-[Cascade](https://mikro-orm.io/api/core/enum/Cascade.md)
-
-### [**](#Cast)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)Cast
-
-Re-exports
-
-<!-- -->
-
-[Cast](https://mikro-orm.io/api/core.md#Cast)
-
-### [**](#ChangeSet)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/ChangeSet.ts#L6)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/ChangeSet.ts#L67)ChangeSet
-
-Re-exports
-
-<!-- -->
-
-[ChangeSet](https://mikro-orm.io/api/core/class/ChangeSet.md)
-
-### [**](#ChangeSetComputer)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/ChangeSetComputer.ts#L10)ChangeSetComputer
-
-Re-exports
-
-<!-- -->
-
-[ChangeSetComputer](https://mikro-orm.io/api/core/class/ChangeSetComputer.md)
-
-### [**](#ChangeSetPersister)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/ChangeSetPersister.ts#L13)ChangeSetPersister
-
-Re-exports
-
-<!-- -->
-
-[ChangeSetPersister](https://mikro-orm.io/api/core/class/ChangeSetPersister.md)
-
-### [**](#ChangeSetType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/ChangeSet.ts#L79)ChangeSetType
-
-Re-exports
-
-<!-- -->
-
-[ChangeSetType](https://mikro-orm.io/api/core/enum/ChangeSetType.md)
-
-### [**](#CharacterType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L30)CharacterType
-
-Re-exports
-
-<!-- -->
-
-[CharacterType](https://mikro-orm.io/api/core/class/CharacterType.md)
-
-### [**](#Check)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Check.ts#L5)Check
-
-Re-exports
-
-<!-- -->
-
-[Check](https://mikro-orm.io/api/core/function/Check.md)
-
-### [**](#CheckCallback)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)CheckCallback
-
-Re-exports
-
-<!-- -->
-
-[CheckCallback](https://mikro-orm.io/api/core.md#CheckCallback)
-
-### [**](#CheckConstraintViolationException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L70)CheckConstraintViolationException
-
-Re-exports
-
-<!-- -->
-
-[CheckConstraintViolationException](https://mikro-orm.io/api/core/class/CheckConstraintViolationException.md)
-
-### [**](#CheckOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Check.ts#L19)CheckOptions
-
-Re-exports
-
-<!-- -->
-
-[CheckOptions](https://mikro-orm.io/api/core.md#CheckOptions)
-
-### [**](#ClearDatabaseOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)ClearDatabaseOptions
-
-Re-exports
-
-<!-- -->
-
-[ClearDatabaseOptions](https://mikro-orm.io/api/core/interface/ClearDatabaseOptions.md)
-
-### [**](#Collection)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Collection.ts#L31)Collection
-
-Re-exports
-
-<!-- -->
-
-[Collection](https://mikro-orm.io/api/core/class/Collection.md)
-
-### [**](#compareArrays)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Utils.ts#L107)compareArrays
-
-Re-exports
-
-<!-- -->
-
-[compareArrays](https://mikro-orm.io/api/core/function/compareArrays.md)
-
-### [**](#compareBooleans)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Utils.ts#L124)compareBooleans
-
-Re-exports
-
-<!-- -->
-
-[compareBooleans](https://mikro-orm.io/api/core/function/compareBooleans.md)
-
-### [**](#compareBuffers)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Utils.ts#L131)compareBuffers
-
-Re-exports
-
-<!-- -->
-
-[compareBuffers](https://mikro-orm.io/api/core/function/compareBuffers.md)
-
-### [**](#compareObjects)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Utils.ts#L49)compareObjects
-
-Re-exports
-
-<!-- -->
-
-[compareObjects](https://mikro-orm.io/api/core/function/compareObjects.md)
-
-### [**](#Config)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)Config
-
-Re-exports
-
-<!-- -->
-
-[Config](https://mikro-orm.io/api/core.md#Config)
-
-### [**](#Configuration)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L46)Configuration
-
-Re-exports
-
-<!-- -->
-
-[Configuration](https://mikro-orm.io/api/core/class/Configuration.md)
-
-### [**](#Connection)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/connections/Connection.ts#L10)Connection
-
-Re-exports
-
-<!-- -->
-
-[Connection](https://mikro-orm.io/api/core/class/Connection.md)
-
-### [**](#ConnectionConfig)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/connections/Connection.ts#L182)ConnectionConfig
-
-Re-exports
-
-<!-- -->
-
-[ConnectionConfig](https://mikro-orm.io/api/core/interface/ConnectionConfig.md)
-
-### [**](#ConnectionException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L27)ConnectionException
-
-Re-exports
-
-<!-- -->
-
-[ConnectionException](https://mikro-orm.io/api/core/class/ConnectionException.md)
-
-### [**](#ConnectionOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L513)ConnectionOptions
-
-Re-exports
-
-<!-- -->
-
-[ConnectionOptions](https://mikro-orm.io/api/core/interface/ConnectionOptions.md)
-
-### [**](#ConnectionType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)ConnectionType
-
-Re-exports
-
-<!-- -->
-
-[ConnectionType](https://mikro-orm.io/api/core.md#ConnectionType)
-
-### [**](#ConstraintViolationException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L37)ConstraintViolationException
-
-Re-exports
-
-<!-- -->
-
-[ConstraintViolationException](https://mikro-orm.io/api/core/class/ConstraintViolationException.md)
-
-### [**](#Constructor)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)Constructor
-
-Re-exports
-
-<!-- -->
-
-[Constructor](https://mikro-orm.io/api/core.md#Constructor)
-
-### [**](#CountOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L243)CountOptions
-
-Re-exports
-
-<!-- -->
-
-[CountOptions](https://mikro-orm.io/api/core/interface/CountOptions.md)
-
-### [**](#CreateContextOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/RequestContext.ts#L72)CreateContextOptions
-
-Re-exports
-
-<!-- -->
-
-[CreateContextOptions](https://mikro-orm.io/api/core/interface/CreateContextOptions.md)
-
-### [**](#CreateOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/EntityManager.ts#L2406)CreateOptions
-
-Re-exports
-
-<!-- -->
-
-[CreateOptions](https://mikro-orm.io/api/core/interface/CreateOptions.md)
-
-### [**](#CreateRequestContext)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/CreateRequestContext.ts#L6)CreateRequestContext
-
-Re-exports
-
-<!-- -->
-
-[CreateRequestContext](https://mikro-orm.io/api/core/function/CreateRequestContext.md)
-
-### [**](#CreateSchemaOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)CreateSchemaOptions
-
-Re-exports
-
-<!-- -->
-
-[CreateSchemaOptions](https://mikro-orm.io/api/core/interface/CreateSchemaOptions.md)
-
-### [**](#createSqlFunction)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/RawQueryFragment.ts#L253)createSqlFunction
-
-Re-exports
-
-<!-- -->
-
-[createSqlFunction](https://mikro-orm.io/api/core/function/createSqlFunction.md)
-
-### [**](#Cursor)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Cursor.ts#L58)Cursor
-
-Re-exports
-
-<!-- -->
-
-[Cursor](https://mikro-orm.io/api/core/class/Cursor.md)
-
-### [**](#CursorError)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L138)CursorError
-
-Re-exports
-
-<!-- -->
-
-[CursorError](https://mikro-orm.io/api/core/class/CursorError.md)
-
-### [**](#DatabaseDriver)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/DatabaseDriver.ts#L40)DatabaseDriver
-
-Re-exports
-
-<!-- -->
-
-[DatabaseDriver](https://mikro-orm.io/api/core/class/DatabaseDriver.md)
-
-### [**](#DatabaseObjectExistsException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L46)DatabaseObjectExistsException
-
-Re-exports
-
-<!-- -->
-
-[DatabaseObjectExistsException](https://mikro-orm.io/api/core/class/DatabaseObjectExistsException.md)
-
-### [**](#DatabaseObjectNotFoundException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L55)DatabaseObjectNotFoundException
-
-Re-exports
-
-<!-- -->
-
-[DatabaseObjectNotFoundException](https://mikro-orm.io/api/core/class/DatabaseObjectNotFoundException.md)
-
-### [**](#DataloaderType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L149)DataloaderType
-
-Re-exports
-
-<!-- -->
-
-[DataloaderType](https://mikro-orm.io/api/core/enum/DataloaderType.md)
-
-### [**](#DataloaderUtils)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/DataloaderUtils.ts#L10)DataloaderUtils
-
-Re-exports
-
-<!-- -->
-
-[DataloaderUtils](https://mikro-orm.io/api/core/class/DataloaderUtils.md)
-
-### [**](#DateTimeType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L28)DateTimeType
-
-Re-exports
-
-<!-- -->
-
-[DateTimeType](https://mikro-orm.io/api/core/class/DateTimeType.md)
-
-### [**](#DateType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L28)DateType
-
-Re-exports
-
-<!-- -->
-
-[DateType](https://mikro-orm.io/api/core/class/DateType.md)
-
-### [**](#DeadlockException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L60)DeadlockException
-
-Re-exports
-
-<!-- -->
-
-[DeadlockException](https://mikro-orm.io/api/core/class/DeadlockException.md)
-
-### [**](#DecimalType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L29)DecimalType
-
-Re-exports
-
-<!-- -->
-
-[DecimalType](https://mikro-orm.io/api/core/class/DecimalType.md)
-
-### [**](#DeepPartial)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)DeepPartial
-
-Re-exports
-
-<!-- -->
-
-[DeepPartial](https://mikro-orm.io/api/core.md#DeepPartial)
-
-### [**](#DefaultLogger)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/logging/DefaultLogger.ts#L5)DefaultLogger
-
-Re-exports
-
-<!-- -->
-
-[DefaultLogger](https://mikro-orm.io/api/core/class/DefaultLogger.md)
-
-### [**](#DeferMode)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L228)DeferMode
-
-Re-exports
-
-<!-- -->
-
-[DeferMode](https://mikro-orm.io/api/core/enum/DeferMode.md)
-
-### [**](#defineConfig)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L504)defineConfig
-
-Re-exports
-
-<!-- -->
-
-[defineConfig](https://mikro-orm.io/api/core/function/defineConfig.md)
-
-### [**](#DefineConfig)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)DefineConfig
-
-Re-exports
-
-<!-- -->
-
-[DefineConfig](https://mikro-orm.io/api/core.md#DefineConfig)
-
-### [**](#defineEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L702)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L712)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L720)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L757)defineEntity
-
-Re-exports
-
-<!-- -->
-
-[defineEntity](https://mikro-orm.io/api/core/function/defineEntity.md)
-
-### [**](#DefineEntityHooks)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L760)DefineEntityHooks
-
-Re-exports
-
-<!-- -->
-
-[DefineEntityHooks](https://mikro-orm.io/api/core/interface/DefineEntityHooks.md)
-
-### [**](#DeleteOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L273)DeleteOptions
-
-Re-exports
-
-<!-- -->
-
-[DeleteOptions](https://mikro-orm.io/api/core/interface/DeleteOptions.md)
-
-### [**](#Dictionary)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)Dictionary
-
-Re-exports
-
-<!-- -->
-
-[Dictionary](https://mikro-orm.io/api/core.md#Dictionary)
-
-### [**](#DoubleType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L29)DoubleType
-
-Re-exports
-
-<!-- -->
-
-[DoubleType](https://mikro-orm.io/api/core/class/DoubleType.md)
-
-### [**](#DriverException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L6)DriverException
-
-Re-exports
-
-<!-- -->
-
-[DriverException](https://mikro-orm.io/api/core/class/DriverException.md)
-
-### [**](#DriverMethodOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L288)DriverMethodOptions
-
-Re-exports
-
-<!-- -->
-
-[DriverMethodOptions](https://mikro-orm.io/api/core/interface/DriverMethodOptions.md)
-
-### [**](#DropSchemaOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)DropSchemaOptions
-
-Re-exports
-
-<!-- -->
-
-[DropSchemaOptions](https://mikro-orm.io/api/core/interface/DropSchemaOptions.md)
-
-### [**](#DynamicPassword)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L508)DynamicPassword
-
-Re-exports
-
-<!-- -->
-
-[DynamicPassword](https://mikro-orm.io/api/core/interface/DynamicPassword.md)
-
-### [**](#EagerProps)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)EagerProps
-
-Re-exports
-
-<!-- -->
-
-[EagerProps](https://mikro-orm.io/api/core.md#EagerProps)
-
-### [**](#Edge)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/CommitOrderCalculator.ts#L16)Edge
-
-Re-exports
-
-<!-- -->
-
-[Edge](https://mikro-orm.io/api/core/interface/Edge.md)
-
-### [**](#Embeddable)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Embeddable.ts#L4)Embeddable
-
-Re-exports
-
-<!-- -->
-
-[Embeddable](https://mikro-orm.io/api/core/function/Embeddable.md)
-
-### [**](#EmbeddableOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Embeddable.ts#L16)EmbeddableOptions
-
-Re-exports
-
-<!-- -->
-
-[EmbeddableOptions](https://mikro-orm.io/api/core.md#EmbeddableOptions)
-
-### [**](#Embedded)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Embedded.ts#L7)Embedded
-
-Re-exports
-
-<!-- -->
-
-[Embedded](https://mikro-orm.io/api/core/function/Embedded.md)
-
-### [**](#EmbeddedOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Embedded.ts#L26)EmbeddedOptions
-
-Re-exports
-
-<!-- -->
-
-[EmbeddedOptions](https://mikro-orm.io/api/core/interface/EmbeddedOptions.md)
-
-### [**](#EmbeddedPrefixMode)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Embedded.ts#L24)EmbeddedPrefixMode
-
-Re-exports
-
-<!-- -->
-
-[EmbeddedPrefixMode](https://mikro-orm.io/api/core.md#EmbeddedPrefixMode)
-
-### [**](#EmptyOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L613)EmptyOptions
-
-Re-exports
-
-<!-- -->
-
-[EmptyOptions](https://mikro-orm.io/api/core/interface/EmptyOptions.md)
-
-### [**](#EnsureDatabaseOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)EnsureDatabaseOptions
-
-Re-exports
-
-<!-- -->
-
-[EnsureDatabaseOptions](https://mikro-orm.io/api/core/interface/EnsureDatabaseOptions.md)
-
-### [**](#EnsureRequestContext)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/CreateRequestContext.ts#L35)EnsureRequestContext
-
-Re-exports
-
-<!-- -->
-
-[EnsureRequestContext](https://mikro-orm.io/api/core/function/EnsureRequestContext.md)
-
-### [**](#Entity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Entity.ts#L6)Entity
-
-Re-exports
-
-<!-- -->
-
-[Entity](https://mikro-orm.io/api/core/function/Entity.md)
-
-### [**](#EntityAssigner)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/EntityAssigner.ts#L28)EntityAssigner
-
-Re-exports
-
-<!-- -->
-
-[EntityAssigner](https://mikro-orm.io/api/core/class/EntityAssigner.md)
-
-### [**](#EntityCaseNamingStrategy)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/naming-strategy/EntityCaseNamingStrategy.ts#L6)EntityCaseNamingStrategy
-
-Re-exports
-
-<!-- -->
-
-[EntityCaseNamingStrategy](https://mikro-orm.io/api/core/class/EntityCaseNamingStrategy.md)
-
-### [**](#EntityClass)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)EntityClass
-
-Re-exports
-
-<!-- -->
-
-[EntityClass](https://mikro-orm.io/api/core.md#EntityClass)
-
-### [**](#EntityClassGroup)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)EntityClassGroup
-
-Re-exports
-
-<!-- -->
-
-[EntityClassGroup](https://mikro-orm.io/api/core.md#EntityClassGroup)
-
-### [**](#EntityComparator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/EntityComparator.ts#L25)EntityComparator
-
-Re-exports
-
-<!-- -->
-
-[EntityComparator](https://mikro-orm.io/api/core/class/EntityComparator.md)
-
-### [**](#EntityData)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)EntityData
-
-Re-exports
-
-<!-- -->
-
-[EntityData](https://mikro-orm.io/api/core.md#EntityData)
-
-### [**](#EntityDataValue)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)EntityDataValue
-
-Re-exports
-
-<!-- -->
-
-[EntityDataValue](https://mikro-orm.io/api/core.md#EntityDataValue)
-
-### [**](#EntityDictionary)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)EntityDictionary
-
-Re-exports
-
-<!-- -->
-
-[EntityDictionary](https://mikro-orm.io/api/core.md#EntityDictionary)
-
-### [**](#EntityDTO)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)EntityDTO
-
-Re-exports
-
-<!-- -->
-
-[EntityDTO](https://mikro-orm.io/api/core.md#EntityDTO)
-
-### [**](#EntityFactory)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/EntityFactory.ts#L47)EntityFactory
-
-Re-exports
-
-<!-- -->
-
-[EntityFactory](https://mikro-orm.io/api/core/class/EntityFactory.md)
-
-### [**](#EntityField)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L94)EntityField
-
-Re-exports
-
-<!-- -->
-
-[EntityField](https://mikro-orm.io/api/core.md#EntityField)
-
-### [**](#EntityKey)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)EntityKey
-
-Re-exports
-
-<!-- -->
-
-[EntityKey](https://mikro-orm.io/api/core.md#EntityKey)
-
-### [**](#EntityLoader)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/EntityLoader.ts#L55)EntityLoader
-
-Re-exports
-
-<!-- -->
-
-[EntityLoader](https://mikro-orm.io/api/core/class/EntityLoader.md)
-
-### [**](#EntityLoaderOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/EntityLoader.ts#L36)EntityLoaderOptions
-
-Re-exports
-
-<!-- -->
-
-[EntityLoaderOptions](https://mikro-orm.io/api/core.md#EntityLoaderOptions)
-
-### [**](#EntityManagerType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L16)EntityManagerType
-
-Re-exports
-
-<!-- -->
-
-[EntityManagerType](https://mikro-orm.io/api/core.md#EntityManagerType)
-
-### [**](#EntityMetadata)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)EntityMetadata
-
-Re-exports
-
-<!-- -->
-
-[EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)
-
-### [**](#EntityName)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)EntityName
-
-Re-exports
-
-<!-- -->
-
-[EntityName](https://mikro-orm.io/api/core.md#EntityName)
-
-### [**](#EntityOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Entity.ts#L18)EntityOptions
-
-Re-exports
-
-<!-- -->
-
-[EntityOptions](https://mikro-orm.io/api/core.md#EntityOptions)
-
-### [**](#EntityProperty)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)EntityProperty
-
-Re-exports
-
-<!-- -->
-
-[EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)
-
-### [**](#EntityProps)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)EntityProps
-
-Re-exports
-
-<!-- -->
-
-[EntityProps](https://mikro-orm.io/api/core.md#EntityProps)
-
-### [**](#EntityRef)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)EntityRef
-
-Re-exports
-
-<!-- -->
-
-[EntityRef](https://mikro-orm.io/api/core.md#EntityRef)
-
-### [**](#EntityRepositoryType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)EntityRepositoryType
-
-Re-exports
-
-<!-- -->
-
-[EntityRepositoryType](https://mikro-orm.io/api/core.md#EntityRepositoryType)
-
-### [**](#EntitySchema)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/metadata/EntitySchema.ts#L53)EntitySchema
-
-Re-exports
-
-<!-- -->
-
-[EntitySchema](https://mikro-orm.io/api/core/class/EntitySchema.md)
-
-### [**](#EntitySchemaMetadata)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/metadata/EntitySchema.ts#L47)EntitySchemaMetadata
-
-Re-exports
-
-<!-- -->
-
-[EntitySchemaMetadata](https://mikro-orm.io/api/core.md#EntitySchemaMetadata)
-
-### [**](#EntitySchemaProperty)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/metadata/EntitySchema.ts#L38)EntitySchemaProperty
-
-Re-exports
-
-<!-- -->
-
-[EntitySchemaProperty](https://mikro-orm.io/api/core.md#EntitySchemaProperty)
-
-### [**](#EntitySerializer)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/serialization/EntitySerializer.ts#L59)EntitySerializer
-
-Re-exports
-
-<!-- -->
-
-[EntitySerializer](https://mikro-orm.io/api/core/class/EntitySerializer.md)
-
-### [**](#EntityTransformer)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/serialization/EntityTransformer.ts#L27)EntityTransformer
-
-Re-exports
-
-<!-- -->
-
-[EntityTransformer](https://mikro-orm.io/api/core/class/EntityTransformer.md)
-
-### [**](#EntityType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)EntityType
-
-Re-exports
-
-<!-- -->
-
-[EntityType](https://mikro-orm.io/api/core.md#EntityType)
-
-### [**](#EntityValidator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/EntityValidator.ts#L8)EntityValidator
-
-Re-exports
-
-<!-- -->
-
-[EntityValidator](https://mikro-orm.io/api/core/class/EntityValidator.md)
-
-### [**](#EntityValue)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)EntityValue
-
-Re-exports
-
-<!-- -->
-
-[EntityValue](https://mikro-orm.io/api/core.md#EntityValue)
-
-### [**](#Enum)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Enum.ts#L7)Enum
-
-Re-exports
-
-<!-- -->
-
-[Enum](https://mikro-orm.io/api/core/function/Enum.md)
-
-### [**](#EnumArrayType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L28)EnumArrayType
-
-Re-exports
-
-<!-- -->
-
-[EnumArrayType](https://mikro-orm.io/api/core/class/EnumArrayType.md)
-
-### [**](#EnumOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Enum.ts#L22)EnumOptions
-
-Re-exports
-
-<!-- -->
-
-[EnumOptions](https://mikro-orm.io/api/core/interface/EnumOptions.md)
-
-### [**](#EnumType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L28)EnumType
-
-Re-exports
-
-<!-- -->
-
-[EnumType](https://mikro-orm.io/api/core/class/EnumType.md)
-
-### [**](#equals)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Utils.ts#L150)equals
-
-Re-exports
-
-<!-- -->
-
-[equals](https://mikro-orm.io/api/core/function/equals.md)
-
-### [**](#EventArgs)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/events/EventSubscriber.ts#L6)EventArgs
-
-Re-exports
-
-<!-- -->
-
-[EventArgs](https://mikro-orm.io/api/core/interface/EventArgs.md)
-
-### [**](#EventManager)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/events/EventManager.ts#L6)EventManager
-
-Re-exports
-
-<!-- -->
-
-[EventManager](https://mikro-orm.io/api/core/class/EventManager.md)
-
-### [**](#EventSubscriber)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/events/EventSubscriber.ts#L22)EventSubscriber
-
-Re-exports
-
-<!-- -->
-
-[EventSubscriber](https://mikro-orm.io/api/core/interface/EventSubscriber.md)
-
-### [**](#EventType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L175)EventType
-
-Re-exports
-
-<!-- -->
-
-[EventType](https://mikro-orm.io/api/core/enum/EventType.md)
-
-### [**](#EventTypeMap)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L197)EventTypeMap
-
-Re-exports
-
-<!-- -->
-
-[EventTypeMap](https://mikro-orm.io/api/core.md#EventTypeMap)
-
-### [**](#ExceptionConverter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/platforms/ExceptionConverter.ts#L4)ExceptionConverter
-
-Re-exports
-
-<!-- -->
-
-[ExceptionConverter](https://mikro-orm.io/api/core/class/ExceptionConverter.md)
-
-### [**](#ExpandHint)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)ExpandHint
-
-Re-exports
-
-<!-- -->
-
-[ExpandHint](https://mikro-orm.io/api/core.md#ExpandHint)
-
-### [**](#ExpandProperty)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)ExpandProperty
-
-Re-exports
-
-<!-- -->
-
-[ExpandProperty](https://mikro-orm.io/api/core.md#ExpandProperty)
-
-### [**](#ExpandQuery)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)ExpandQuery
-
-Re-exports
-
-<!-- -->
-
-[ExpandQuery](https://mikro-orm.io/api/core.md#ExpandQuery)
-
-### [**](#ExpandScalar)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)ExpandScalar
-
-Re-exports
-
-<!-- -->
-
-[ExpandScalar](https://mikro-orm.io/api/core.md#ExpandScalar)
-
-### [**](#FactoryOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/EntityFactory.ts#L30)FactoryOptions
-
-Re-exports
-
-<!-- -->
-
-[FactoryOptions](https://mikro-orm.io/api/core/interface/FactoryOptions.md)
-
-### [**](#FileCacheAdapter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/cache/FileCacheAdapter.ts#L8)FileCacheAdapter
-
-Re-exports
-
-<!-- -->
-
-[FileCacheAdapter](https://mikro-orm.io/api/core/class/FileCacheAdapter.md)
-
-### [**](#Filter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Filter.ts#L4)Filter
-
-Re-exports
-
-<!-- -->
-
-[Filter](https://mikro-orm.io/api/core/function/Filter.md)
-
-### [**](#FilterItemValue)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)FilterItemValue
-
-Re-exports
-
-<!-- -->
-
-[FilterItemValue](https://mikro-orm.io/api/core.md#FilterItemValue)
-
-### [**](#FilterKey)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)FilterKey
-
-Re-exports
-
-<!-- -->
-
-[FilterKey](https://mikro-orm.io/api/core.md#FilterKey)
-
-### [**](#FilterObject)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)FilterObject
-
-Re-exports
-
-<!-- -->
-
-[FilterObject](https://mikro-orm.io/api/core.md#FilterObject)
-
-### [**](#FilterOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L102)FilterOptions
-
-Re-exports
-
-<!-- -->
-
-[FilterOptions](https://mikro-orm.io/api/core.md#FilterOptions)
-
-### [**](#FilterQuery)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)FilterQuery
-
-Re-exports
-
-<!-- -->
-
-[FilterQuery](https://mikro-orm.io/api/core.md#FilterQuery)
-
-### [**](#FilterValue)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)FilterValue
-
-Re-exports
-
-<!-- -->
-
-[FilterValue](https://mikro-orm.io/api/core.md#FilterValue)
-
-### [**](#FindAllOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L98)FindAllOptions
-
-Re-exports
-
-<!-- -->
-
-[FindAllOptions](https://mikro-orm.io/api/core/interface/FindAllOptions.md)
-
-### [**](#FindByCursorOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L204)FindByCursorOptions
-
-Re-exports
-
-<!-- -->
-
-[FindByCursorOptions](https://mikro-orm.io/api/core/interface/FindByCursorOptions.md)
-
-### [**](#FindOneOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L208)FindOneOptions
-
-Re-exports
-
-<!-- -->
-
-[FindOneOptions](https://mikro-orm.io/api/core/interface/FindOneOptions.md)
-
-### [**](#FindOneOrFailOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L213)FindOneOrFailOptions
-
-Re-exports
-
-<!-- -->
-
-[FindOneOrFailOptions](https://mikro-orm.io/api/core/interface/FindOneOrFailOptions.md)
-
-### [**](#FindOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L115)FindOptions
-
-Re-exports
-
-<!-- -->
-
-[FindOptions](https://mikro-orm.io/api/core/interface/FindOptions.md)
-
-### [**](#FlatQueryOrderMap)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L102)FlatQueryOrderMap
-
-Re-exports
-
-<!-- -->
-
-[FlatQueryOrderMap](https://mikro-orm.io/api/core/interface/FlatQueryOrderMap.md)
-
-### [**](#FloatType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L29)FloatType
-
-Re-exports
-
-<!-- -->
-
-[FloatType](https://mikro-orm.io/api/core/class/FloatType.md)
-
-### [**](#FlushEventArgs)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/events/EventSubscriber.ts#L13)FlushEventArgs
-
-Re-exports
-
-<!-- -->
-
-[FlushEventArgs](https://mikro-orm.io/api/core/interface/FlushEventArgs.md)
-
-### [**](#FlushMode)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L5)FlushMode
-
-Re-exports
-
-<!-- -->
-
-[FlushMode](https://mikro-orm.io/api/core/enum/FlushMode.md)
-
-### [**](#ForeignKeyConstraintViolationException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L65)ForeignKeyConstraintViolationException
-
-Re-exports
-
-<!-- -->
-
-[ForeignKeyConstraintViolationException](https://mikro-orm.io/api/core/class/ForeignKeyConstraintViolationException.md)
-
-### [**](#ForkOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/EntityManager.ts#L2434)ForkOptions
-
-Re-exports
-
-<!-- -->
-
-[ForkOptions](https://mikro-orm.io/api/core/interface/ForkOptions.md)
-
-### [**](#Formula)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Formula.ts#L7)Formula
-
-Re-exports
-
-<!-- -->
-
-[Formula](https://mikro-orm.io/api/core/function/Formula.md)
-
-### [**](#FormulaOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Formula.ts#L21)FormulaOptions
-
-Re-exports
-
-<!-- -->
-
-[FormulaOptions](https://mikro-orm.io/api/core/interface/FormulaOptions.md)
-
-### [**](#FromEntityType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)FromEntityType
-
-Re-exports
-
-<!-- -->
-
-[FromEntityType](https://mikro-orm.io/api/core.md#FromEntityType)
-
-### [**](#GeneratedCacheAdapter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/cache/GeneratedCacheAdapter.ts#L4)GeneratedCacheAdapter
-
-Re-exports
-
-<!-- -->
-
-[GeneratedCacheAdapter](https://mikro-orm.io/api/core/class/GeneratedCacheAdapter.md)
-
-### [**](#GenerateOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)GenerateOptions
-
-Re-exports
-
-<!-- -->
-
-[GenerateOptions](https://mikro-orm.io/api/core/interface/GenerateOptions.md)
-
-### [**](#GetReferenceOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L294)GetReferenceOptions
-
-Re-exports
-
-<!-- -->
-
-[GetReferenceOptions](https://mikro-orm.io/api/core/interface/GetReferenceOptions.md)
-
-### [**](#GetRepository)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)GetRepository
-
-Re-exports
-
-<!-- -->
-
-[GetRepository](https://mikro-orm.io/api/core.md#GetRepository)
-
-### [**](#GroupOperator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L24)GroupOperator
-
-Re-exports
-
-<!-- -->
-
-[GroupOperator](https://mikro-orm.io/api/core/enum/GroupOperator.md)
-
-### [**](#Hidden)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)Hidden
-
-Re-exports
-
-<!-- -->
-
-[Hidden](https://mikro-orm.io/api/core.md#Hidden)
-
-### [**](#HiddenProps)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)HiddenProps
-
-Re-exports
-
-<!-- -->
-
-[HiddenProps](https://mikro-orm.io/api/core.md#HiddenProps)
-
-### [**](#Highlighter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)Highlighter
-
-Re-exports
-
-<!-- -->
-
-[Highlighter](https://mikro-orm.io/api/core/interface/Highlighter.md)
-
-### [**](#Hydrator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/hydration/Hydrator.ts#L8)Hydrator
-
-Re-exports
-
-<!-- -->
-
-[Hydrator](https://mikro-orm.io/api/core/class/Hydrator.md)
-
-### [**](#IConfiguration)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/metadata/MetadataProvider.ts#L6)IConfiguration
-
-Re-exports
-
-<!-- -->
-
-[IConfiguration](https://mikro-orm.io/api/core/interface/IConfiguration.md)
-
-### [**](#IDatabaseDriver)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L18)IDatabaseDriver
-
-Re-exports
-
-<!-- -->
-
-[IDatabaseDriver](https://mikro-orm.io/api/core/interface/IDatabaseDriver.md)
-
-### [**](#IdentityMap)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/IdentityMap.ts#L3)IdentityMap
-
-Re-exports
-
-<!-- -->
-
-[IdentityMap](https://mikro-orm.io/api/core/class/IdentityMap.md)
-
-### [**](#IEntityGenerator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)IEntityGenerator
-
-Re-exports
-
-<!-- -->
-
-[IEntityGenerator](https://mikro-orm.io/api/core/interface/IEntityGenerator.md)
-
-### [**](#IMigrationGenerator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)IMigrationGenerator
-
-Re-exports
-
-<!-- -->
-
-[IMigrationGenerator](https://mikro-orm.io/api/core/interface/IMigrationGenerator.md)
-
-### [**](#IMigrator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)IMigrator
-
-Re-exports
-
-<!-- -->
-
-[IMigrator](https://mikro-orm.io/api/core/interface/IMigrator.md)
-
-### [**](#ImportsResolver)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)ImportsResolver
-
-Re-exports
-
-<!-- -->
-
-[ImportsResolver](https://mikro-orm.io/api/core.md#ImportsResolver)
-
-### [**](#Index)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Indexed.ts#L21)Index
-
-Re-exports
-
-<!-- -->
-
-[Index](https://mikro-orm.io/api/core/function/Index.md)
-
-### [**](#IndexCallback)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)IndexCallback
-
-Re-exports
-
-<!-- -->
-
-[IndexCallback](https://mikro-orm.io/api/core.md#IndexCallback)
-
-### [**](#IndexOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Indexed.ts#L42)IndexOptions
-
-Re-exports
-
-<!-- -->
-
-[IndexOptions](https://mikro-orm.io/api/core/interface/IndexOptions.md)
-
-### [**](#InferEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L856)InferEntity
-
-Re-exports
-
-<!-- -->
-
-[InferEntity](https://mikro-orm.io/api/core.md#InferEntity)
-
-### [**](#InferEntityFromProperties)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L798)InferEntityFromProperties
-
-Re-exports
-
-<!-- -->
-
-[InferEntityFromProperties](https://mikro-orm.io/api/core.md#InferEntityFromProperties)
-
-### [**](#InferPrimaryKey)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L810)InferPrimaryKey
-
-Re-exports
-
-<!-- -->
-
-[InferPrimaryKey](https://mikro-orm.io/api/core.md#InferPrimaryKey)
-
-### [**](#InitCollectionOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Collection.ts#L496)InitCollectionOptions
-
-Re-exports
-
-<!-- -->
-
-[InitCollectionOptions](https://mikro-orm.io/api/core/interface/InitCollectionOptions.md)
-
-### [**](#IntegerType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L29)IntegerType
-
-Re-exports
+## Properties<!-- -->[**](#Properties)
 
-<!-- -->
+### [**](#__knex__)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L395)\_\_knex\_\_
 
-[IntegerType](https://mikro-orm.io/api/core/class/IntegerType.md)
+**\_\_knex\_\_: string
 
-### [**](#IntervalType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L30)IntervalType
+### [**](#andHaving)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L723)inheritedandHaving
 
-Re-exports
+**andHaving: Having\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.andHaving
 
-[IntervalType](https://mikro-orm.io/api/core/class/IntervalType.md)
+### [**](#andHavingNotIn)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L733)inheritedandHavingNotIn
 
-### [**](#InvalidFieldNameException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L75)InvalidFieldNameException
+**andHavingNotIn: HavingRange\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.andHavingNotIn
 
-<!-- -->
+### [**](#andWhere)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L644)inheritedandWhere
 
-[InvalidFieldNameException](https://mikro-orm.io/api/core/class/InvalidFieldNameException.md)
+**andWhere: Where\<TRecord, TResult>
 
-### [**](#IPrimaryKey)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)IPrimaryKey
+Inherited from Knex.QueryInterface.andWhere
 
-Re-exports
+### [**](#andWhereBetween)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L674)inheritedandWhereBetween
 
-<!-- -->
+**andWhereBetween: WhereBetween\<TRecord, TResult>
 
-[IPrimaryKey](https://mikro-orm.io/api/core.md#IPrimaryKey)
+Inherited from Knex.QueryInterface.andWhereBetween
 
-### [**](#ISchemaGenerator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)ISchemaGenerator
+### [**](#andWhereILike)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L666)inheritedandWhereILike
 
-Re-exports
+**andWhereILike: Where\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.andWhereILike
 
-[ISchemaGenerator](https://mikro-orm.io/api/core/interface/ISchemaGenerator.md)
+### [**](#andWhereJsonNotSubsetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L702)inheritedandWhereJsonNotSubsetOf
 
-### [**](#ISeedManager)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)ISeedManager
+**andWhereJsonNotSubsetOf: WhereJsonObject\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.andWhereJsonNotSubsetOf
 
-<!-- -->
+### [**](#andWhereJsonNotSupersetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L695)inheritedandWhereJsonNotSupersetOf
 
-[ISeedManager](https://mikro-orm.io/api/core/interface/ISeedManager.md)
+**andWhereJsonNotSupersetOf: WhereJsonObject\<TRecord, TResult>
 
-### [**](#IsolationLevel)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L167)IsolationLevel
+Inherited from Knex.QueryInterface.andWhereJsonNotSupersetOf
 
-Re-exports
+### [**](#andWhereJsonObject)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L681)inheritedandWhereJsonObject
 
-<!-- -->
+**andWhereJsonObject: WhereJsonObject\<TRecord, TResult>
 
-[IsolationLevel](https://mikro-orm.io/api/core/enum/IsolationLevel.md)
+Inherited from Knex.QueryInterface.andWhereJsonObject
 
-### [**](#IsSubset)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)IsSubset
+### [**](#andWhereJsonPath)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L688)inheritedandWhereJsonPath
 
-Re-exports
+**andWhereJsonPath: WhereJsonPath\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.andWhereJsonPath
 
-[IsSubset](https://mikro-orm.io/api/core.md#IsSubset)
+### [**](#andWhereJsonSubsetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L699)inheritedandWhereJsonSubsetOf
 
-### [**](#IsUnknown)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)IsUnknown
+**andWhereJsonSubsetOf: WhereJsonObject\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.andWhereJsonSubsetOf
 
-<!-- -->
+### [**](#andWhereJsonSupersetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L692)inheritedandWhereJsonSupersetOf
 
-[IsUnknown](https://mikro-orm.io/api/core.md#IsUnknown)
+**andWhereJsonSupersetOf: WhereJsonObject\<TRecord, TResult>
 
-### [**](#IType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L30)IType
+Inherited from Knex.QueryInterface.andWhereJsonSupersetOf
 
-Re-exports
+### [**](#andWhereLike)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L663)inheritedandWhereLike
 
-<!-- -->
+**andWhereLike: Where\<TRecord, TResult>
 
-[IType](https://mikro-orm.io/api/core.md#IType)
+Inherited from Knex.QueryInterface.andWhereLike
 
-### [**](#IWrappedEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)IWrappedEntity
+### [**](#andWhereNot)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L647)inheritedandWhereNot
 
-Re-exports
+**andWhereNot: Where\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.andWhereNot
 
-[IWrappedEntity](https://mikro-orm.io/api/core/interface/IWrappedEntity.md)
+### [**](#andWhereNotBetween)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L677)inheritedandWhereNotBetween
 
-### [**](#JSON_KEY_OPERATORS)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L67)JSON\_KEY\_OPERATORS
+**andWhereNotBetween: WhereBetween\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.andWhereNotBetween
 
-<!-- -->
+### [**](#andWhereNotJsonObject)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L684)inheritedandWhereNotJsonObject
 
-[JSON\_KEY\_OPERATORS](https://mikro-orm.io/api/core.md#JSON_KEY_OPERATORS)
+**andWhereNotJsonObject: WhereJsonObject\<TRecord, TResult>
 
-### [**](#JsonProperty)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/platforms/Platform.ts#L40)JsonProperty
+Inherited from Knex.QueryInterface.andWhereNotJsonObject
 
-Re-exports
+### [**](#andWhereRaw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L651)inheritedandWhereRaw
 
-<!-- -->
+**andWhereRaw: WhereRaw\<TRecord, TResult>
 
-[JsonProperty](https://mikro-orm.io/api/core.md#JsonProperty)
+Inherited from Knex.QueryInterface.andWhereRaw
 
-### [**](#JsonType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L29)JsonType
+### [**](#as)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L600)inheritedas
 
-Re-exports
+**as: As\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.as
 
-[JsonType](https://mikro-orm.io/api/core/class/JsonType.md)
+### [**](#avg)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L787)inheritedavg
 
-### [**](#LoadCountOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Collection.ts#L502)LoadCountOptions
+**avg: TypePreservingAggregation\<TRecord, TResult, any>
 
-Re-exports
+Inherited from Knex.QueryInterface.avg
 
-<!-- -->
+### [**](#avgDistinct)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L788)inheritedavgDistinct
 
-[LoadCountOptions](https://mikro-orm.io/api/core/interface/LoadCountOptions.md)
+**avgDistinct: TypePreservingAggregation\<TRecord, TResult, any>
 
-### [**](#Loaded)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)Loaded
+Inherited from Knex.QueryInterface.avgDistinct
 
-Re-exports
+### [**](#client)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L429)client
 
-<!-- -->
+**client: any
 
-[Loaded](https://mikro-orm.io/api/core.md#Loaded)
+### [**](#column)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L602)inheritedcolumn
 
-### [**](#LoadedCollection)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)LoadedCollection
+**column: Select\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.column
 
-<!-- -->
+### [**](#columns)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L601)inheritedcolumns
 
-[LoadedCollection](https://mikro-orm.io/api/core/interface/LoadedCollection.md)
+**columns: Select\<TRecord, TResult>
 
-### [**](#LoadedReference)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)LoadedReference
+Inherited from Knex.QueryInterface.columns
 
-Re-exports
+### [**](#comment)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L603)inheritedcomment
 
-<!-- -->
+**comment: Comment\<TRecord, TResult>
 
-[LoadedReference](https://mikro-orm.io/api/core/interface/LoadedReference.md)
+Inherited from Knex.QueryInterface.comment
 
-### [**](#LoadHint)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L104)LoadHint
+### [**](#count)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L773)inheritedcount
 
-Re-exports
+**count: AsymmetricAggregation\<TRecord, TResult, string | number>
 
-<!-- -->
+Inherited from Knex.QueryInterface.count
 
-[LoadHint](https://mikro-orm.io/api/core/interface/LoadHint.md)
+### [**](#countDistinct)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L778)inheritedcountDistinct
 
-### [**](#LoadReferenceOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Reference.ts#L301)LoadReferenceOptions
+**countDistinct: AsymmetricAggregation\<TRecord, TResult, string | number>
 
-Re-exports
+Inherited from Knex.QueryInterface.countDistinct
 
-<!-- -->
+### [**](#crossJoin)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L622)inheritedcrossJoin
 
-[LoadReferenceOptions](https://mikro-orm.io/api/core/interface/LoadReferenceOptions.md)
+**crossJoin: Join\<TRecord, TResult>
 
-### [**](#LoadReferenceOrFailOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Reference.ts#L305)LoadReferenceOrFailOptions
+Inherited from Knex.QueryInterface.crossJoin
 
-Re-exports
+### [**](#denseRank)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L816)inheriteddenseRank
 
-<!-- -->
+**denseRank: AnalyticFunction\<TRecord, TResult>
 
-[LoadReferenceOrFailOptions](https://mikro-orm.io/api/core/interface/LoadReferenceOrFailOptions.md)
+Inherited from Knex.QueryInterface.denseRank
 
-### [**](#LoadStrategy)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L143)LoadStrategy
+### [**](#distinct)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L609)inheriteddistinct
 
-Re-exports
+**distinct: Distinct\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.distinct
 
-[LoadStrategy](https://mikro-orm.io/api/core/enum/LoadStrategy.md)
+### [**](#distinctOn)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L610)inheriteddistinctOn
 
-### [**](#LockMode)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L156)LockMode
+**distinctOn: DistinctOn\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.distinctOn
 
-<!-- -->
+### [**](#except)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L719)inheritedexcept
 
-[LockMode](https://mikro-orm.io/api/core/enum/LockMode.md)
+**except: Except\<TRecord, TResult>
 
-### [**](#LockOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L281)LockOptions
+Inherited from Knex.QueryInterface.except
 
-Re-exports
+### [**](#first)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L820)inheritedfirst
 
-<!-- -->
+**first: Select\<TRecord, AddUnionMember\<UnwrapArrayMember\<TResult>, undefined>>
 
-[LockOptions](https://mikro-orm.io/api/core/interface/LockOptions.md)
+Inherited from Knex.QueryInterface.first
 
-### [**](#LockWaitTimeoutException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L80)LockWaitTimeoutException
+### [**](#fn)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L432)fn
 
-Re-exports
+**fn: FunctionHelper
 
-<!-- -->
+### [**](#from)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L605)inheritedfrom
 
-[LockWaitTimeoutException](https://mikro-orm.io/api/core/class/LockWaitTimeoutException.md)
+**from: Table\<TRecord, TResult>
 
-### [**](#LogContext)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/logging/Logger.ts#L36)LogContext
+Inherited from Knex.QueryInterface.from
 
-Re-exports
+### [**](#fromRaw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L606)inheritedfromRaw
 
-<!-- -->
+**fromRaw: Table\<TRecord, TResult>
 
-[LogContext](https://mikro-orm.io/api/core/interface/LogContext.md)
+Inherited from Knex.QueryInterface.fromRaw
 
-### [**](#Logger)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/logging/Logger.ts#L3)Logger
+### [**](#fullOuterJoin)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L621)inheritedfullOuterJoin
 
-Re-exports
+**fullOuterJoin: Join\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.fullOuterJoin
 
-[Logger](https://mikro-orm.io/api/core/interface/Logger.md)
+### [**](#groupBy)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L705)inheritedgroupBy
 
-### [**](#LoggerNamespace)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/logging/Logger.ts#L34)LoggerNamespace
+**groupBy: GroupBy\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.groupBy
 
-<!-- -->
+### [**](#groupByRaw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L706)inheritedgroupByRaw
 
-[LoggerNamespace](https://mikro-orm.io/api/core.md#LoggerNamespace)
+**groupByRaw: RawQueryBuilder\<TRecord, TResult>
 
-### [**](#LoggerOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/logging/Logger.ts#L52)LoggerOptions
+Inherited from Knex.QueryInterface.groupByRaw
 
-Re-exports
+### [**](#having)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L722)inheritedhaving
 
-<!-- -->
+**having: Having\<TRecord, TResult>
 
-[LoggerOptions](https://mikro-orm.io/api/core/interface/LoggerOptions.md)
+Inherited from Knex.QueryInterface.having
 
-### [**](#LoggingOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/logging/Logger.ts#L69)LoggingOptions
+### [**](#havingBetween)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L731)inheritedhavingBetween
 
-Re-exports
+**havingBetween: HavingRange\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.havingBetween
 
-[LoggingOptions](https://mikro-orm.io/api/core.md#LoggingOptions)
+### [**](#havingIn)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L727)inheritedhavingIn
 
-### [**](#ManyToMany)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/ManyToMany.ts#L7)ManyToMany
+**havingIn: HavingRange\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.havingIn
 
-<!-- -->
+### [**](#havingNotBetween)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L729)inheritedhavingNotBetween
 
-[ManyToMany](https://mikro-orm.io/api/core/function/ManyToMany.md)
+**havingNotBetween: HavingRange\<TRecord, TResult>
 
-### [**](#ManyToManyOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/ManyToMany.ts#L23)ManyToManyOptions
+Inherited from Knex.QueryInterface.havingNotBetween
 
-Re-exports
+### [**](#havingNotIn)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L732)inheritedhavingNotIn
 
-<!-- -->
+**havingNotIn: HavingRange\<TRecord, TResult>
 
-[ManyToManyOptions](https://mikro-orm.io/api/core/interface/ManyToManyOptions.md)
+Inherited from Knex.QueryInterface.havingNotIn
 
-### [**](#ManyToOne)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/ManyToOne.ts#L7)ManyToOne
+### [**](#havingNotNull)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L736)inheritedhavingNotNull
 
-Re-exports
+**havingNotNull: HavingNull\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.havingNotNull
 
-[ManyToOne](https://mikro-orm.io/api/core/function/ManyToOne.md)
+### [**](#havingNull)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L735)inheritedhavingNull
 
-### [**](#ManyToOneOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/ManyToOne.ts#L22)ManyToOneOptions
+**havingNull: HavingNull\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.havingNull
 
-<!-- -->
+### [**](#havingRaw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L724)inheritedhavingRaw
 
-[ManyToOneOptions](https://mikro-orm.io/api/core/interface/ManyToOneOptions.md)
+**havingRaw: RawQueryBuilder\<TRecord, TResult>
 
-### [**](#MatchingOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Collection.ts#L25)MatchingOptions
+Inherited from Knex.QueryInterface.havingRaw
 
-Re-exports
+### [**](#havingWrapped)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L653)inheritedhavingWrapped
 
-<!-- -->
+**havingWrapped: WhereWrapped\<TRecord, TResult>
 
-[MatchingOptions](https://mikro-orm.io/api/core/interface/MatchingOptions.md)
+Inherited from Knex.QueryInterface.havingWrapped
 
-### [**](#MaybePromise)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)MaybePromise
+### [**](#hintComment)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L604)inheritedhintComment
 
-Re-exports
+**hintComment: HintComment\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.hintComment
 
-[MaybePromise](https://mikro-orm.io/api/core.md#MaybePromise)
+### [**](#innerJoin)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L615)inheritedinnerJoin
 
-### [**](#MediumIntType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L29)MediumIntType
+**innerJoin: Join\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.innerJoin
 
-<!-- -->
+### [**](#intersect)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L718)inheritedintersect
 
-[MediumIntType](https://mikro-orm.io/api/core/class/MediumIntType.md)
+**intersect: Intersect\<TRecord, TResult>
 
-### [**](#MemoryCacheAdapter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/cache/MemoryCacheAdapter.ts#L3)MemoryCacheAdapter
+Inherited from Knex.QueryInterface.intersect
 
-Re-exports
+### [**](#into)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L607)inheritedinto
 
-<!-- -->
+**into: Table\<TRecord, TResult>
 
-[MemoryCacheAdapter](https://mikro-orm.io/api/core/class/MemoryCacheAdapter.md)
+Inherited from Knex.QueryInterface.into
 
-### [**](#MergeLoaded)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)MergeLoaded
+### [**](#isTransaction)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L436)optionalisTransaction
 
-Re-exports
+**isTransaction?
 
 <!-- -->
-
-[MergeLoaded](https://mikro-orm.io/api/core.md#MergeLoaded)
-
-### [**](#MergeOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/EntityManager.ts#L2424)MergeOptions
 
-Re-exports
+: boolean
 
-<!-- -->
+### [**](#join)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L613)inheritedjoin
 
-[MergeOptions](https://mikro-orm.io/api/core/interface/MergeOptions.md)
+**join: Join\<TRecord, TResult>
 
-### [**](#MergeSelected)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)MergeSelected
+Inherited from Knex.QueryInterface.join
 
-Re-exports
+### [**](#joinRaw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L614)inheritedjoinRaw
 
-<!-- -->
+**joinRaw: JoinRaw\<TRecord, TResult>
 
-[MergeSelected](https://mikro-orm.io/api/core.md#MergeSelected)
+Inherited from Knex.QueryInterface.joinRaw
 
-### [**](#MetadataDiscovery)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/metadata/MetadataDiscovery.ts#L43)MetadataDiscovery
+### [**](#jsonExtract)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L625)inheritedjsonExtract
 
-Re-exports
+**jsonExtract: JsonExtract\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.jsonExtract
 
-[MetadataDiscovery](https://mikro-orm.io/api/core/class/MetadataDiscovery.md)
+### [**](#jsonInsert)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L627)inheritedjsonInsert
 
-### [**](#MetadataDiscoveryOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L577)MetadataDiscoveryOptions
+**jsonInsert: JsonInsert\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.jsonInsert
 
-<!-- -->
+### [**](#jsonRemove)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L628)inheritedjsonRemove
 
-[MetadataDiscoveryOptions](https://mikro-orm.io/api/core/interface/MetadataDiscoveryOptions.md)
+**jsonRemove: JsonRemove\<TRecord, TResult>
 
-### [**](#MetadataError)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L172)MetadataError
+Inherited from Knex.QueryInterface.jsonRemove
 
-Re-exports
+### [**](#jsonSet)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L626)inheritedjsonSet
 
-<!-- -->
+**jsonSet: JsonSet\<TRecord, TResult>
 
-[MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)
+Inherited from Knex.QueryInterface.jsonSet
 
-### [**](#MetadataProcessor)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)MetadataProcessor
+### [**](#leftJoin)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L616)inheritedleftJoin
 
-Re-exports
+**leftJoin: Join\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.leftJoin
 
-[MetadataProcessor](https://mikro-orm.io/api/core.md#MetadataProcessor)
+### [**](#leftOuterJoin)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L617)inheritedleftOuterJoin
 
-### [**](#MetadataProvider)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/metadata/MetadataProvider.ts#L11)MetadataProvider
+**leftOuterJoin: Join\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.leftOuterJoin
 
-<!-- -->
+### [**](#max)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L784)inheritedmax
 
-[MetadataProvider](https://mikro-orm.io/api/core/class/MetadataProvider.md)
+**max: TypePreservingAggregation\<TRecord, TResult, any>
 
-### [**](#MetadataStorage)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/metadata/MetadataStorage.ts#L7)MetadataStorage
+Inherited from Knex.QueryInterface.max
 
-Re-exports
+### [**](#migrate)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L430)migrate
 
-<!-- -->
+**migrate: Migrator
 
-[MetadataStorage](https://mikro-orm.io/api/core/class/MetadataStorage.md)
+### [**](#min)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L783)inheritedmin
 
-### [**](#MigrateOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)MigrateOptions
+**min: TypePreservingAggregation\<TRecord, TResult, any>
 
-Re-exports
+Inherited from Knex.QueryInterface.min
 
-<!-- -->
+### [**](#orderBy)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L709)inheritedorderBy
 
-[MigrateOptions](https://mikro-orm.io/api/core.md#MigrateOptions)
+**orderBy: OrderBy\<TRecord, TResult>
 
-### [**](#MigrationDiff)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)MigrationDiff
+Inherited from Knex.QueryInterface.orderBy
 
-Re-exports
+### [**](#orderByRaw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L710)inheritedorderByRaw
 
-<!-- -->
+**orderByRaw: RawQueryBuilder\<TRecord, TResult>
 
-[MigrationDiff](https://mikro-orm.io/api/core/interface/MigrationDiff.md)
+Inherited from Knex.QueryInterface.orderByRaw
 
-### [**](#MigrationObject)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L9)MigrationObject
+### [**](#orHaving)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L725)inheritedorHaving
 
-Re-exports
+**orHaving: Having\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.orHaving
 
-[MigrationObject](https://mikro-orm.io/api/core/interface/MigrationObject.md)
+### [**](#orHavingBetween)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L730)inheritedorHavingBetween
 
-### [**](#MigrationResult)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)MigrationResult
+**orHavingBetween: HavingRange\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.orHavingBetween
 
-<!-- -->
+### [**](#orHavingNotBetween)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L728)inheritedorHavingNotBetween
 
-[MigrationResult](https://mikro-orm.io/api/core.md#MigrationResult)
+**orHavingNotBetween: HavingRange\<TRecord, TResult>
 
-### [**](#MigrationRow)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)MigrationRow
+Inherited from Knex.QueryInterface.orHavingNotBetween
 
-Re-exports
+### [**](#orHavingNotIn)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L734)inheritedorHavingNotIn
 
-<!-- -->
+**orHavingNotIn: HavingRange\<TRecord, TResult>
 
-[MigrationRow](https://mikro-orm.io/api/core.md#MigrationRow)
+Inherited from Knex.QueryInterface.orHavingNotIn
 
-### [**](#MigrationsOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L529)MigrationsOptions
+### [**](#orHavingNotNull)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L738)inheritedorHavingNotNull
 
-Re-exports
+**orHavingNotNull: HavingNull\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.orHavingNotNull
 
-[MigrationsOptions](https://mikro-orm.io/api/core.md#MigrationsOptions)
+### [**](#orHavingNull)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L737)inheritedorHavingNull
 
-### [**](#MigratorEvent)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)MigratorEvent
+**orHavingNull: HavingNull\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.orHavingNull
 
-<!-- -->
+### [**](#orHavingRaw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L726)inheritedorHavingRaw
 
-[MigratorEvent](https://mikro-orm.io/api/core.md#MigratorEvent)
+**orHavingRaw: RawQueryBuilder\<TRecord, TResult>
 
-### [**](#MikroORM)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/MikroORM.ts#L12)MikroORM
+Inherited from Knex.QueryInterface.orHavingRaw
 
-Re-exports
+### [**](#orWhere)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L645)inheritedorWhere
 
-<!-- -->
+**orWhere: Where\<TRecord, TResult>
 
-[MikroORM](https://mikro-orm.io/api/core/class/MikroORM.md)
+Inherited from Knex.QueryInterface.orWhere
 
-### [**](#MikroORMOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L593)MikroORMOptions
+### [**](#orWhereBetween)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L673)inheritedorWhereBetween
 
-Re-exports
+**orWhereBetween: WhereBetween\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.orWhereBetween
 
-[MikroORMOptions](https://mikro-orm.io/api/core/interface/MikroORMOptions.md)
+### [**](#orWhereExists)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L655)inheritedorWhereExists
 
-### [**](#MongoNamingStrategy)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/naming-strategy/MongoNamingStrategy.ts#L3)MongoNamingStrategy
+**orWhereExists: WhereExists\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.orWhereExists
 
-<!-- -->
+### [**](#orWhereILike)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L667)inheritedorWhereILike
 
-[MongoNamingStrategy](https://mikro-orm.io/api/core/class/MongoNamingStrategy.md)
+**orWhereILike: Where\<TRecord, TResult>
 
-### [**](#NamingStrategy)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/naming-strategy/NamingStrategy.ts#L3)NamingStrategy
+Inherited from Knex.QueryInterface.orWhereILike
 
-Re-exports
+### [**](#orWhereIn)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L659)inheritedorWhereIn
 
-<!-- -->
+**orWhereIn: WhereIn\<TRecord, TResult>
 
-[NamingStrategy](https://mikro-orm.io/api/core/interface/NamingStrategy.md)
+Inherited from Knex.QueryInterface.orWhereIn
 
-### [**](#NativeDeleteOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L277)NativeDeleteOptions
+### [**](#orWhereJsonNotSubsetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L701)inheritedorWhereJsonNotSubsetOf
 
-Re-exports
+**orWhereJsonNotSubsetOf: WhereJsonObject\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.orWhereJsonNotSubsetOf
 
-[NativeDeleteOptions](https://mikro-orm.io/api/core/interface/NativeDeleteOptions.md)
+### [**](#orWhereJsonNotSupersetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L694)inheritedorWhereJsonNotSupersetOf
 
-### [**](#NativeInsertUpdateManyOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L227)NativeInsertUpdateManyOptions
+**orWhereJsonNotSupersetOf: WhereJsonObject\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.orWhereJsonNotSupersetOf
 
-<!-- -->
+### [**](#orWhereJsonObject)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L680)inheritedorWhereJsonObject
 
-[NativeInsertUpdateManyOptions](https://mikro-orm.io/api/core/interface/NativeInsertUpdateManyOptions.md)
+**orWhereJsonObject: WhereJsonObject\<TRecord, TResult>
 
-### [**](#NativeInsertUpdateOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L218)NativeInsertUpdateOptions
+Inherited from Knex.QueryInterface.orWhereJsonObject
 
-Re-exports
+### [**](#orWhereJsonPath)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L687)inheritedorWhereJsonPath
 
-<!-- -->
+**orWhereJsonPath: WhereJsonPath\<TRecord, TResult>
 
-[NativeInsertUpdateOptions](https://mikro-orm.io/api/core/interface/NativeInsertUpdateOptions.md)
+Inherited from Knex.QueryInterface.orWhereJsonPath
 
-### [**](#New)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)New
+### [**](#orWhereJsonSubsetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L698)inheritedorWhereJsonSubsetOf
 
-Re-exports
+**orWhereJsonSubsetOf: WhereJsonObject\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.orWhereJsonSubsetOf
 
-[New](https://mikro-orm.io/api/core.md#New)
+### [**](#orWhereJsonSupersetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L691)inheritedorWhereJsonSupersetOf
 
-### [**](#Node)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/CommitOrderCalculator.ts#L10)Node
+**orWhereJsonSupersetOf: WhereJsonObject\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.orWhereJsonSupersetOf
 
-<!-- -->
+### [**](#orWhereLike)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L664)inheritedorWhereLike
 
-[Node](https://mikro-orm.io/api/core/interface/Node.md)
+**orWhereLike: Where\<TRecord, TResult>
 
-### [**](#NodeState)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/CommitOrderCalculator.ts#L4)NodeState
+Inherited from Knex.QueryInterface.orWhereLike
 
-Re-exports
+### [**](#orWhereNot)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L648)inheritedorWhereNot
 
-<!-- -->
+**orWhereNot: Where\<TRecord, TResult>
 
-[NodeState](https://mikro-orm.io/api/core/enum/NodeState.md)
+Inherited from Knex.QueryInterface.orWhereNot
 
-### [**](#NoInfer)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)NoInfer
+### [**](#orWhereNotBetween)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L676)inheritedorWhereNotBetween
 
-Re-exports
+**orWhereNotBetween: WhereBetween\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.orWhereNotBetween
 
-[NoInfer](https://mikro-orm.io/api/core.md#NoInfer)
+### [**](#orWhereNotExists)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L657)inheritedorWhereNotExists
 
-### [**](#NonUniqueFieldNameException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L85)NonUniqueFieldNameException
+**orWhereNotExists: WhereExists\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.orWhereNotExists
 
-<!-- -->
+### [**](#orWhereNotIn)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L661)inheritedorWhereNotIn
 
-[NonUniqueFieldNameException](https://mikro-orm.io/api/core/class/NonUniqueFieldNameException.md)
+**orWhereNotIn: WhereIn\<TRecord, TResult>
 
-### [**](#NotFoundError)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L293)NotFoundError
+Inherited from Knex.QueryInterface.orWhereNotIn
 
-Re-exports
+### [**](#orWhereNotJsonObject)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L683)inheritedorWhereNotJsonObject
 
-<!-- -->
+**orWhereNotJsonObject: WhereJsonObject\<TRecord, TResult>
 
-[NotFoundError](https://mikro-orm.io/api/core/class/NotFoundError.md)
+Inherited from Knex.QueryInterface.orWhereNotJsonObject
 
-### [**](#NotNullConstraintViolationException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L90)NotNullConstraintViolationException
+### [**](#orWhereNotNull)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L671)inheritedorWhereNotNull
 
-Re-exports
+**orWhereNotNull: WhereNull\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.orWhereNotNull
 
-[NotNullConstraintViolationException](https://mikro-orm.io/api/core/class/NotNullConstraintViolationException.md)
+### [**](#orWhereNull)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L669)inheritedorWhereNull
 
-### [**](#NullCacheAdapter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/cache/NullCacheAdapter.ts#L3)NullCacheAdapter
+**orWhereNull: WhereNull\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.orWhereNull
 
-<!-- -->
+### [**](#orWhereRaw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L650)inheritedorWhereRaw
 
-[NullCacheAdapter](https://mikro-orm.io/api/core/class/NullCacheAdapter.md)
+**orWhereRaw: WhereRaw\<TRecord, TResult>
 
-### [**](#NullHighlighter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/NullHighlighter.ts#L3)NullHighlighter
+Inherited from Knex.QueryInterface.orWhereRaw
 
-Re-exports
+### [**](#outerJoin)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L620)inheritedouterJoin
 
-<!-- -->
+**outerJoin: Join\<TRecord, TResult>
 
-[NullHighlighter](https://mikro-orm.io/api/core/class/NullHighlighter.md)
+Inherited from Knex.QueryInterface.outerJoin
 
-### [**](#ObjectBindingPattern)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Utils.ts#L27)ObjectBindingPattern
+### [**](#partitionBy)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L713)inheritedpartitionBy
 
-Re-exports
+**partitionBy: PartitionBy\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.partitionBy
 
-[ObjectBindingPattern](https://mikro-orm.io/api/core.md#ObjectBindingPattern)
+### [**](#rank)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L815)inheritedrank
 
-### [**](#ObjectHydrator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/hydration/ObjectHydrator.ts#L12)ObjectHydrator
+**rank: AnalyticFunction\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.rank
 
-<!-- -->
+### [**](#raw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L397)raw
 
-[ObjectHydrator](https://mikro-orm.io/api/core/class/ObjectHydrator.md)
+**raw: RawBuilder\<TRecord, any>
 
-### [**](#ObjectQuery)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)ObjectQuery
+### [**](#ref)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L433)ref
 
-Re-exports
+**ref: RefBuilder
 
-<!-- -->
+### [**](#rightJoin)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L618)inheritedrightJoin
 
-[ObjectQuery](https://mikro-orm.io/api/core.md#ObjectQuery)
+**rightJoin: Join\<TRecord, TResult>
 
-### [**](#OneToMany)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/index.ts#L7)OneToMany
+Inherited from Knex.QueryInterface.rightJoin
 
-Re-exports
+### [**](#rightOuterJoin)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L619)inheritedrightOuterJoin
 
-<!-- -->
+**rightOuterJoin: Join\<TRecord, TResult>
 
-[OneToMany](https://mikro-orm.io/api/core/function/OneToMany.md)
+Inherited from Knex.QueryInterface.rightOuterJoin
 
-### [**](#OneToManyOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/index.ts#L7)OneToManyOptions
+### [**](#rowNumber)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L817)inheritedrowNumber
 
-Re-exports
+**rowNumber: AnalyticFunction\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.rowNumber
 
-[OneToManyOptions](https://mikro-orm.io/api/core/interface/OneToManyOptions.md)
+### [**](#schema)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L423)schema
 
-### [**](#OneToOne)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/OneToOne.ts#L5)OneToOne
+**schema: SchemaBuilder
 
-Re-exports
+### [**](#seed)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L431)seed
 
-<!-- -->
+**seed: Seeder
 
-[OneToOne](https://mikro-orm.io/api/core/function/OneToOne.md)
+### [**](#select)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L599)inheritedselect
 
-### [**](#OneToOneOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/OneToOne.ts#L15)OneToOneOptions
+**select: Select\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.select
 
-<!-- -->
+### [**](#sum)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L785)inheritedsum
 
-[OneToOneOptions](https://mikro-orm.io/api/core/interface/OneToOneOptions.md)
+**sum: TypePreservingAggregation\<TRecord, TResult, any>
 
-### [**](#OnInit)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/hooks.ts#L40)OnInit
+Inherited from Knex.QueryInterface.sum
 
-Re-exports
+### [**](#sumDistinct)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L786)inheritedsumDistinct
 
-<!-- -->
+**sumDistinct: TypePreservingAggregation\<TRecord, TResult, any>
 
-[OnInit](https://mikro-orm.io/api/core/function/OnInit.md)
+Inherited from Knex.QueryInterface.sumDistinct
 
-### [**](#OnLoad)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/hooks.ts#L44)OnLoad
+### [**](#table)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L608)inheritedtable
 
-Re-exports
+**table: Table\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.table
 
-[OnLoad](https://mikro-orm.io/api/core/function/OnLoad.md)
+### [**](#union)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L716)inheritedunion
 
-### [**](#Opt)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)Opt
+**union: Union\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.union
 
-<!-- -->
+### [**](#unionAll)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L717)inheritedunionAll
 
-[Opt](https://mikro-orm.io/api/core.md#Opt)
+**unionAll: Union\<TRecord, TResult>
 
-### [**](#OptimisticLockError)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L150)OptimisticLockError
+Inherited from Knex.QueryInterface.unionAll
 
-Re-exports
+### [**](#updateFrom)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1155)inheritedupdateFrom
 
-<!-- -->
+**updateFrom: Table\<TRecord, TResult>
 
-[OptimisticLockError](https://mikro-orm.io/api/core/class/OptimisticLockError.md)
+Inherited from Knex.QueryInterface.updateFrom
 
-### [**](#OptionalProps)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)OptionalProps
+### [**](#userParams)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L434)userParams
 
-Re-exports
+**userParams: Record\<string, any>
 
-<!-- -->
+### [**](#using)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L631)inheritedusing
 
-[OptionalProps](https://mikro-orm.io/api/core.md#OptionalProps)
+**using: Using\<TRecord, TResult>
 
-### [**](#Options)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L700)Options
+Inherited from Knex.QueryInterface.using
 
-Re-exports
+### [**](#VERSION)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L394)VERSION
 
-<!-- -->
+**VERSION: string
 
-[Options](https://mikro-orm.io/api/core.md#Options)
+### [**](#where)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L643)inheritedwhere
 
-### [**](#OrderDefinition)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L96)OrderDefinition
+**where: Where\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.where
 
-<!-- -->
+### [**](#whereBetween)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L672)inheritedwhereBetween
 
-[OrderDefinition](https://mikro-orm.io/api/core.md#OrderDefinition)
+**whereBetween: WhereBetween\<TRecord, TResult>
 
-### [**](#p)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L758)p
+Inherited from Knex.QueryInterface.whereBetween
 
-Re-exports
+### [**](#whereExists)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L654)inheritedwhereExists
 
-<!-- -->
+**whereExists: WhereExists\<TRecord, TResult>
 
-[p](https://mikro-orm.io/api/core.md#p)
+Inherited from Knex.QueryInterface.whereExists
 
-### [**](#parseJsonSafe)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Utils.ts#L172)parseJsonSafe
+### [**](#whereILike)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L665)inheritedwhereILike
 
-Re-exports
+**whereILike: Where\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.whereILike
 
-[parseJsonSafe](https://mikro-orm.io/api/core/function/parseJsonSafe.md)
+### [**](#whereIn)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L658)inheritedwhereIn
 
-### [**](#PlainObject)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L225)PlainObject
+**whereIn: WhereIn\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.whereIn
 
-<!-- -->
+### [**](#whereJsonNotSubsetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L700)inheritedwhereJsonNotSubsetOf
 
-[PlainObject](https://mikro-orm.io/api/core/class/PlainObject.md)
+**whereJsonNotSubsetOf: WhereJsonObject\<TRecord, TResult>
 
-### [**](#Platform)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/platforms/Platform.ts#L42)Platform
+Inherited from Knex.QueryInterface.whereJsonNotSubsetOf
 
-Re-exports
+### [**](#whereJsonNotSupersetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L693)inheritedwhereJsonNotSupersetOf
 
-<!-- -->
+**whereJsonNotSupersetOf: WhereJsonObject\<TRecord, TResult>
 
-[Platform](https://mikro-orm.io/api/core/class/Platform.md)
+Inherited from Knex.QueryInterface.whereJsonNotSupersetOf
 
-### [**](#PoolConfig)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L557)PoolConfig
+### [**](#whereJsonObject)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L679)inheritedwhereJsonObject
 
-Re-exports
+**whereJsonObject: WhereJsonObject\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.whereJsonObject
 
-[PoolConfig](https://mikro-orm.io/api/core/interface/PoolConfig.md)
+### [**](#whereJsonPath)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L686)inheritedwhereJsonPath
 
-### [**](#Populate)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)Populate
+**whereJsonPath: WhereJsonPath\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.whereJsonPath
 
-<!-- -->
+### [**](#whereJsonSubsetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L697)inheritedwhereJsonSubsetOf
 
-[Populate](https://mikro-orm.io/api/core.md#Populate)
+**whereJsonSubsetOf: WhereJsonObject\<TRecord, TResult>
 
-### [**](#PopulateHint)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L14)PopulateHint
+Inherited from Knex.QueryInterface.whereJsonSubsetOf
 
-Re-exports
+### [**](#whereJsonSupersetOf)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L690)inheritedwhereJsonSupersetOf
 
-<!-- -->
+**whereJsonSupersetOf: WhereJsonObject\<TRecord, TResult>
 
-[PopulateHint](https://mikro-orm.io/api/core/enum/PopulateHint.md)
+Inherited from Knex.QueryInterface.whereJsonSupersetOf
 
-### [**](#PopulateOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)PopulateOptions
+### [**](#whereLike)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L662)inheritedwhereLike
 
-Re-exports
+**whereLike: Where\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.whereLike
 
-[PopulateOptions](https://mikro-orm.io/api/core.md#PopulateOptions)
+### [**](#whereNot)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L646)inheritedwhereNot
 
-### [**](#PopulatePath)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L19)PopulatePath
+**whereNot: Where\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.whereNot
 
-<!-- -->
+### [**](#whereNotBetween)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L675)inheritedwhereNotBetween
 
-[PopulatePath](https://mikro-orm.io/api/core/enum/PopulatePath.md)
+**whereNotBetween: WhereBetween\<TRecord, TResult>
 
-### [**](#Primary)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)Primary
+Inherited from Knex.QueryInterface.whereNotBetween
 
-Re-exports
+### [**](#whereNotExists)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L656)inheritedwhereNotExists
 
-<!-- -->
+**whereNotExists: WhereExists\<TRecord, TResult>
 
-[Primary](https://mikro-orm.io/api/core.md#Primary)
+Inherited from Knex.QueryInterface.whereNotExists
 
-### [**](#PrimaryKey)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/PrimaryKey.ts#L19)PrimaryKey
+### [**](#whereNotIn)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L660)inheritedwhereNotIn
 
-Re-exports
+**whereNotIn: WhereIn\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.whereNotIn
 
-[PrimaryKey](https://mikro-orm.io/api/core/function/PrimaryKey.md)
+### [**](#whereNotJsonObject)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L682)inheritedwhereNotJsonObject
 
-### [**](#PrimaryKeyOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/PrimaryKey.ts#L27)PrimaryKeyOptions
+**whereNotJsonObject: WhereJsonObject\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.whereNotJsonObject
 
-<!-- -->
+### [**](#whereNotNull)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L670)inheritedwhereNotNull
 
-[PrimaryKeyOptions](https://mikro-orm.io/api/core/interface/PrimaryKeyOptions.md)
+**whereNotNull: WhereNull\<TRecord, TResult>
 
-### [**](#PrimaryKeyProp)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L7)PrimaryKeyProp
+Inherited from Knex.QueryInterface.whereNotNull
 
-Re-exports
+### [**](#whereNull)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L668)inheritedwhereNull
 
-<!-- -->
+**whereNull: WhereNull\<TRecord, TResult>
 
-[PrimaryKeyProp](https://mikro-orm.io/api/core.md#PrimaryKeyProp)
+Inherited from Knex.QueryInterface.whereNull
 
-### [**](#Property)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Property.ts#L19)Property
+### [**](#whereRaw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L649)inheritedwhereRaw
 
-Re-exports
+**whereRaw: WhereRaw\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.whereRaw
 
-[Property](https://mikro-orm.io/api/core/function/Property.md)
+### [**](#whereWrapped)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L652)inheritedwhereWrapped
 
-### [**](#PropertyOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Property.ts#L54)PropertyOptions
+**whereWrapped: WhereWrapped\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.whereWrapped
 
-<!-- -->
+### [**](#with)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L634)inheritedwith
 
-[PropertyOptions](https://mikro-orm.io/api/core/interface/PropertyOptions.md)
+**with: With\<TRecord, TResult>
 
-### [**](#QBFilterQuery)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L8)QBFilterQuery
+Inherited from Knex.QueryInterface.with
 
-Re-exports
+### [**](#withMaterialized)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L635)inheritedwithMaterialized
 
-<!-- -->
+**withMaterialized: With\<TRecord, TResult>
 
-[QBFilterQuery](https://mikro-orm.io/api/core.md#QBFilterQuery)
+Inherited from Knex.QueryInterface.withMaterialized
 
-### [**](#QBQueryOrderMap)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L100)QBQueryOrderMap
+### [**](#withNotMaterialized)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L636)inheritedwithNotMaterialized
 
-Re-exports
+**withNotMaterialized: With\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.withNotMaterialized
 
-[QBQueryOrderMap](https://mikro-orm.io/api/core.md#QBQueryOrderMap)
+### [**](#withRaw)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L638)inheritedwithRaw
 
-### [**](#QueryFlag)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L106)QueryFlag
+**withRaw: WithRaw\<TRecord, TResult>
 
-Re-exports
+Inherited from Knex.QueryInterface.withRaw
 
-<!-- -->
+### [**](#withRecursive)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L637)inheritedwithRecursive
 
-[QueryFlag](https://mikro-orm.io/api/core/enum/QueryFlag.md)
+**withRecursive: With\<TRecord, TResult>
 
-### [**](#QueryOperator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L29)QueryOperator
+Inherited from Knex.QueryInterface.withRecursive
 
-Re-exports
+### [**](#withSchema)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L639)inheritedwithSchema
 
-<!-- -->
+**withSchema: WithSchema\<TRecord, TResult>
 
-[QueryOperator](https://mikro-orm.io/api/core/enum/QueryOperator.md)
+Inherited from Knex.QueryInterface.withSchema
 
-### [**](#QueryOrder)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L73)QueryOrder
+### [**](#withWrapped)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L640)inheritedwithWrapped
 
-Re-exports
+**withWrapped: WithWrapped\<TRecord, TResult>
 
-<!-- -->
+Inherited from Knex.QueryInterface.withWrapped
 
-[QueryOrder](https://mikro-orm.io/api/core/enum/QueryOrder.md)
+## Methods<!-- -->[**](#Methods)
 
-### [**](#QueryOrderKeys)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L94)QueryOrderKeys
+### [**](#\[captureRejectionSymbol])[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L103)optionalinherited\[captureRejectionSymbol]
 
-Re-exports
+* ****\[captureRejectionSymbol]**\<K>(error, event, ...args): void
 
-<!-- -->
+- Inherited from events.EventEmitter.\[captureRejectionSymbol]
 
-[QueryOrderKeys](https://mikro-orm.io/api/core.md#QueryOrderKeys)
+  #### Parameters
 
-### [**](#QueryOrderKeysFlat)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L93)QueryOrderKeysFlat
+  * ##### error: Error
+  * ##### event: string | symbol
+  * ##### rest...args: AnyRest
 
-Re-exports
+  #### Returns void
 
-<!-- -->
+### [**](#addListener)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L642)inheritedaddListener
 
-[QueryOrderKeysFlat](https://mikro-orm.io/api/core.md#QueryOrderKeysFlat)
+* ****addListener**\<K>(eventName, listener): this
 
-### [**](#QueryOrderMap)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L96)QueryOrderMap
+- Inherited from events.EventEmitter.addListener
 
-Re-exports
+  Alias for `emitter.on(eventName, listener)`.
 
-<!-- -->
+  * **@since**
 
-[QueryOrderMap](https://mikro-orm.io/api/core.md#QueryOrderMap)
+    v0.1.26
 
-### [**](#QueryOrderNumeric)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L88)QueryOrderNumeric
+  ***
 
-Re-exports
+  #### Parameters
 
-<!-- -->
+  * ##### eventName: string | symbol
+  * ##### listener: (...args) => void
 
-[QueryOrderNumeric](https://mikro-orm.io/api/core/enum/QueryOrderNumeric.md)
 
-### [**](#QueryResult)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/connections/Connection.ts#L174)QueryResult
+  #### Returns this
 
-Re-exports
+### [**](#batchInsert)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L415)batchInsert
 
-<!-- -->
+* ****batchInsert**\<TRecord2, TResult2>(tableName, data, chunkSize): BatchInsertBuilder\<TRecord2, TResult2>
 
-[QueryResult](https://mikro-orm.io/api/core/interface/QueryResult.md)
+- #### Parameters
 
-### [**](#quote)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/RawQueryFragment.ts#L279)quote
+  * ##### tableName: TableDescriptor
+  * ##### data: TRecord2 extends CompositeTableType\<unknown, unknown, Partial\<unknown>, Partial\<unknown>> ? readonly<!-- --> ResolveTableType\<TRecord2\<TRecord2>, insert>\[] : readonly<!-- --> DbRecordArr\<TRecord2>\[]
+  * ##### optionalchunkSize: number
 
-Re-exports
+  #### Returns BatchInsertBuilder\<TRecord2, TResult2>
 
-<!-- -->
+### [**](#clear)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L760)inheritedclear
 
-[quote](https://mikro-orm.io/api/core/function/quote.md)
+* ****clear**(statement): QueryBuilder\<TRecord, TResult>
 
-### [**](#RawQueryFragment)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/RawQueryFragment.ts#L6)RawQueryFragment
+- Inherited from Knex.QueryInterface.clear
 
-Re-exports
+  #### Parameters
 
-<!-- -->
+  * ##### statement: ClearStatements
 
-[RawQueryFragment](https://mikro-orm.io/api/core/class/RawQueryFragment.md)
+  #### Returns QueryBuilder\<TRecord, TResult>
 
-### [**](#ReadOnlyException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L95)ReadOnlyException
+### [**](#clearCounters)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L759)inheritedclearCounters
 
-Re-exports
+* ****clearCounters**(): QueryBuilder\<TRecord, TResult>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.clearCounters
 
-[ReadOnlyException](https://mikro-orm.io/api/core/class/ReadOnlyException.md)
+  #### Returns QueryBuilder\<TRecord, TResult>
 
-### [**](#ref)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Reference.ts#L312)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Reference.ts#L317)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Reference.ts#L322)ref
+### [**](#clearGroup)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L756)inheritedclearGroup
 
-Re-exports
+* ****clearGroup**(): QueryBuilder\<TRecord, TResult>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.clearGroup
 
-[ref](https://mikro-orm.io/api/core/function/ref.md)
+  #### Returns QueryBuilder\<TRecord, TResult>
 
-### [**](#Ref)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)Ref
+### [**](#clearHaving)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L758)inheritedclearHaving
 
-Re-exports
+* ****clearHaving**(): QueryBuilder\<TRecord, TResult>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.clearHaving
 
-[Ref](https://mikro-orm.io/api/core.md#Ref)
+  #### Returns QueryBuilder\<TRecord, TResult>
 
-### [**](#Reference)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Reference.ts#L21)Reference
+### [**](#clearOrder)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L757)inheritedclearOrder
 
-Re-exports
+* ****clearOrder**(): QueryBuilder\<TRecord, TResult>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.clearOrder
 
-[Reference](https://mikro-orm.io/api/core/class/Reference.md)
+  #### Returns QueryBuilder\<TRecord, TResult>
 
-### [**](#ReferenceKind)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L122)ReferenceKind
+### [**](#clearSelect)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L741)inheritedclearSelect
 
-Re-exports
+* ****clearSelect**(): QueryBuilder\<TRecord, UnwrapArrayMember\<TResult> extends DeferredKeySelection\<TBase, TKeys, true, any, any, any, any> ? DeferredKeySelection\<TBase, never, false, {}, false, {}, never>\[] : TResult>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.clearSelect
 
-[ReferenceKind](https://mikro-orm.io/api/core/enum/ReferenceKind.md)
+  #### Returns QueryBuilder\<TRecord, UnwrapArrayMember\<TResult> extends DeferredKeySelection\<TBase, TKeys, true, any, any, any, any> ? DeferredKeySelection\<TBase, never, false, {}, false, {}, never>\[] : TResult>
 
-### [**](#ReferenceOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Property.ts#L331)ReferenceOptions
+### [**](#clearWhere)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L755)inheritedclearWhere
 
-Re-exports
+* ****clearWhere**(): QueryBuilder\<TRecord, TResult>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.clearWhere
 
-[ReferenceOptions](https://mikro-orm.io/api/core/interface/ReferenceOptions.md)
+  #### Returns QueryBuilder\<TRecord, TResult>
 
-### [**](#ReflectMetadataProvider)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/metadata/ReflectMetadataProvider.ts#L7)ReflectMetadataProvider
+### [**](#decrement)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L802)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L806)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L810)inheriteddecrement
 
-Re-exports
+* ****decrement**(columnName, amount): QueryBuilder\<TRecord, number>
+* ****decrement**(columnName, amount): QueryBuilder\<TRecord, number>
+* ****decrement**(columns): QueryBuilder\<TRecord, number>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.decrement
 
-[ReflectMetadataProvider](https://mikro-orm.io/api/core/class/ReflectMetadataProvider.md)
+  #### Parameters
 
-### [**](#RefreshDatabaseOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)RefreshDatabaseOptions
+  * ##### columnName: keyof<!-- --> TRecord
+  * ##### optionalamount: number
 
-Re-exports
+  #### Returns QueryBuilder\<TRecord, number>
 
-<!-- -->
+### [**](#del)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1157)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1161)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1172)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1183)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1187)inheriteddel
 
-[RefreshDatabaseOptions](https://mikro-orm.io/api/core/interface/RefreshDatabaseOptions.md)
+* ****del**(returning, options): QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
+* ****del**\<TKey, TResult2>(returning, options): QueryBuilder\<TRecord, TResult2>
+* ****del**\<TKey, TResult2>(returning, options): QueryBuilder\<TRecord, TResult2\[]>
+* ****del**\<TResult2>(returning, options): QueryBuilder\<TRecord, TResult2>
+* ****del**\<TResult2>(): QueryBuilder\<TRecord, TResult2>
 
-### [**](#RegisterOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/UnitOfWork.ts#L1269)RegisterOptions
+- Inherited from Knex.QueryInterface.del
 
-Re-exports
+  #### Parameters
 
-<!-- -->
+  * ##### returning: \*
+  * ##### optionaloptions: DMLOptions
 
-[RegisterOptions](https://mikro-orm.io/api/core/interface/RegisterOptions.md)
+  #### Returns QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
 
-### [**](#rel)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Reference.ts#L349)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Reference.ts#L354)rel
+### [**](#delete)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1189)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1193)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1204)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1215)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1219)inheriteddelete
 
-Re-exports
+* ****delete**(returning, options): QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
+* ****delete**\<TKey, TResult2>(returning, options): QueryBuilder\<TRecord, TResult2>
+* ****delete**\<TKey, TResult2>(returning, options): QueryBuilder\<TRecord, TResult2>
+* ****delete**\<TResult2>(returning, options): QueryBuilder\<TRecord, TResult2>
+* ****delete**\<TResult2>(): QueryBuilder\<TRecord, TResult2>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.delete
 
-[rel](https://mikro-orm.io/api/core/function/rel.md)
+  #### Parameters
 
-### [**](#Rel)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)Rel
+  * ##### returning: \*
+  * ##### optionaloptions: DMLOptions
 
-Re-exports
+  #### Returns QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
 
-<!-- -->
+### [**](#destroy)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L412)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L413)destroy
 
-[Rel](https://mikro-orm.io/api/core.md#Rel)
+* ****destroy**(callback): void
+* ****destroy**(): Promise\<void>
 
-### [**](#RequestContext)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/RequestContext.ts#L8)RequestContext
+- #### Parameters
 
-Re-exports
+  * ##### callback: Function
 
-<!-- -->
+  #### Returns void
 
-[RequestContext](https://mikro-orm.io/api/core/class/RequestContext.md)
+### [**](#emit)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L904)inheritedemit
 
-### [**](#RequiredEntityData)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)RequiredEntityData
+* ****emit**\<K>(eventName, ...args): boolean
 
-Re-exports
+- Inherited from events.EventEmitter.emit
 
-<!-- -->
+  Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
 
-[RequiredEntityData](https://mikro-orm.io/api/core.md#RequiredEntityData)
+  Returns `true` if the event had listeners, `false` otherwise.
 
-### [**](#RequiredNullable)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)RequiredNullable
+  ```
+  import { EventEmitter } from 'node:events';
+  const myEmitter = new EventEmitter();
 
-Re-exports
+  // First listener
+  myEmitter.on('event', function firstListener() {
+    console.log('Helloooo! first listener');
+  });
+  // Second listener
+  myEmitter.on('event', function secondListener(arg1, arg2) {
+    console.log(`event with parameters ${arg1}, ${arg2} in second listener`);
+  });
+  // Third listener
+  myEmitter.on('event', function thirdListener(...args) {
+    const parameters = args.join(', ');
+    console.log(`event with parameters ${parameters} in third listener`);
+  });
 
-<!-- -->
+  console.log(myEmitter.listeners('event'));
 
-[RequiredNullable](https://mikro-orm.io/api/core.md#RequiredNullable)
+  myEmitter.emit('event', 1, 2, 3, 4, 5);
 
-### [**](#Scalar)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)Scalar
+  // Prints:
+  // [
+  //   [Function: firstListener],
+  //   [Function: secondListener],
+  //   [Function: thirdListener]
+  // ]
+  // Helloooo! first listener
+  // event with parameters 1, 2 in second listener
+  // event with parameters 1, 2, 3, 4, 5 in third listener
+  ```
 
-Re-exports
+  * **@since**
 
-<!-- -->
+    v0.1.26
 
-[Scalar](https://mikro-orm.io/api/core.md#Scalar)
+  ***
 
-### [**](#SCALAR_TYPES)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L120)SCALAR\_TYPES
+  #### Parameters
 
-Re-exports
+  * ##### eventName: string | symbol
+  * ##### rest...args: AnyRest
 
-<!-- -->
+  #### Returns boolean
 
-[SCALAR\_TYPES](https://mikro-orm.io/api/core.md#SCALAR_TYPES)
+### [**](#eventNames)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L967)inheritedeventNames
 
-### [**](#ScalarRef)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)ScalarRef
+* ****eventNames**(): (string | symbol)\[]
 
-Re-exports
+- Inherited from events.EventEmitter.eventNames
 
-<!-- -->
+  Returns an array listing the events for which the emitter has registered listeners. The values in the array are strings or `Symbol`s.
 
-[ScalarRef](https://mikro-orm.io/api/core.md#ScalarRef)
+  ```
+  import { EventEmitter } from 'node:events';
 
-### [**](#ScalarReference)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/Reference.ts#L215)ScalarReference
+  const myEE = new EventEmitter();
+  myEE.on('foo', () => {});
+  myEE.on('bar', () => {});
 
-Re-exports
+  const sym = Symbol('symbol');
+  myEE.on(sym, () => {});
 
-<!-- -->
+  console.log(myEE.eventNames());
+  // Prints: [ 'foo', 'bar', Symbol(symbol) ]
+  ```
 
-[ScalarReference](https://mikro-orm.io/api/core/class/ScalarReference.md)
+  * **@since**
 
-### [**](#SchemaGenerator)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/schema/SqlSchemaGenerator.ts#L658)SchemaGenerator
+    v6.0.0
 
-Renames and re-exports
+  ***
 
-<!-- -->
+  #### Returns (string | symbol)\[]
 
-[SqlSchemaGenerator](https://mikro-orm.io/api/knex/class/SqlSchemaGenerator.md)
+### [**](#getMaxListeners)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L819)inheritedgetMaxListeners
 
-### [**](#SeederOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Configuration.ts#L548)SeederOptions
+* ****getMaxListeners**(): number
 
-Re-exports
+- Inherited from events.EventEmitter.getMaxListeners
 
-<!-- -->
+  Returns the current max listener value for the `EventEmitter` which is either set by `emitter.setMaxListeners(n)` or defaults to EventEmitter.defaultMaxListeners.
 
-[SeederOptions](https://mikro-orm.io/api/core/interface/SeederOptions.md)
+  * **@since**
 
-### [**](#Selected)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)Selected
+    v1.0.0
 
-Re-exports
+  ***
 
-<!-- -->
+  #### Returns number
 
-[Selected](https://mikro-orm.io/api/core.md#Selected)
+### [**](#increment)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L790)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L794)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L798)inheritedincrement
 
-### [**](#SerializationContext)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/serialization/SerializationContext.ts#L11)SerializationContext
+* ****increment**(columnName, amount): QueryBuilder\<TRecord, number>
+* ****increment**(columnName, amount): QueryBuilder\<TRecord, number>
+* ****increment**(columns): QueryBuilder\<TRecord, number>
 
-Re-exports
+- Inherited from Knex.QueryInterface.increment
 
-<!-- -->
+  #### Parameters
 
-[SerializationContext](https://mikro-orm.io/api/core/class/SerializationContext.md)
+  * ##### columnName: keyof<!-- --> TRecord
+  * ##### optionalamount: number
 
-### [**](#serialize)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/serialization/EntitySerializer.ts#L322)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/serialization/EntitySerializer.ts#L342)serialize
+  #### Returns QueryBuilder\<TRecord, number>
 
-Re-exports
+### [**](#initialize)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L411)initialize
 
-<!-- -->
+* ****initialize**(config): void
 
-[serialize](https://mikro-orm.io/api/core/function/serialize.md)
+- #### Parameters
 
-### [**](#SerializedPrimaryKey)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/PrimaryKey.ts#L23)SerializedPrimaryKey
+  * ##### optionalconfig: Config\<any>
 
-Re-exports
+  #### Returns void
 
-<!-- -->
+### [**](#insert)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L830)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L839)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L855)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L871)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L887)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L903)inheritedinsert
 
-[SerializedPrimaryKey](https://mikro-orm.io/api/core/function/SerializedPrimaryKey.md)
+* ****insert**(data, returning, options): QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
+* ****insert**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****insert**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****insert**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****insert**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****insert**\<TResult2>(data): QueryBuilder\<TRecord, TResult2>
 
-### [**](#SerializedPrimaryKeyOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/PrimaryKey.ts#L29)SerializedPrimaryKeyOptions
+- Inherited from Knex.QueryInterface.insert
 
-Re-exports
+  #### Parameters
 
-<!-- -->
+  * ##### data: TRecord extends CompositeTableType\<unknown, unknown, Partial\<unknown>, Partial\<unknown>> ? ResolveTableType\<TRecord\<TRecord>, insert> | readonly<!-- --> ResolveTableType\<TRecord\<TRecord>, insert>\[] : DbRecordArr\<TRecord> | readonly<!-- --> DbRecordArr\<TRecord>\[]
+  * ##### returning: \*
+  * ##### optionaloptions: DMLOptions
 
-[SerializedPrimaryKeyOptions](https://mikro-orm.io/api/core/interface/SerializedPrimaryKeyOptions.md)
+  #### Returns QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
 
-### [**](#SerializeOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/serialization/EntitySerializer.ts#L287)SerializeOptions
+### [**](#limit)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L767)inheritedlimit
 
-Re-exports
+* ****limit**(limit, options): QueryBuilder\<TRecord, TResult>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.limit
 
-[SerializeOptions](https://mikro-orm.io/api/core/interface/SerializeOptions.md)
+  #### Parameters
 
-### [**](#ServerException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L32)ServerException
+  * ##### limit: number
+  * ##### optionaloptions: string | Readonly<{ skipBinding?<!-- -->: boolean }>
 
-Re-exports
+  #### Returns QueryBuilder\<TRecord, TResult>
 
-<!-- -->
+### [**](#listenerCount)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L913)inheritedlistenerCount
 
-[ServerException](https://mikro-orm.io/api/core/class/ServerException.md)
+* ****listenerCount**\<K>(eventName, listener): number
 
-### [**](#Settings)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/ConfigurationLoader.ts#L447)Settings
+- Inherited from events.EventEmitter.listenerCount
 
-Re-exports
+  Returns the number of listeners listening for the event named `eventName`. If `listener` is provided, it will return how many times the listener is found in the list of the listeners of the event.
 
-<!-- -->
+  * **@since**
 
-[Settings](https://mikro-orm.io/api/core/interface/Settings.md)
+    v3.2.0
 
-### [**](#SimpleColumnMeta)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L10)SimpleColumnMeta
+  ***
 
-Re-exports
+  #### Parameters
 
-<!-- -->
+  * ##### eventName: string | symbol
 
-[SimpleColumnMeta](https://mikro-orm.io/api/core/interface/SimpleColumnMeta.md)
+    The name of the event being listened for
 
-### [**](#SimpleLogger)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/logging/SimpleLogger.ts#L7)SimpleLogger
+  * ##### optionallistener: Function
 
-Re-exports
+    The event handler function
 
-<!-- -->
+  #### Returns number
 
-[SimpleLogger](https://mikro-orm.io/api/core/class/SimpleLogger.md)
+### [**](#listeners)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L832)inheritedlisteners
 
-### [**](#SmallIntType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L29)SmallIntType
+* ****listeners**\<K>(eventName): Function\[]
 
-Re-exports
+- Inherited from events.EventEmitter.listeners
 
-<!-- -->
+  Returns a copy of the array of listeners for the event named `eventName`.
 
-[SmallIntType](https://mikro-orm.io/api/core/class/SmallIntType.md)
+  ```
+  server.on('connection', (stream) => {
+    console.log('someone connected!');
+  });
+  console.log(util.inspect(server.listeners('connection')));
+  // Prints: [ [Function] ]
+  ```
 
-### [**](#sql)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/RawQueryFragment.ts#L244)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/RawQueryFragment.ts#L261)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/RawQueryFragment.ts#L262)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/RawQueryFragment.ts#L263)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/RawQueryFragment.ts#L264)sql
+  * **@since**
 
-Re-exports
+    v0.1.26
 
-<!-- -->
+  ***
 
-[sql](https://mikro-orm.io/api/core/function/sql.md)
+  #### Parameters
 
-### [**](#SqlEntityManager)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/SqlEntityManager.ts#L21)SqlEntityManager
+  * ##### eventName: string | symbol
 
-Renames and re-exports
+  #### Returns Function\[]
 
-<!-- -->
+### [**](#modify)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L992)inheritedmodify
 
-[EntityManager](https://mikro-orm.io/api/knex/class/EntityManager.md)
+* ****modify**\<TRecord2, TResult2>(callback, ...args): QueryBuilder\<TRecord2, TResult2>
 
-### [**](#SqlEntityRepository)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/SqlEntityRepository.ts#L6)SqlEntityRepository
+- Inherited from Knex.QueryInterface.modify
 
-Renames and re-exports
+  #### Parameters
 
-<!-- -->
+  * ##### callback: QueryCallbackWithArgs\<TRecord, any>
+  * ##### rest...args: any\[]
 
-[EntityRepository](https://mikro-orm.io/api/knex/class/EntityRepository.md)
+  #### Returns QueryBuilder\<TRecord2, TResult2>
 
-### [**](#StringType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L30)StringType
+### [**](#off)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L792)inheritedoff
 
-Re-exports
+* ****off**\<K>(eventName, listener): this
 
-<!-- -->
+- Inherited from events.EventEmitter.off
 
-[StringType](https://mikro-orm.io/api/core/class/StringType.md)
+  Alias for `emitter.removeListener()`.
 
-### [**](#SyncCacheAdapter)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/cache/CacheAdapter.ts#L30)SyncCacheAdapter
+  * **@since**
 
-Re-exports
+    v10.0.0
 
-<!-- -->
+  ***
 
-[SyncCacheAdapter](https://mikro-orm.io/api/core/interface/SyncCacheAdapter.md)
+  #### Parameters
 
-### [**](#SyntaxErrorException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L100)SyntaxErrorException
+  * ##### eventName: string | symbol
+  * ##### listener: (...args) => void
 
-Re-exports
 
-<!-- -->
+  #### Returns this
 
-[SyntaxErrorException](https://mikro-orm.io/api/core/class/SyntaxErrorException.md)
+### [**](#offset)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L763)inheritedoffset
 
-### [**](#t)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L60)t
+* ****offset**(offset, options): QueryBuilder\<TRecord, TResult>
 
-Re-exports
+- Inherited from Knex.QueryInterface.offset
 
-<!-- -->
+  #### Parameters
 
-[t](https://mikro-orm.io/api/core.md#t)
+  * ##### offset: number
+  * ##### optionaloptions: boolean | Readonly<{ skipBinding?<!-- -->: boolean }>
 
-### [**](#TableExistsException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L105)TableExistsException
+  #### Returns QueryBuilder\<TRecord, TResult>
 
-Re-exports
+### [**](#on)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L674)inheritedon
 
-<!-- -->
+* ****on**\<K>(eventName, listener): this
 
-[TableExistsException](https://mikro-orm.io/api/core/class/TableExistsException.md)
+- Inherited from events.EventEmitter.on
 
-### [**](#TableNotFoundException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L110)TableNotFoundException
+  Adds the `listener` function to the end of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
-Re-exports
+  ```
+  server.on('connection', (stream) => {
+    console.log('someone connected!');
+  });
+  ```
 
-<!-- -->
+  Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-[TableNotFoundException](https://mikro-orm.io/api/core/class/TableNotFoundException.md)
+  By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the event listener to the beginning of the listeners array.
 
-### [**](#TextType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L30)TextType
+  ```
+  import { EventEmitter } from 'node:events';
+  const myEE = new EventEmitter();
+  myEE.on('foo', () => console.log('a'));
+  myEE.prependListener('foo', () => console.log('b'));
+  myEE.emit('foo');
+  // Prints:
+  //   b
+  //   a
+  ```
 
-Re-exports
+  * **@since**
 
-<!-- -->
+    v0.1.101
 
-[TextType](https://mikro-orm.io/api/core/class/TextType.md)
+  ***
 
-### [**](#TimeType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L28)TimeType
+  #### Parameters
 
-Re-exports
+  * ##### eventName: string | symbol
 
-<!-- -->
+    The name of the event.
 
-[TimeType](https://mikro-orm.io/api/core/class/TimeType.md)
+  * ##### listener: (...args) => void
 
-### [**](#TinyIntType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L29)TinyIntType
+    The callback function
 
-Re-exports
 
-<!-- -->
 
-[TinyIntType](https://mikro-orm.io/api/core/class/TinyIntType.md)
+  #### Returns this
 
-### [**](#Transaction)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/connections/Connection.ts#L191)Transaction
+### [**](#once)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L704)inheritedonce
 
-Re-exports
+* ****once**\<K>(eventName, listener): this
 
-<!-- -->
+- Inherited from events.EventEmitter.once
 
-[Transaction](https://mikro-orm.io/api/core.md#Transaction)
+  Adds a **one-time** `listener` function for the event named `eventName`. The next time `eventName` is triggered, this listener is removed and then invoked.
 
-### [**](#Transactional)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Transactional.ts#L15)Transactional
+  ```
+  server.once('connection', (stream) => {
+    console.log('Ah, we have our first user!');
+  });
+  ```
 
-Re-exports
+  Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-<!-- -->
+  By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the event listener to the beginning of the listeners array.
 
-[Transactional](https://mikro-orm.io/api/core/function/Transactional.md)
+  ```
+  import { EventEmitter } from 'node:events';
+  const myEE = new EventEmitter();
+  myEE.once('foo', () => console.log('a'));
+  myEE.prependOnceListener('foo', () => console.log('b'));
+  myEE.emit('foo');
+  // Prints:
+  //   b
+  //   a
+  ```
 
-### [**](#TransactionContext)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/TransactionContext.ts#L4)TransactionContext
+  * **@since**
 
-Re-exports
+    v0.3.0
 
-<!-- -->
+  ***
 
-[TransactionContext](https://mikro-orm.io/api/core/class/TransactionContext.md)
+  #### Parameters
 
-### [**](#TransactionEventArgs)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/events/EventSubscriber.ts#L17)TransactionEventArgs
+  * ##### eventName: string | symbol
 
-Re-exports
+    The name of the event.
 
-<!-- -->
+  * ##### listener: (...args) => void
 
-[TransactionEventArgs](https://mikro-orm.io/api/core/interface/TransactionEventArgs.md)
+    The callback function
 
-### [**](#TransactionEventBroadcaster)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/events/TransactionEventBroadcaster.ts#L7)TransactionEventBroadcaster
 
-Re-exports
 
-<!-- -->
+  #### Returns this
 
-[TransactionEventBroadcaster](https://mikro-orm.io/api/core/class/TransactionEventBroadcaster.md)
+### [**](#onConflict)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1140)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1143)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1147)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1149)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1151)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1153)inheritedonConflict
 
-### [**](#TransactionEventType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L202)TransactionEventType
+* ****onConflict**\<TKey>(column): OnConflictQueryBuilder\<TRecord, TResult>
+* ****onConflict**\<TKey>(columns): OnConflictQueryBuilder\<TRecord, TResult>
+* ****onConflict**(columns): OnConflictQueryBuilder\<TRecord, TResult>
+* ****onConflict**(columns): OnConflictQueryBuilder\<TRecord, TResult>
+* ****onConflict**(raw): OnConflictQueryBuilder\<TRecord, TResult>
+* ****onConflict**(): OnConflictQueryBuilder\<TRecord, TResult>
 
-Re-exports
+- Inherited from Knex.QueryInterface.onConflict
 
-<!-- -->
+  #### Parameters
 
-[TransactionEventType](https://mikro-orm.io/api/core.md#TransactionEventType)
+  * ##### column: TKey
 
-### [**](#TransactionManager)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/TransactionManager.ts#L12)TransactionManager
+  #### Returns OnConflictQueryBuilder\<TRecord, TResult>
 
-Re-exports
+### [**](#pluck)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L825)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L828)inheritedpluck
 
-<!-- -->
+* ****pluck**\<K>(column): QueryBuilder\<TRecord, TRecord\[K]\[]>
+* ****pluck**\<TResult2>(column): QueryBuilder\<TRecord, TResult2>
 
-[TransactionManager](https://mikro-orm.io/api/core/class/TransactionManager.md)
+- Inherited from Knex.QueryInterface.pluck
 
-### [**](#TransactionOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L214)TransactionOptions
+  #### Parameters
 
-Re-exports
+  * ##### column: K
 
-<!-- -->
+  #### Returns QueryBuilder\<TRecord, TRecord\[K]\[]>
 
-[TransactionOptions](https://mikro-orm.io/api/core/interface/TransactionOptions.md)
+### [**](#prependListener)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L931)inheritedprependListener
 
-### [**](#TransactionPropagation)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/enums.ts#L204)TransactionPropagation
+* ****prependListener**\<K>(eventName, listener): this
 
-Re-exports
+- Inherited from events.EventEmitter.prependListener
 
-<!-- -->
+  Adds the `listener` function to the *beginning* of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
-[TransactionPropagation](https://mikro-orm.io/api/core/enum/TransactionPropagation.md)
+  ```
+  server.prependListener('connection', (stream) => {
+    console.log('someone connected!');
+  });
+  ```
 
-### [**](#TransactionStateError)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L305)TransactionStateError
+  Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-Re-exports
+  * **@since**
 
-<!-- -->
+    v6.0.0
 
-[TransactionStateError](https://mikro-orm.io/api/core/class/TransactionStateError.md)
+  ***
 
-### [**](#TransformContext)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L30)TransformContext
+  #### Parameters
 
-Re-exports
+  * ##### eventName: string | symbol
 
-<!-- -->
+    The name of the event.
 
-[TransformContext](https://mikro-orm.io/api/core/interface/TransformContext.md)
+  * ##### listener: (...args) => void
 
-### [**](#Type)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L28)Type
+    The callback function
 
-Re-exports
 
-<!-- -->
 
-[Type](https://mikro-orm.io/api/core/class/Type.md)
+  #### Returns this
 
-### [**](#TypeConfig)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L12)TypeConfig
+### [**](#prependOnceListener)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L947)inheritedprependOnceListener
 
-Re-exports
+* ****prependOnceListener**\<K>(eventName, listener): this
 
-<!-- -->
+- Inherited from events.EventEmitter.prependOnceListener
 
-[TypeConfig](https://mikro-orm.io/api/core/interface/TypeConfig.md)
+  Adds a **one-time**`listener` function for the event named `eventName` to the *beginning* of the listeners array. The next time `eventName` is triggered, this listener is removed, and then invoked.
 
-### [**](#types)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L33)types
+  ```
+  server.prependOnceListener('connection', (stream) => {
+    console.log('Ah, we have our first user!');
+  });
+  ```
 
-Re-exports
+  Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-<!-- -->
+  * **@since**
 
-[types](https://mikro-orm.io/api/core.md#types)
+    v6.0.0
 
-### [**](#Uint8ArrayType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L28)Uint8ArrayType
+  ***
 
-Re-exports
+  #### Parameters
 
-<!-- -->
+  * ##### eventName: string | symbol
 
-[Uint8ArrayType](https://mikro-orm.io/api/core/class/Uint8ArrayType.md)
+    The name of the event.
 
-### [**](#UmzugMigration)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L11)UmzugMigration
+  * ##### listener: (...args) => void
 
-Re-exports
+    The callback function
 
-<!-- -->
 
-[UmzugMigration](https://mikro-orm.io/api/core.md#UmzugMigration)
 
-### [**](#UnboxArray)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)UnboxArray
+  #### Returns this
 
-Re-exports
+### [**](#queryBuilder)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L424)queryBuilder
 
-<!-- -->
+* ****queryBuilder**\<TRecord2, TResult2>(): QueryBuilder\<TRecord2, TResult2>
 
-[UnboxArray](https://mikro-orm.io/api/core.md#UnboxArray)
+- #### Returns QueryBuilder\<TRecord2, TResult2>
 
-### [**](#UnderscoreNamingStrategy)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/naming-strategy/UnderscoreNamingStrategy.ts#L3)UnderscoreNamingStrategy
+### [**](#rawListeners)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L863)inheritedrawListeners
 
-Re-exports
+* ****rawListeners**\<K>(eventName): Function\[]
 
-<!-- -->
+- Inherited from events.EventEmitter.rawListeners
 
-[UnderscoreNamingStrategy](https://mikro-orm.io/api/core/class/UnderscoreNamingStrategy.md)
+  Returns a copy of the array of listeners for the event named `eventName`, including any wrappers (such as those created by `.once()`).
 
-### [**](#Unique)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Indexed.ts#L25)Unique
+  ```
+  import { EventEmitter } from 'node:events';
+  const emitter = new EventEmitter();
+  emitter.once('log', () => console.log('log once'));
 
-Re-exports
+  // Returns a new Array with a function `onceWrapper` which has a property
+  // `listener` which contains the original listener bound above
+  const listeners = emitter.rawListeners('log');
+  const logFnWrapper = listeners[0];
 
-<!-- -->
+  // Logs "log once" to the console and does not unbind the `once` event
+  logFnWrapper.listener();
 
-[Unique](https://mikro-orm.io/api/core/function/Unique.md)
+  // Logs "log once" to the console and removes the listener
+  logFnWrapper();
 
-### [**](#UniqueConstraintViolationException)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/exceptions.ts#L115)UniqueConstraintViolationException
+  emitter.on('log', () => console.log('log persistently'));
+  // Will return a new Array with a single function bound by `.on()` above
+  const newListeners = emitter.rawListeners('log');
 
-Re-exports
+  // Logs "log persistently" twice
+  newListeners[0]();
+  emitter.emit('log');
+  ```
 
-<!-- -->
+  * **@since**
 
-[UniqueConstraintViolationException](https://mikro-orm.io/api/core/class/UniqueConstraintViolationException.md)
+    v9.4.0
 
-### [**](#UniqueOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/decorators/Indexed.ts#L38)UniqueOptions
+  ***
 
-Re-exports
+  #### Parameters
 
-<!-- -->
+  * ##### eventName: string | symbol
 
-[UniqueOptions](https://mikro-orm.io/api/core/interface/UniqueOptions.md)
+  #### Returns Function\[]
 
-### [**](#UnitOfWork)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/UnitOfWork.ts#L32)UnitOfWork
+### [**](#removeAllListeners)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L803)inheritedremoveAllListeners
 
-Re-exports
+* ****removeAllListeners**(eventName): this
 
-<!-- -->
+- Inherited from events.EventEmitter.removeAllListeners
 
-[UnitOfWork](https://mikro-orm.io/api/core/class/UnitOfWork.md)
+  Removes all listeners, or those of the specified `eventName`.
 
-### [**](#UniversalPropertyKeys)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/defineEntity.ts#L35)UniversalPropertyKeys
+  It is bad practice to remove listeners added elsewhere in the code, particularly when the `EventEmitter` instance was created by some other component or module (e.g. sockets or file streams).
 
-Re-exports
+  Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-<!-- -->
+  * **@since**
 
-[UniversalPropertyKeys](https://mikro-orm.io/api/core.md#UniversalPropertyKeys)
+    v0.1.26
 
-### [**](#UnknownType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L30)UnknownType
+  ***
 
-Re-exports
+  #### Parameters
 
-<!-- -->
+  * ##### optionaleventName: string | symbol
 
-[UnknownType](https://mikro-orm.io/api/core/class/UnknownType.md)
+  #### Returns this
 
-### [**](#UpdateOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L267)UpdateOptions
+### [**](#removeListener)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L787)inheritedremoveListener
 
-Re-exports
+* ****removeListener**\<K>(eventName, listener): this
 
-<!-- -->
+- Inherited from events.EventEmitter.removeListener
 
-[UpdateOptions](https://mikro-orm.io/api/core/interface/UpdateOptions.md)
+  Removes the specified `listener` from the listener array for the event named `eventName`.
 
-### [**](#UpdateSchemaOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/index.ts#L13)UpdateSchemaOptions
+  ```
+  const callback = (stream) => {
+    console.log('someone connected!');
+  };
+  server.on('connection', callback);
+  // ...
+  server.removeListener('connection', callback);
+  ```
 
-Re-exports
+  `removeListener()` will remove, at most, one instance of a listener from the listener array. If any single listener has been added multiple times to the listener array for the specified `eventName`, then `removeListener()` must be called multiple times to remove each instance.
 
-<!-- -->
+  Once an event is emitted, all listeners attached to it at the time of emitting are called in order. This implies that any `removeListener()` or `removeAllListeners()` calls *after* emitting and *before* the last listener finishes execution will not remove them from`emit()` in progress. Subsequent events behave as expected.
 
-[UpdateSchemaOptions](https://mikro-orm.io/api/core/interface/UpdateSchemaOptions.md)
+  ```
+  import { EventEmitter } from 'node:events';
+  class MyEmitter extends EventEmitter {}
+  const myEmitter = new MyEmitter();
 
-### [**](#UpsertManyOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L239)UpsertManyOptions
+  const callbackA = () => {
+    console.log('A');
+    myEmitter.removeListener('event', callbackB);
+  };
 
-Re-exports
+  const callbackB = () => {
+    console.log('B');
+  };
 
-<!-- -->
+  myEmitter.on('event', callbackA);
 
-[UpsertManyOptions](https://mikro-orm.io/api/core/interface/UpsertManyOptions.md)
+  myEmitter.on('event', callbackB);
 
-### [**](#UpsertOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/drivers/IDatabaseDriver.ts#L231)UpsertOptions
+  // callbackA removes listener callbackB but it will still be called.
+  // Internal listener array at time of emit [callbackA, callbackB]
+  myEmitter.emit('event');
+  // Prints:
+  //   A
+  //   B
 
-Re-exports
+  // callbackB is now removed.
+  // Internal listener array [callbackA]
+  myEmitter.emit('event');
+  // Prints:
+  //   A
+  ```
 
-<!-- -->
+  Because listeners are managed using an internal array, calling this will change the position indices of any listener registered *after* the listener being removed. This will not impact the order in which listeners are called, but it means that any copies of the listener array as returned by the `emitter.listeners()` method will need to be recreated.
 
-[UpsertOptions](https://mikro-orm.io/api/core/interface/UpsertOptions.md)
+  When a single function has been added as a handler multiple times for a single event (as in the example below), `removeListener()` will remove the most recently added instance. In the example the `once('ping')` listener is removed:
 
-### [**](#Utils)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/utils/Utils.ts#L185)Utils
+  ```
+  import { EventEmitter } from 'node:events';
+  const ee = new EventEmitter();
 
-Re-exports
+  function pong() {
+    console.log('pong');
+  }
 
-<!-- -->
+  ee.on('ping', pong);
+  ee.once('ping', pong);
+  ee.removeListener('ping', pong);
 
-[Utils](https://mikro-orm.io/api/core/class/Utils.md)
+  ee.emit('ping');
+  ee.emit('ping');
+  ```
 
-### [**](#UuidType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/types/index.ts#L30)UuidType
+  Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-Re-exports
+  * **@since**
 
-<!-- -->
+    v0.1.26
 
-[UuidType](https://mikro-orm.io/api/core/class/UuidType.md)
+  ***
 
-### [**](#ValidationError)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L4)ValidationError
+  #### Parameters
 
-Re-exports
+  * ##### eventName: string | symbol
+  * ##### listener: (...args) => void
 
-<!-- -->
 
-[ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)
+  #### Returns this
 
-### [**](#wrap)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/wrap.ts#L6)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/wrap.ts#L11)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/wrap.ts#L17)wrap
+### [**](#returning)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1106)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1110)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1121)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1135)inheritedreturning
 
-Re-exports
+* ****returning**(column, options): QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
+* ****returning**\<TKey, TResult2>(column, options): QueryBuilder\<TRecord, TResult2>
+* ****returning**\<TKey, TResult2>(columns, options): QueryBuilder\<TRecord, TResult2>
+* ****returning**\<TResult2>(column, options): QueryBuilder\<TRecord, TResult2>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.returning
 
-[wrap](https://mikro-orm.io/api/core/function/wrap.md)
+  #### Parameters
 
-### [**](#WrappedEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/entity/WrappedEntity.ts#L39)WrappedEntity
+  * ##### column: \*
+  * ##### optionaloptions: DMLOptions
 
-Re-exports
+  #### Returns QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
 
-<!-- -->
+### [**](#setMaxListeners)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/events.d.ts#L813)inheritedsetMaxListeners
 
-[WrappedEntity](https://mikro-orm.io/api/core/class/WrappedEntity.md)
+* ****setMaxListeners**(n): this
 
-## Type Aliases<!-- -->[**](<#Type Aliases>)
+- Inherited from events.EventEmitter.setMaxListeners
 
-### [**](#Field)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/typings.ts#L31)Field
+  By default `EventEmitter`s will print a warning if more than `10` listeners are added for a particular event. This is a useful default that helps finding memory leaks. The `emitter.setMaxListeners()` method allows the limit to be modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
 
-**Field\<T>: AnyString | keyof
+  Returns a reference to the `EventEmitter`, so that calls can be chained.
 
-<!-- -->
+  * **@since**
 
-T | [RawQueryFragment](https://mikro-orm.io/api/core/class/RawQueryFragment.md) | [KnexStringRef](https://mikro-orm.io/api/knex.md#KnexStringRef) | Knex.QueryBuilder
+    v0.3.5
 
-#### Type parameters
+  ***
 
-* **T**
+  #### Parameters
 
-### [**](#KnexStringRef)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/typings.ts#L25)KnexStringRef
+  * ##### n: number
 
-**KnexStringRef: Knex.Ref\<string, {}>
+  #### Returns this
 
-### [**](#ModifyContext)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/query/QueryBuilder.ts#L100)ModifyContext
+### [**](#transaction)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L402)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L403)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L407)transaction
 
-**ModifyContext\<Entity, Context, Field, Alias, Select>: Compute\<IsNever\<Context> extends true ? AddToContext\<GetType\<Entity, object, Field>, object, Field, Alias, Select> : Context & AddToContext\<GetType\<Entity, Context, Field>, Context, Field, Alias, Select>>
+* ****transaction**(config): Promise\<Transaction\<any, any\[]>>
+* ****transaction**(transactionScope, config): Promise\<Transaction\<any, any\[]>>
+* ****transaction**\<T>(transactionScope, config): Promise\<T>
 
-#### Type parameters
+- #### Parameters
 
-* **Entity**: object
-* **Context**
-* **Field**: string
-* **Alias**: string
-* **Select**: boolean = false
+  * ##### optionalconfig: TransactionConfig
 
-### [**](#ModifyHint)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/query/QueryBuilder.ts#L98)ModifyHint
+  #### Returns Promise\<Transaction\<any, any\[]>>
 
-**ModifyHint\<RootAlias, Context, Hint, Field, Select>: Hint | AddToHint\<RootAlias, Context, Field, Select>
+### [**](#transactionProvider)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L399)transactionProvider
 
-#### Type parameters
+* ****transactionProvider**(config): TransactionProvider
 
-* **RootAlias**
-* **Context**
-* **Hint**: string
-* **Field**: string
-* **Select**: boolean = false
+- #### Parameters
 
-### [**](#MySqlIncrementOptions)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/typings.ts#L213)MySqlIncrementOptions
+  * ##### optionalconfig: TransactionConfig
 
-**MySqlIncrementOptions: { primaryKey?
+  #### Returns TransactionProvider
 
-<!-- -->
+### [**](#truncate)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1221)inheritedtruncate
 
-: boolean; type?
+* ****truncate**(): QueryBuilder\<TRecord, void>
 
-<!-- -->
+- Inherited from Knex.QueryInterface.truncate
 
-: [Column](https://mikro-orm.io/api/knex/interface/Column.md)\[type]; unsigned?
+  #### Returns QueryBuilder\<TRecord, void>
 
-<!-- -->
+### [**](#update)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L996)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1010)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1024)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1028)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1034)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1039)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1053)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1067)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1081)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1095)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L1101)inheritedupdate
 
-: boolean }
+* ****update**\<K1, K2, TResult2>(columnName, value, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****update**\<K1, K2, TResult2>(columnName, value, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****update**\<K>(columnName, value): QueryBuilder\<TRecord, number>
+* ****update**\<TResult2>(columnName, value, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****update**(data, returning, options): QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
+* ****update**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****update**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****update**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****update**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****update**\<TResult2>(data): QueryBuilder\<TRecord, TResult2>
+* ****update**\<TResult2>(columnName, value): QueryBuilder\<TRecord, TResult2>
 
-#### Type declaration
+- Inherited from Knex.QueryInterface.update
 
-* ##### optionalprimaryKey?<!-- -->: boolean
-* ##### optionaltype?<!-- -->: [Column](https://mikro-orm.io/api/knex/interface/Column.md)\[type]
-* ##### optionalunsigned?<!-- -->: boolean
+  #### Parameters
 
-### [**](#QBField)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/query/QueryBuilder.ts#L114)QBField
+  * ##### columnName: K1
+  * ##### value: DbColumn\<ResolveTableType\<TRecord, update>\[K1]>
+  * ##### returning: K2
+  * ##### optionaloptions: DMLOptions
 
-**QBField\<Entity, RootAlias, Context>: ((EntityRelations\<Entity> | \`${RootAlias}.${EntityRelations\<Entity>}\` | AddAliasesFromContext\<Context>) & {}) | AnyString
+  #### Returns QueryBuilder\<TRecord, TResult2>
 
-#### Type parameters
+### [**](#upsert)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L911)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L920)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L936)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L952)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L968)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L984)inheritedupsert
 
-* **Entity**
-* **RootAlias**: string
-* **Context**
+* ****upsert**(data, returning, options): QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
+* ****upsert**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****upsert**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****upsert**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****upsert**\<TKey, TResult2>(data, returning, options): QueryBuilder\<TRecord, TResult2>
+* ****upsert**\<TResult2>(data): QueryBuilder\<TRecord, TResult2>
 
-### [**](#QBField2)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/query/QueryBuilder.ts#L115)QBField2
+- Inherited from Knex.QueryInterface.upsert
 
-**QBField2\<Entity, RootAlias, Context>: (([EntityKey](https://mikro-orm.io/api/core.md#EntityKey)\<Entity> | \`${RootAlias}.${[EntityKey](https://mikro-orm.io/api/core.md#EntityKey)\<Entity>}\` | AddAliasesFromContext\<Context>) & {}) | AnyString
+  #### Parameters
 
-#### Type parameters
+  * ##### data: TRecord extends CompositeTableType\<unknown, unknown, Partial\<unknown>, Partial\<unknown>> ? ResolveTableType\<TRecord\<TRecord>, upsert> | readonly<!-- --> ResolveTableType\<TRecord\<TRecord>, upsert>\[] : DbRecordArr\<TRecord> | readonly<!-- --> DbRecordArr\<TRecord>\[]
+  * ##### returning: \*
+  * ##### optionaloptions: DMLOptions
 
-* **Entity**
-* **RootAlias**: string
-* **Context**
+  #### Returns QueryBuilder\<TRecord, DeferredKeySelection\<TRecord, never, false, {}, false, {}, never>\[]>
 
-## Variables<!-- -->[**](#Variables)
+### [**](#withUserParams)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/knex/types/index.d.ts#L435)withUserParams
 
-### [**](#MonkeyPatchable)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/knex/src/MonkeyPatchable.ts#L38)constMonkeyPatchable
+* ****withUserParams**(params): [Knex](https://mikro-orm.io/api/knex/interface/Knex.md)\<any, any\[]>
 
-**MonkeyPatchable: { BetterSqlite3Dialect: any; Client: any; MsSqlColumnCompiler: any; MsSqlDialect: any; MsSqlQueryCompiler: any; MsSqlTableCompiler: any; MySqlColumnCompiler: any; MySqlDialect: any; MySqlQueryCompiler: any; PostgresDialect: any; PostgresDialectTableCompiler: any; PostgresQueryCompiler: any; QueryExecutioner: any; Sqlite3Dialect: any; Sqlite3DialectTableCompiler: any; TableCompiler: any } =
+- #### Parameters
 
-<!-- -->
+  * ##### params: Record\<string, any>
 
-...
-
-#### Type declaration
-
-* ##### BetterSqlite3Dialect: any
-* ##### Client: any
-* ##### MsSqlColumnCompiler: any
-* ##### MsSqlDialect: any
-* ##### MsSqlQueryCompiler: any
-* ##### MsSqlTableCompiler: any
-* ##### MySqlColumnCompiler: any
-* ##### MySqlDialect: any
-* ##### MySqlQueryCompiler: any
-* ##### PostgresDialect: any
-* ##### PostgresDialectTableCompiler: any
-* ##### PostgresQueryCompiler: any
-* ##### QueryExecutioner: any
-* ##### Sqlite3Dialect: any
-* ##### Sqlite3DialectTableCompiler: any
-* ##### TableCompiler: any
+  #### Returns [Knex](https://mikro-orm.io/api/knex/interface/Knex.md)\<any, any\[]>
