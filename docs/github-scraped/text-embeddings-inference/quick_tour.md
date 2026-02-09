@@ -47,7 +47,7 @@ We also recommend sharing a volume with the Docker container (`volume=$PWD/data`
 
 Inference can be performed in 3 ways: using cURL, or via the `InferenceClient` or `OpenAI` Python SDKs.
 
-#### cURL
+### cURL
 
 To send a POST request to the TEI endpoint using cURL, you can run the following command:
 
@@ -58,11 +58,11 @@ curl 127.0.0.1:8080/embed \
     -H 'Content-Type: application/json'
 ```
 
-#### Python
+### Python
 
 To run inference using Python, you can either use the [`huggingface_hub`](https://huggingface.co/docs/huggingface_hub/en/index) Python SDK (recommended) or the `openai` Python SDK.
 
-##### huggingface_hub
+#### huggingface_hub
 
 You can install it via pip as `pip install --upgrade --quiet huggingface_hub`, and then run:
 
@@ -76,7 +76,8 @@ embedding = client.feature_extraction("What is deep learning?",
 print(len(embedding[0]))
 ```
 
-#### OpenAI
+### OpenAI
+
 To send requests to the [OpenAI Embeddings API](https://platform.openai.com/docs/api-reference/embeddings/create) exposed on Text Embeddings Inference (TEI) with the OpenAI Python SDK, you can install it as `pip install --upgrade openai`, and then run the following snippet:
 
 ```python
@@ -94,6 +95,7 @@ print(response.data[0].embedding)
 ```
 
 Alternatively, you can also send the request with cURL as follows:
+
 ```bash
 curl http://localhost:8080/v1/embeddings \
   -H "Content-Type: application/json" \

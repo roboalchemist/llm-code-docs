@@ -21,7 +21,7 @@ text embeddings models. It enables high-performance extraction for the most popu
 
 TEI offers multiple features tailored to optimize the deployment process and enhance overall performance.
 
-**Key Features:**
+## Key Features
 
 * **Streamlined Deployment:** TEI eliminates the need for a model graph compilation step for an easier deployment process.
 * **Efficient Resource Utilization:** Benefit from small Docker images and rapid boot times, allowing for true serverless capabilities.
@@ -30,7 +30,7 @@ TEI offers multiple features tailored to optimize the deployment process and enh
 * **Safetensors weight loading:** TEI loads [Safetensors](https://github.com/huggingface/safetensors) weights for faster boot times.
 * **Production-Ready:** TEI supports distributed tracing through Open Telemetry and exports Prometheus metrics.
 
-**Benchmarks**
+## Benchmarks
 
 Benchmark for [BAAI/bge-base-en-v1.5](https://hf.co/BAAI/bge-large-en-v1.5) on an NVIDIA A10 with a sequence length of 512 tokens:
 
@@ -43,6 +43,6 @@ Benchmark for [BAAI/bge-base-en-v1.5](https://hf.co/BAAI/bge-large-en-v1.5) on a
   <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/tei/bs32-tp.png" width="400" alt="Throughput comparison for batch size of 32" />
 </p>
 
-**Getting Started:**
+## Getting Started
 
 To start using TEI, check the [Quick Tour](quick_tour) guide.

@@ -20,7 +20,7 @@ This guide explains how to build and deploy `text-embeddings-inference` containe
 
 ## CPU
 
-### Build Docker Image
+### Build Docker Image (CPU)
 
 To build a container optimized for Intel® CPUs, run the following command:
 
@@ -30,7 +30,7 @@ platform="cpu"
 docker build . -f Dockerfile-intel --build-arg PLATFORM=$platform -t tei_cpu_ipex
 ```
 
-### Deploy Docker Container
+### Deploy Docker Container (CPU)
 
 To deploy your model on an Intel® CPU, use the following command:
 
@@ -43,7 +43,7 @@ docker run -p 8080:80 -v $volume:/data tei_cpu_ipex --model-id $model
 
 ## XPU
 
-### Build Docker Image
+### Build Docker Image (XPU)
 
 To build a container optimized for Intel® XPUs, run the following command:
 
@@ -53,7 +53,7 @@ platform="xpu"
 docker build . -f Dockerfile-intel --build-arg PLATFORM=$platform -t tei_xpu_ipex
 ```
 
-### Deploy Docker Container
+### Deploy Docker Container (XPU)
 
 To deploy your model on an Intel® XPU, use the following command:
 
@@ -69,7 +69,7 @@ docker run -p 8080:80 -v $volume:/data --device=/dev/dri -v /dev/dri/by-path:/de
 > [!WARNING]
 > TEI is supported only on Gaudi 2 and Gaudi 3. Gaudi 1 is **not** supported.
 
-### Build Docker Image
+### Build Docker Image (HPU)
 
 To build a container optimized for Intel® HPUs (Gaudi), run the following command:
 
@@ -79,7 +79,7 @@ platform="hpu"
 docker build . -f Dockerfile-intel --build-arg PLATFORM=$platform -t tei_hpu
 ```
 
-### Deploy Docker Container
+### Deploy Docker Container (HPU)
 
 To deploy your model on an Intel® HPU (Gaudi), use the following command:
 
@@ -94,24 +94,29 @@ docker run -p 8080:80 -v $volume:/data --runtime=habana -e HABANA_VISIBLE_DEVICE
 
 For convenience, prebuilt Docker images are available on GitHub Container Registry (GHCR). You can pull these images directly without the need to build them manually:
 
-### CPU
+### Prebuilt CPU
+
 To use the prebuilt image optimized for Intel® CPUs, run:
+
 ```shell
 docker pull ghcr.io/huggingface/text-embeddings-inference:cpu-ipex-latest
 ```
 
-### XPU
+### Prebuilt XPU
+
 To use the prebuilt image optimized for Intel® XPUs, run:
+
 ```shell
 docker pull ghcr.io/huggingface/text-embeddings-inference:xpu-ipex-latest
 ```
 
-### HPU
+### Prebuilt HPU
 
 > [!WARNING]
 > TEI is supported only on Gaudi 2 and Gaudi 3. Gaudi 1 is **not** supported.
 
 To use the prebuilt image optimized for Intel® HPUs (Gaudi), run:
+
 ```shell
 docker pull ghcr.io/huggingface/text-embeddings-inference:hpu-latest
 ```

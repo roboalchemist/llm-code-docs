@@ -19,9 +19,10 @@ rendered properly in your Markdown viewer.
 Deploying Text Embeddings Inference (TEI) on Google Cloud Platform (GCP) allows to benefit from the underlying [Kubernetes](https://kubernetes.io/) technology which ensures that TEI can scale automatically up or down based on demand.
 
 On Google Cloud, there are 3 main options for deploying TEI (or any other Docker container):
+
 - Cloud Run
 - Vertex AI endpoints
-- GKE (Google Kubernetes Engine).
+- GKE (Google Kubernetes Engine)
 
 This guide explains how to deploy TEI on Cloud Run, a fully managed service by Google. Cloud Run is a so-called serverless offering. This means that the server infrastructure is handled by Google, you only need to provide a Docker container. The benefit of this is that you only pay for compute when there is demand for your application. Cloud Run will automatically spin up servers when there's demand, and scale down to zero when there is no demand.
 
@@ -47,6 +48,7 @@ export MODEL_ID="ibm-granite/granite-embedding-278m-multilingual" # choose any e
 ```
 
 Some clarifications:
+
 - We provide the latest official Docker image URI based on the [README](https://github.com/huggingface/Google-Cloud-Containers/blob/main/containers/tei/README.md).
 - We choose to deploy the [IBM granite](https://huggingface.co/ibm-granite/granite-embedding-278m-multilingual) embedding model given its strong multilingual capabilities. One can of course choose any other embedding model from the hub. It's recommended to look for models tagged with either `feature-extraction`, `sentence-similarity` or `text-ranking`.
 
@@ -244,13 +246,13 @@ Then you can send requests to the deployed service on Cloud Run, using the `SERV
 
 Using the default identity token from the Google Cloud SDK:
 
-* Via gcloud as:
+- Via gcloud as:
 
 ```bash
 gcloud auth print-identity-token
 ```
 
-* Via Python as:
+- Via Python as:
 
 ```bash
 import google.auth
@@ -263,26 +265,26 @@ creds.refresh(auth_req)
 id_token = creds.id_token
 ```
 
-* Using a Service Account with Cloud Run Invoke access, which can either be done with any of the following approaches:
+- Using a Service Account with Cloud Run Invoke access, which can either be done with any of the following approaches:
 
-** Create a Service Account before the Cloud Run Service was created, and then set the service-account flag to the Service Account email when creating the Cloud Run Service. And use an Access Token for that Service Account only using `gcloud auth print-access-token --impersonate-service-account=SERVICE_ACCOUNT_EMAIL`.
-** Create a Service Account after the Cloud Run Service was created, and then update the Cloud Run Service to use the Service Account. And use an Access Token for that Service Account only using `gcloud auth print-access-token --impersonate-service-account=SERVICE_ACCOUNT_EMAIL`.
+- Create a Service Account before the Cloud Run Service was created, and then set the service-account flag to the Service Account email when creating the Cloud Run Service. And use an Access Token for that Service Account only using `gcloud auth print-access-token --impersonate-service-account=SERVICE_ACCOUNT_EMAIL`.
+- Create a Service Account after the Cloud Run Service was created, and then update the Cloud Run Service to use the Service Account. And use an Access Token for that Service Account only using `gcloud auth print-access-token --impersonate-service-account=SERVICE_ACCOUNT_EMAIL`.
 
 The recommended approach is to use a Service Account (SA), as the access can be controlled better and the permissions are more granular; as the Cloud Run Service was not created using a SA, which is another nice option, you need to now create the SA, gran it the necessary permissions, update the Cloud Run Service to use the SA, and then generate an access token to set as the authentication token within the requests, that can be revoked later once you are done using it.
 
-* Set the SERVICE_ACCOUNT_NAME environment variable for convenience:
+- Set the SERVICE_ACCOUNT_NAME environment variable for convenience:
 
 ```bash
 export SERVICE_ACCOUNT_NAME=tei-invoker
 ```
 
-* Create the Service Account:
+- Create the Service Account:
 
 ```bash
 gcloud iam service-accounts create $SERVICE_ACCOUNT_NAME
 ```
 
-* Grant the Service Account the Cloud Run Invoker role:
+- Grant the Service Account the Cloud Run Invoker role:
 
 ```bash
 gcloud run services add-iam-policy-binding $SERVICE_NAME \
@@ -291,7 +293,7 @@ gcloud run services add-iam-policy-binding $SERVICE_NAME \
     --region=$LOCATION
 ```
 
-Generate the Access Token for the Service Account:
+- Generate the Access Token for the Service Account:
 
 ```bash
 export ACCESS_TOKEN=$(gcloud auth print-access-token --impersonate-service-account=$SERVICE_ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com)
@@ -301,12 +303,12 @@ export ACCESS_TOKEN=$(gcloud auth print-access-token --impersonate-service-accou
 
 Now you can already dive into the different alternatives for sending the requests to the deployed Cloud Run Service using the `SERVICE_URL` AND `ACCESS_TOKEN` as described above.
 
-#### cURL
+#### cURL with Service URL
 
 To send a POST request to the TEI service using cURL, you can run the following command:
 
 ```bash
-curl $SERVICE_URL/v1/embeddigs \
+curl $SERVICE_URL/v1/embeddings \
     -X POST \
     -H "Authorization: Bearer $ACCESS_TOKEN" \
     -H 'Content-Type: application/json' \
@@ -316,11 +318,11 @@ curl $SERVICE_URL/v1/embeddigs \
     }'
 ```
 
-#### Python
+#### Python with Service URL
 
 To run inference using Python, you can either use the [huggingface_hub](https://huggingface.co/docs/huggingface_hub/en/index) Python SDK (recommended) or the openai Python SDK.
 
-##### huggingface_hub
+##### huggingface_hub (Cloud Run Service URL)
 
 You can install it via pip as `pip install --upgrade --quiet huggingface_hub`, and then run:
 
@@ -338,7 +340,7 @@ embedding = client.feature_extraction("What is deep learning?",
 print(len(embedding[0]))
 ```
 
-#### OpenAI
+#### OpenAI with Service URL
 
 You can install it via pip as `pip install --upgrade openai`, and then run:
 
@@ -371,13 +373,13 @@ gcloud run services delete $SERVICE_NAME --region $LOCATION
 
 Additionally, if you followed the steps in via Cloud Run Service URL and generated a Service Account and an access token, you can either remove the Service Account, or just revoke the access token if it is still valid.
 
-* (recommended) Revoke the Access Token as:
+- (recommended) Revoke the Access Token as:
 
 ```bash
 gcloud auth revoke --impersonate-service-account=$SERVICE_ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com
 ```
 
-* (optional) Delete the Service Account as:
+- (optional) Delete the Service Account as:
 
 ```bash
 gcloud iam service-accounts delete $SERVICE_ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com
@@ -392,7 +394,6 @@ gcloud compute routers delete nat-router --region=$LOCATION
 
 ## References
 
-* [Cloud Run documentation - Overview](https://cloud.google.com/run/docs)
-* [Cloud Run documentation - GPU services](https://cloud.google.com/run/docs/configuring/services/gpu
-)
-* [Google Cloud blog - Run your AI inference applications on Cloud Run with NVIDIA GPUs](https://cloud.google.com/blog/products/application-development/run-your-ai-inference-applications-on-cloud-run-with-nvidia-gpus)
+- [Cloud Run documentation - Overview](https://cloud.google.com/run/docs)
+- [Cloud Run documentation - GPU services](https://cloud.google.com/run/docs/configuring/services/gpu)
+- [Google Cloud blog - Run your AI inference applications on Cloud Run with NVIDIA GPUs](https://cloud.google.com/blog/products/application-development/run-your-ai-inference-applications-on-cloud-run-with-nvidia-gpus)
