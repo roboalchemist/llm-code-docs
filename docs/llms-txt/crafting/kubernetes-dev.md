@@ -1,6 +1,6 @@
-# Source: https://docs.sandboxes.cloud/docs/kubernetes-dev.md
-
 # Develop on Kubernetes
+
+Source: https://docs.sandboxes.cloud/docs/kubernetes-dev.md
 
 In this page, we describes how to use Crafting platform to develop on Kubernetes apps, including following topics:
 
@@ -15,7 +15,7 @@ Here we assume your team has already setup Crafting for Kubernetes properly, and
 * \[optional] Setup direct Kubernetes API server access to run `kubectl` in sandbox
 * \[optional] Setup the template that include a Kubernetes resource for per-dev namespace
 
-### Use on-demand per-dev Kubernetes namespace
+## Use on-demand per-dev Kubernetes namespace
 
 Crafting enables each developer to launch a dedicated namespace with services running end-to-end in it to support their development and testing work. In this model, each sandbox is launched with a dedicated namespaces along side. The workspaces in the sandbox can directly access services running in the namespace. Developers using different sandboxes will have their own namespaces in Kubernetes.
 
@@ -120,7 +120,7 @@ As shown in the above interception status, now the endpoint `test` is added to s
 
 You can start testing your dev version of the checkout service with context of the target Kubernetes namespace without worrying about interfering other developers using the same Kubernetes namespace for their testing.
 
-### Demo Video
+## Demo Video
 
 A demo video for how to develop Kubernetes on Crafting can be found [here](https://youtu.be/J8LbuUVP_Do)
 

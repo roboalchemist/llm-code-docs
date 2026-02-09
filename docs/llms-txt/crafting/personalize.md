@@ -1,6 +1,6 @@
-# Source: https://docs.sandboxes.cloud/docs/personalize.md
-
 # Personalize your sandbox
+
+Source: https://docs.sandboxes.cloud/docs/personalize.md
 
 This page describes about how to personalize your development environment in Crafting Sandbox using personal snapshot.
 
@@ -8,7 +8,7 @@ Crafting allows a team to pre-define standard setups for the default dev environ
 
 You can define `Personal Snapshots`, a snapshot containing personalized configurations and is applied to the home directory (`/home/owner`) for *every workspace* in new sandboxes created by you.
 
-### Create a personal snapshot
+## Create a personal snapshot
 
 Similar to `Home Snapshot`, a `Personal Snapshot` can be created via CLI command. To create a personal snapshot, first edit the file `~/.snapshot.personal/includes.txt` and optionally, `~/.snapshot.personal/excludes.txt`. The `includes.txt` should specify the files patterns to be included in the snapshot, and the `excludes.txt` should specify patterns for the files to be excluded. Once the `includes.txt` file is ready, use the command to create the snapshot.
 

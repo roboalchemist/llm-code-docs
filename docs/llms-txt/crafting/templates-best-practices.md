@@ -1,6 +1,6 @@
 # Source: https://docs.sandboxes.cloud/docs/templates-best-practices.md
 
-# Checklist and best practices for templates
+## Checklist and best practices for templates
 
 Here, to summarize, we provide a checklist for key points in setting up `Templates` to standardize dev environments for your team on Crafting. Depending on your specific need, you don't necessarily need to have everything in this list, but it's good to check them to find opportunities for optimizing the dev experience.
 
@@ -22,7 +22,7 @@ In the remainder of this page, we will discuss some best practices for using tem
   * [Snapshots naming convention](#snapshots-naming-convention)
   * [Save VS Code settings in snapshots](#save-vs-code-settings-in-snapshots)
 
-### Best practice for managing the templates
+## Best practice for managing the templates
 
 For any non-trivial templates, we strongly recommend storing them in source repositories and manage them "config-as-code" in the YAML format. Crafting allows editing the template directly in the YAML format so that pasting an existing YAML config into a template for testing its validity is straightforward. See [Sandbox Definition](https://docs.sandboxes.cloud/docs/sandbox-definition) for the details in how to define a template.
 
@@ -36,7 +36,7 @@ Given it is more convenient to edit and test template directly on Crafting web c
 
 In addition, the template depends heavily on [Repo Manifests](https://docs.sandboxes.cloud/docs/repo-manifest) to automate build and launch services from the source code. As the name suggests, it's corresponding to a single repo, so naturally we recommend to store them in their corresponding repo. Even though you can directly define them as part of the template, we strongly recommend they are store in the `.sandbox/manifest.yaml` under the repo for long term maintenance.
 
-### Best practice for snapshots
+## Best practice for snapshots
 
 In summary there are four types of snapshots:
 
@@ -45,7 +45,7 @@ In summary there are four types of snapshots:
 * **Dependency/Container snapshot**: taken from the data directory of a dependency service, or a persistent volume mounted on container; (see )
 * **Personal snapshot**: a snapshot containing personalized configurations and can be applied to the home directory (`/home/owner`) for every workspace in newly created sandboxes. (see [Personalize your sandbox](https://docs.sandboxes.cloud/docs/personalize))
 
-#### Create snapshots using code
+### Create snapshots using code
 
 To have a more reproducible and manageable process to track what's inside each snapshot, we recommend using a script to create them. In the script, you can run things like `sudo apt install`, etc. to install the things needed. And the script should be checked-in as code for source control.
 
@@ -55,7 +55,7 @@ When an update of snapshot is needed, instead of just adding the packages and re
 2. Run the updated scripts (store in source repo with code review) to set files
 3. Re-create the snapshot
 
-#### Snapshots naming convention
+### Snapshots naming convention
 
 All snapshots share the same namespace regardless of the type. It's recommend prefixing the snapshot type in the name to avoid conflicts, for example:
 
@@ -82,7 +82,7 @@ Snapshots created for personal use can prefix the user name, e.g.
 
 * `alan-home-backend-1`
 
-#### Save VS Code settings in snapshots
+### Save VS Code settings in snapshots
 
 It's helpful to put VS Code settings and extensions in snapshots (home or personal). The system supports VS Code web (in the browser) or desktop VS Code connecting over SSH. And they are using different folders for the settings and extensions. Here's the base folder of different VS Code editions:
 

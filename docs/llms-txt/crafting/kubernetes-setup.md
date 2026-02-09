@@ -1,6 +1,6 @@
-# Source: https://docs.sandboxes.cloud/docs/kubernetes-setup.md
-
 # Setup for Kubernetes
+
+Source: https://docs.sandboxes.cloud/docs/kubernetes-setup.md
 
 This section will walk you through how to setup Crafting for empowering your developers with the simplest experience to boost the productivity on day-to-day Kubernetes related development tasks. For the user guide on how a developer to use this setup to develop on Kubernetes, please see [Develop on Kubernetes](https://docs.sandboxes.cloud/docs/kubernetes-dev). Specifically, the outline of this page:
 
@@ -21,7 +21,7 @@ This section will walk you through how to setup Crafting for empowering your dev
 
 Crafting Kubernetes Development Experience augments an existing Kubernetes cluster with rich development capabilities integrated with the Crafting system by installing the Crafting Kubernetes agent in the cluster. The agent takes care of communicating and collaborating with the Crafting system, regardless where your Kubernetes cluster is hosted (any location, any cloud provider), as long as it's able to connect to the Crafting system (including SaaS, self-hosted, and Express).
 
-![](https://files.readme.io/3273f58-K8sDebug.png)
+![K8s Debug](https://files.readme.io/3273f58-K8sDebug.png)
 
 ## Setup Guide
 
@@ -61,7 +61,7 @@ This information is required for Direct in-cluster network access to work proper
 
 Once the agent is installed successfully, the cluster will show up from the Crafting Web Console:
 
-![](https://files.readme.io/3919dbb-ConnectedK8s.png)
+![Connected K8s](https://files.readme.io/3919dbb-ConnectedK8s.png)
 
 ### Setup Kubernetes access in the sandboxes
 
@@ -107,7 +107,7 @@ On the Kubernetes clusters supporting external OIDC provider, the native Kuberne
 
 AWS EKS supports external OIDC providers. Add Crafting as one of the entry (the following example is using Terraform) to the cluster (make sure the EKS endpoint can be accessed from the Crafting workspaces):
 
-```
+```terraform
 variable "cluster_name" {
   description = "Name of the cluster"
 }
@@ -296,7 +296,7 @@ The incoming traffic to any Pods in the cluster can be intercepted (either on HT
 
 For HTTP interception, the interception can run conditionally based on special HTTP headers and their values. This allows multiple developers intercepting the same deployed service and validate individual changes without conflict.
 
-#### Direct Kubernetes API server access
+#### Direct API Server Access
 
 This feature provides the convenience to provide developers access to the connected Kubernetes cluster without additional access setup for the cloud providers. The *Crafting Kubernetes Agent* proxies the connection from sandbox to the API server and automatically injects the access token of the preconfigured service account (bound to a ClusterRole, default is *cluster-admin*).
 

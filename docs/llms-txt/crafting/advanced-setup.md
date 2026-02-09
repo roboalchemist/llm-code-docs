@@ -1,6 +1,7 @@
-# Source: https://docs.sandboxes.cloud/docs/advanced-setup.md
 
 # Advanced Setup
+
+Source: https://docs.sandboxes.cloud/docs/advanced-setup.md
 
 Here, we discuss advanced setups Crafting platform supports for setting your team's dev environments, including:
 

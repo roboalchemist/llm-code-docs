@@ -1,10 +1,10 @@
-# Source: https://docs.sandboxes.cloud/docs/launch-a-sandbox.md
-
 # Launch a sandbox
+
+Source: https://docs.sandboxes.cloud/docs/launch-a-sandbox.md
 
 In this page, we describe how to start a new sandbox with your code and configuration. We will use a simple version of a demo app to illustrate the process.
 
-### Start a sandbox from home page on Web Console
+## Start a sandbox from home page on Web Console
 
 From the home page in Crafting Web Console, we can start a new sandbox right there.
 
@@ -20,7 +20,7 @@ You can click the `Create` button on the bottom to launch a sandbox with the def
 
 You can also choose `Create a Workspace` if you don't want to use any pre-defined template. The flow is covered in [Start a Workspace](https://docs.sandboxes.cloud/docs/start-a-workspace).
 
-#### Customize checkout
+### Customize checkout
 
 <Image align="center" className="border" border={true} src="https://files.readme.io/5c2ecf8-guide_create_customize_checkout.jpg" />
 
@@ -44,7 +44,7 @@ At sandbox launch time, you can also customize which dataset to load into the da
 
 #### Launching a sandbox
 
-![](https://files.readme.io/3387d2b-image.png)
+![Launching a sandbox](https://files.readme.io/3387d2b-image.png)
 
 After clicking `Launch` from the customization page (or clicking `Create` directly from the dialog) your new sandbox is launched and the Crafting platform will launch corresponding containers in the sandbox. When it is ready, you can start working on the sandbox (see [Work on a sandbox](https://docs.sandboxes.cloud/docs/work-on-a-sandbox) for details)
 
@@ -74,7 +74,7 @@ This is also the recommended way for programmatically create a sandbox in your a
 
 A developer can also create a sandbox by clicking a URL from their browser, e.g.,
 
-```http
+```text
 https://sandboxes.cloud/create?app=frontend&ws_frontend_co_src_version=master&ws_frontend_mode=auto&dep_mysql_snapshot=mysql-snapshot&autolaunch=true
 ```
 

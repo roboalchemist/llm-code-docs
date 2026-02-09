@@ -1,4 +1,4 @@
-# Source: https://docs.sandboxes.cloud/docs/use-case-preview.md
+<!-- Source: https://docs.sandboxes.cloud/docs/use-case-preview.md -->
 
 # Code Change (PR) Preview
 
@@ -36,7 +36,7 @@ After the sandbox is launched ready, you can run your app end-to-end by accessin
 
 <Image align="center" className="border" border={true} width="80% " src="https://files.readme.io/07e2e64-use-case-preview-run-app.JPG" />
 
-An endpoint is an URL that are routed to a port in a container in the sandbox, where your service is listening to. For example, the above `frontend `endpoint (`https://frontend--pr21-demo.sandboxes.run`) is pointing to the `frontend` workspace's port 3000, where the frontend server is listening to, and the `api` endpoint is pointing to the `api` workspace's port 3001, where the backend server is listening to.
+An endpoint is an URL that are routed to a port in a container in the sandbox, where your service is listening to. For example, the above `frontend` endpoint (`https://frontend--pr21-demo.sandboxes.run`) is pointing to the `frontend` workspace's port 3000, where the frontend server is listening to, and the `api` endpoint is pointing to the `api` workspace's port 3001, where the backend server is listening to.
 
 When opening that `frontend` endpoint in browser, the request hits the service running in the sandbox and loads the page, and with proper setup, the API calls made from the frontend also hit the service running in the same sandbox via the `api` endpoint, as shown below. This way, you can do an end-to-end preview with a full self-contained environment for your app.
 

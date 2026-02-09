@@ -1,12 +1,12 @@
-# Source: https://docs.sandboxes.cloud/docs/access-control.md
-
 # Access control in sandbox
+
+Source: https://docs.sandboxes.cloud/docs/access-control.md
 
 This page talks about how to manage access to the Crafting sandbox.
 
 The Crafting platform provides a collaborative development experience by allowing members in the same organization to access each other's sandboxes. In certain instances, some sandboxes are not expected to be broadly accessible by all the members, as they may contain some sensitive information requiring restricted access. This is facilitated by **Sandbox Access Control**.
 
-### Private mode sandbox
+## Private mode sandbox
 
 The access level of a sandbox can be changed at any time to be one of the following:
 
@@ -27,11 +27,11 @@ When the access level is raised to `Private`, non-owners can't do any of the abo
 
 The `ADMIN` users can't access the sandbox via SSH or Web IDE if they are not the owner, however, they are able to update or delete the sandbox regardless of the access level.
 
-### Personal secrets are only mounted in private mode.
+## Personal secrets are only mounted in private mode
 
 The [secrets](https://docs.sandboxes.cloud/docs/secrets) mounted in the sandbox will be changed automatically depending on the access level. The shared secrets are always mounted, and the private secrets are only mounted when the access level is `Private`. The change is applied automatically at the time when the access level is updated.
 
-### How to set sandbox into private mode
+## How to set sandbox into private mode
 
 To change the access level of a sandbox, the owner (or administrator) can do it on web console.
 
@@ -40,10 +40,10 @@ To change the access level of a sandbox, the owner (or administrator) can do it 
 It can also be done via CLI command
 
 ```shell
-$ cs sandbox access [private|shared]
+cs sandbox access [private|shared]
 ```
 
-### Use cases for private mode
+## Use cases for private mode
 
 The key use cases for private mode include:
 
@@ -52,6 +52,6 @@ The key use cases for private mode include:
 
 If an organization has these use cases, they can choose to set `Private` as default for all new sandboxes launched. Please see [Organizational settings](https://docs.sandboxes.cloud/docs/org-settings) for details.
 
-### Role-based access control (RBAC)
+## Role-based access control (RBAC)
 
 The enterprise version of Crafting platform supports full-featured Role-based Access Control (RBAC), which allows administrator to define fine-grained control on templates, sandboxes, resources, etc., as well as folders for each team to group their resources. Please contact us at [contact@crafting.dev](mailto:contact@crafting.dev) for detailed description and user guide for RBAC.

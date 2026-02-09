@@ -1,6 +1,6 @@
-# Source: https://docs.sandboxes.cloud/docs/quick-start.md
-
 # Quickstart Guide
+
+Source: https://docs.sandboxes.cloud/docs/quick-start.md
 
 In this section, we show how you can get started with Crafting and explore its use cases.
 

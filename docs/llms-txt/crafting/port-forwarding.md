@@ -1,6 +1,6 @@
-# Source: https://docs.sandboxes.cloud/docs/port-forwarding.md
-
 # Port-forwarding for hybrid development
+
+Source: https://docs.sandboxes.cloud/docs/port-forwarding.md
 
 In this page, we describe how to use Crafting's port-forwarding feature for hybrid development, which combines the power of cloud with the familiarity of the development environments on local machine.
 
@@ -23,7 +23,7 @@ Key advantages of using Crafting port forwarding
   * The developer still manages local code branch and commit code from local.
 * Heavy dependencies and services are off-load to cloud and no longer consumes local resources.
 
-### Integration testing example
+## Integration testing example
 
 Here we use an example on integration testing to illustrate port-forwarding. The demo video can be found [here](https://youtu.be/AodElect3Ks?t=225). In this example, we are using the demo app we talked about before, and we are going to replace the API service, by the local version.
 

@@ -1,10 +1,10 @@
-# Source: https://docs.sandboxes.cloud/docs/remote-desktop-in-workspace.md
-
 # Remote Desktop in Workspace
+
+Source: https://docs.sandboxes.cloud/docs/remote-desktop-in-workspace.md
 
 A workspace in a sandbox is a Linux environment which also supports running X-Window based desktop applications. Crafting provides the easy experience setting up the remote desktop in a workspace with a single command.
 
-### Requirements
+## Requirements
 
 Crafting Remote Desktop support requires the workspace running a Ubuntu/Debian based system.
 
@@ -35,7 +35,7 @@ cs remote-desktop  # or "cs rd" for short
 
 After selecting a workspace, it will display a local-forwarded address that a RDP client can connect to, like:
 
-```
+```text
 rdp://127.0.0.1:3389
 ```
 

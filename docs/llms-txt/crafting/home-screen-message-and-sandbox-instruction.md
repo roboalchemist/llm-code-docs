@@ -1,12 +1,12 @@
-# Source: https://docs.sandboxes.cloud/docs/home-screen-message-and-sandbox-instruction.md
-
 # Home screen message and sandbox instruction
+
+Source: https://docs.sandboxes.cloud/docs/home-screen-message-and-sandbox-instruction.md
 
 As each engineering team has their own workflows and practices, they typically have some documentation on how each developer follows the workflows and practices. As a development platform, Crafting often has its own user guide somewhere in teams wiki or notion pages. Even though it's good to have out-of-band comprehensive documentation, it's better to have some key custom messages inline for every developer to keep in mind.
 
 Crafting provides this type messaging support on two levels: *Home screen message* and *Sandbox instructions*. Both of them use *Markdown* syntax and it's easy for the dev environment admin to edit. In this page, we talk about how to use them.
 
-### Home screen message
+## Home screen message
 
 The home screen message is shown on the home page of Crafting web console (dashboard) for an organization to broadcast to every member of the team visiting the platform. Given it's on the first page a developer sees before doing anything on the platform, the following information is often put there:
 
@@ -24,7 +24,7 @@ You can edit the message right on the Home page by clicking the `Customize` butt
 
 **Overview** is a markdown snippet associated with either an org or a template, each serving a different purpose. Additionally, you can inject runtime variables with double curly brackets. An overview of an organization and an app support different variables, and an unknown variable will be parsed as an empty string if referenced.
 
-### Sandbox instructions
+## Sandbox instructions
 
 The `Sandbox instruction` is used to provide information on how sandboxes from a particular template should be used and offer short-cuts for developers to use the sandbox. It's defined in the template, and the instruction will be rendered on the sandbox page for all sandboxes created from that template.
 
@@ -45,10 +45,10 @@ This is a sandbox for demo purposes. Visit [this URL]({{endpoints.app.url}}) to 
 <details>
   <summary>Image</summary>
 
-  <img src="https://files.readme.io/6bb92b9-TemplateDetails.png" align="center" />
+  <img src="https://files.readme.io/6bb92b9-TemplateDetails.png" align="center" alt="Template Details" />
 </details>
 
-#### Variables and Syntax
+### Variables and Syntax
 
 For the full details about the variables and syntax, please read [Overview in Sandbox Definition](https://docs.sandboxes.cloud/docs/sandbox-definition#overview).
 
@@ -81,7 +81,7 @@ For unknown variable, we display {{unknown}}
 
 An example rendered result will be as below:
 
-```
+```text
 Sandbox Notes
 
 Sandbox name sandbox-name
@@ -89,5 +89,5 @@ Last updated 2022-01-01
 Owner sandbox-user
 Template example-template
 
-For unknown variable, we display 
+For unknown variable, we display
 ```

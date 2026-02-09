@@ -1,6 +1,6 @@
-# Source: https://docs.sandboxes.cloud/docs/account-setup.md
-
 # Account Setup
+
+Source: https://docs.sandboxes.cloud/docs/account-setup.md
 
 Setting up account is the first thing need to be done for setting up Crafting. In this page, we talk about topics regarding account setup on Crafting platform.
 
@@ -13,7 +13,7 @@ Setting up account is the first thing need to be done for setting up Crafting. I
 
 ## Create an Account
 
-To create an account on Crafting for a new organization, please [contact us](https://crafting.dev/contact). We support account setup on our [SaaS platform](https://docs.sandboxes.cloud/docs/crafting-saas) or on your cloud using [Crafting Enterprise ](https://docs.sandboxes.cloud/docs/crafting-enterprise) . We also offer setup assistant and free trials to fit your specific dev needs. When installing [Crafting Express](https://docs.sandboxes.cloud/docs/crafting-express) the admin account is automatically created during the procedure.
+To create an account on Crafting for a new organization, please [contact us](https://crafting.dev/contact). We support account setup on our [SaaS platform](https://docs.sandboxes.cloud/docs/crafting-saas) or on your cloud using [Crafting Enterprise](https://docs.sandboxes.cloud/docs/crafting-enterprise). We also offer setup assistant and free trials to fit your specific dev needs. When installing [Crafting Express](https://docs.sandboxes.cloud/docs/crafting-express) the admin account is automatically created during the procedure.
 
 ## Add Administrators and Users
 
@@ -26,7 +26,7 @@ After clicking `Add`, an invite will be sent to the newly added member, who can 
 It can also be done via CLI
 
 ```shell
-$ cs org member add <EMAIL> [--admin]
+cs org member add <EMAIL> [--admin]
 ```
 
 Creating users one by one is often troublesome with large teams. Crafting supports following ways to support large teams.
@@ -60,7 +60,7 @@ After clicking `Confirm`, a service account is created. **A service account is a
 
 After creating the login-token, it can be logged from CLI and web browser. The instruction can be found by clicking the following expanding button highlighted below.
 
-![](https://files.readme.io/d3d46b3-image.png)
+![image](https://files.readme.io/d3d46b3-image.png)
 
 The login token will expire according to the `Expire At`, and you can delete it any time. Similarly the `Service Account` can be disabled (by editing) or deleted in this page.
 

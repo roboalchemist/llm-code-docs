@@ -1,4 +1,4 @@
-# Source: https://docs.sandboxes.cloud/docs/environment-variables.md
+<!-- Source: https://docs.sandboxes.cloud/docs/environment-variables.md -->
 
 # Environment variables (ENV)
 
@@ -21,7 +21,7 @@ This page describes how to use environment variables in Crafting sandbox for you
   * [How to use direnv](#how-to-use-direnv)
   * [How to use dotenv package for Node.js](#how-to-use-dotenv-package-for-nodejs)
 
-### Types of environment variable definitions in sandbox
+## Types of environment variable definitions in sandbox
 
 Crafting platform supports multiple tiers of environment variables injection/customization in workspaces:
 
@@ -540,7 +540,7 @@ For more information regarding `Secret`, please see [Secrets for storing dev cre
 ```toml
 [whitelist]
 prefix = [
-	"/home",
+  "/home",
 ]
 ```
 
@@ -610,6 +610,6 @@ Regarding the solutions, there are multiple options:
 3. If the lines injected in `~/.bashrc` is complicated:
    1. Move those lines into a separate file like `~/.env`
    2. Replace those lines in `~/.bashrc` with `. .env`
-   3. Add `. .env; `before commands to run remotely, like `cs exec -- bash -c '. .env; ruby myapp.rb'`
+   3. Add `. .env;` before commands to run remotely, like `cs exec -- bash -c '. .env; ruby myapp.rb'`
 
 Specifically for `cs exec`, which runs using the `root` user as default. If you need to load env from the regular `owner` user, the flag `-u 1000` must be specified.

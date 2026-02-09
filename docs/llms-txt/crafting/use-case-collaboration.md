@@ -1,6 +1,6 @@
 # Source: https://docs.sandboxes.cloud/docs/use-case-collaboration.md
 
-# Team Collaboration, Local or Remote
+## Team Collaboration, Local or Remote
 
 In this section, we will describe the use cases of Crafting for facilitate collaboration in development teams, no matter that are working in the same office or remotely across the globe.
 

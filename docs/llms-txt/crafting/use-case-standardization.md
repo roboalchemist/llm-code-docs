@@ -1,4 +1,4 @@
-# Source: https://docs.sandboxes.cloud/docs/use-case-standardization.md
+<!-- Source: https://docs.sandboxes.cloud/docs/use-case-standardization.md -->
 
 # Maintainable Dev Environments
 
@@ -9,7 +9,7 @@ In this section, we describe the use case of setting up maintainable dev environ
 | [CPU architecture and operating system consistency issue](#cpu-architecture-and-operating-system-consistency-issue)                   | [Use standard architecture and dev OS image matching production](#use-standard-architecture-and-dev-os-image-matching-production)                                                                                                       |
 | [High overhead and error-prone process in environment setup](#high-overhead-and-error-prone-process-in-environment-setup)             | [Repeatable dev environments, setup on-demand, clean up automatically](#repeatable-dev-environments-setup-on-demand-clean-up-automatically)                                                                                             |
 | [Dev environment maintenance and frequent breakage](#dev-environment-maintenance-and-frequent-breakage)                               | [Version controlled update on environments, automatic rollout](#version-controlled-update-on-environments-automatic-rollout)                                                                                                            |
-| [Scalability issues in terms of number of services and developers](#scalability-issues-in-terms-of-number-of-services-and-developers) | [Manage multiple types of dev environments with app templates](#manage-multiple-types-of-dev-environments-with-app-templates) [Centralized monitoring and online trouble-shooting](#centralized-monitoring-and-online-trouble-shooting) |
+| [Scalability issues in terms of number of services and developers](#scalability-issues-in-terms-of-number-of-services-and-developers) | [Manage multiple types of dev environments with templates](#manage-multiple-types-of-dev-environments-with-templates), [Centralized monitoring and online trouble-shooting](#centralized-monitoring-and-online-trouble-shooting) |
 
 ## Issues with local dev environments
 

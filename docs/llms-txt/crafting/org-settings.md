@@ -1,6 +1,6 @@
-# Source: https://docs.sandboxes.cloud/docs/org-settings.md
-
 # Organizational settings
+
+Source: https://docs.sandboxes.cloud/docs/org-settings.md
 
 Crafting provides additional settings on the organization level to offer more convenience and flexibility to development teams. In this page, we go over some of the settings.
 

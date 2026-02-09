@@ -1,6 +1,7 @@
-# Source: https://docs.sandboxes.cloud/docs/adjust-config.md
 
 # Adjust config of a sandbox
+
+Source: https://docs.sandboxes.cloud/docs/adjust-config.md
 
 This page described how to adjust config of an existing sandbox. No matter your sandbox is from a single repo in a single workspace, or created from a well-defined template. You can adjust its config dynamically.
 
@@ -27,5 +28,6 @@ Details on how to adjust configurations can be found [here](https://docs.sandbox
 If you prefer you can also edit a sandbox from command-line using Crafting CLI
 
 ```shell
-$ cs sandbox edit
-```
+cs sandbox edit
+
+```text

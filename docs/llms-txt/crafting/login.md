@@ -1,6 +1,6 @@
-# Source: https://docs.sandboxes.cloud/docs/login.md
-
 # Login
+
+Source: https://docs.sandboxes.cloud/docs/login.md
 
 A user's main identity on Crafting Platform is his/her email address, typically work email address. For Crafting SaaS users, you can login at [https://sandboxes.cloud](https://sandboxes.cloud) for Crafting Self-hosted, you can login with your custom URL that is specific to your site.
 

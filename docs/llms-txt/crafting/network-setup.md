@@ -1,6 +1,6 @@
-# Source: https://docs.sandboxes.cloud/docs/network-setup.md
-
 # Network configuration and endpoints
+
+Source: https://docs.sandboxes.cloud/docs/network-setup.md
 
 This page talks about how to let components in the sandbox communicate with each other and how to access services running in the sandbox from outside via `endpoints`, specifically:
 
@@ -13,11 +13,11 @@ This page talks about how to let components in the sandbox communicate with each
   * [From local via SSH tunneling or port-forwarding](#from-local-via-ssh-tunneling-or-port-forwarding)
 * [Extend DNS Resolver](#extend-dns-resolver)
 
-### How services communicate with each other within sandbox
+## How services communicate with each other within sandbox
 
 As mentioned before, in each Crafting sandbox, there is an overlay network Crafting sets up for services to communicate with each other. There are multiple ways for one service to reach another within a sandbox.
 
-#### Direct access via hostname and port
+### Direct access via hostname and port
 
 The `workspaces`, `dependencies`, and `containers` can address each other by their `names` as the network `hostname`, and use the `ports` they define in the configuration.
 

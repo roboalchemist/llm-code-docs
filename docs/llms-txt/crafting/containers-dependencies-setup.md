@@ -1,4 +1,4 @@
-# Source: https://docs.sandboxes.cloud/docs/containers-dependencies-setup.md
+<!-- Source: https://docs.sandboxes.cloud/docs/containers-dependencies-setup.md -->
 
 # Setup containers and dependencies
 
@@ -16,7 +16,7 @@ To add a dependency or container, from the editing view of a [Standalone sandbox
 
 <Image align="center" className="border" border={true} src="https://files.readme.io/581ee14-image.png" />
 
-### Configure a dependency
+## Configure a dependency
 
 To configure the newly added dependency, we can click into its detailed view.
 

@@ -1,4 +1,4 @@
-# Source: https://docs.sandboxes.cloud/docs/copy-files.md
+<!-- Source: https://docs.sandboxes.cloud/docs/copy-files.md -->
 
 # Copy files between local and cloud
 

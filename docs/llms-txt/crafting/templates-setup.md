@@ -1,16 +1,16 @@
 # Source: https://docs.sandboxes.cloud/docs/templates-setup.md
 
-# Setup Templates for Dev Environments
+## Setup Templates for Dev Environments
 
 Standardized and replicable development environments is critical for maximizing the team's productivity and minimizing the maintenance overhead. Crafting offers powerful `Template System` for engineering teams define and evolve their dev environments centrally and in a managed way.
 
-## What are templates
+### What are templates
 
 On Crafting platform, a `Template` is a pre-set definition of a sandbox setup that is shared within a team and can be used to create sandboxes. Since a `template` is often used to represent the entire app end-to-end, it's also called `app`.
 
 Since a `sandbox` represents a full-fledged end-to-end development environment, including potentially multiple `workspaces`, `containers`, `dependencies`, `resources`, `endpoints`, etc., setting it up from scratch takes a decent amount of effort. A `template` saves the setup effort and makes new sandbox creation according to a common standard as easy as one click.
 
-## Why using templates
+### Why using templates
 
 In short, the key reason to use templates is for *manageability of dev environments*. For individual developers working on a small side project, templating may be an overkill, but for a team of developers working on an end-to-end product, setting a shared standardized dev environment with template is essential for productivity. Specifically, using templates have following benefits:
 

@@ -1,4 +1,4 @@
-# Source: https://docs.sandboxes.cloud/docs/data-snapshots.md
+<!-- Source: https://docs.sandboxes.cloud/docs/data-snapshots.md -->
 
 # Save and load data snapshots
 
@@ -12,7 +12,7 @@ In the remainder of this page, we will cover:
 * [How to load a data snapshot](#how-to-load-a-data-snapshot)
 * [Admin guide: setup default data snapshot in template](#admin-guide-setup-default-data-snapshot-in-template)
 
-### How to save data as a data snapshot
+## How to save data as a data snapshot
 
 To take a data snapshot for a dependency or container, we can do it directly on the web console, as shown below.
 
@@ -32,7 +32,7 @@ We can also take a snapshot using CLI command `cs snapshot create` as follows
 $ cs snapshot create <SNAPSHOT-NAME> -W [DEPENDENCY|CONTAINER]
 ```
 
-### How to load a data snapshot
+## How to load a data snapshot
 
 To load a data snapshot into an existing sandbox, it can be done via web console as follows
 

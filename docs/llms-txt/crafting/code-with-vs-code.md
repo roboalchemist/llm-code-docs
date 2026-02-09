@@ -1,24 +1,27 @@
-# Source: https://docs.sandboxes.cloud/docs/code-with-vs-code.md
 
 # Code with VS Code
 
+Source: https://docs.sandboxes.cloud/docs/code-with-vs-code.md
+
 In this page, we cover the common topics regarding using VS Code to work on code inside the Crafting Sandbox.
 
-### Launch desktop VS Code and connect to sandbox
+## Launch desktop VS Code and connect to sandbox
 
 The Web IDE come with Crafting Sandbox is the open-source version of VS Code, which offers a near native experience like the desktop VS Code. But if you prefer, you can use the desktop version of VS Code you have already installed on your local machine to directly code in sandbox.
 
 Simply run `cs vscode`, and select the workspace you want to connect to, it will launch the VS code and establish a remote coding environment via SSH.
 
 ```shell
-$ cs vscode
-```
+cs vscode
+
+```text
 
 Keep in mind that for this feature to work, the `code` command to launch VS Code needs to be in your `PATH`, which may not be default for **MacOS** users.
 
 ```shell
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-```
+
+```text
 
 With native IDE on your local machine, all the convenient settings and customizations are already set, and the extensions are already installed. So you can get a more familiar coding environment to have best productivity.
 
@@ -39,7 +42,7 @@ To do that, we need to do following steps
 
 After that, the `cs vscode` in the WSL will connect properly to sandbox, remember to select `Linux` as the remote platform.
 
-### Setup appropriate extensions on sandbox
+## Setup appropriate extensions on sandbox
 
 To have best productivity, we usually need to config the extensions properly for our IDE. No matter using Web IDE or desktop VS Code, sometimes the extensions need to be installed on IDE backend, at where the code is. It means that sometimes even if you have installed the extension locally on your desktop VS Code, you may need to reinstall it on as remote extension on sandbox.
 

@@ -1,4 +1,4 @@
-# Source: https://docs.sandboxes.cloud/docs/git-access.md
+<!-- Source: https://docs.sandboxes.cloud/docs/git-access.md -->
 
 # Git Access
 
@@ -10,7 +10,7 @@ Crafting setup a secure key pair for each user on its platform. It would use the
 
 Each user can go to menu item `Connect -> Git` on web console (or [here](https://sandboxes.cloud/git) for Crafting SaaS) to see the public key.
 
-![](https://files.readme.io/ac871d7-image.png)
+![Git menu](https://files.readme.io/ac871d7-image.png)
 
 Clicking one of the buttons on highlighted above to copy the public key and go to the git repo host site (e.g. GitHub) to paste it there.
 
@@ -22,7 +22,7 @@ Crafting also supports a more convenient GitHub app integration that **doesn't r
 
 To connect GitHub app, go to the menu item `Connect -> GitHub` on web console (or [here](https://sandboxes.cloud/github) for Crafting SaaS), read the instructions, and click `Install`.
 
-![](https://files.readme.io/21d688b-image.png)
+![GitHub app menu](https://files.readme.io/21d688b-image.png)
 
 **Note that only the user with`Organization Owner` on the GitHub side can finish the flow.**
 
@@ -34,14 +34,14 @@ When git submodules are used, the submodules can be referenced using SSH protoco
 
 If git access is configured using SSH protocol, the content of `/etc/gitconfig` should be (use `github.com` as an example, for other hosts, please modify accordingly, please also replace `ORG`):
 
-```
+```ini
 [url "git@github.com:ORG/"]
   insteadOf = "https://github.com/ORG/"
 ```
 
 If git access is configured with GitHub App Integration (using HTTPS protocol), the content of `/etc/gitconfig` should be
 
-```
+```ini
 [url "https://github.com/ORG/"]
   insteadOf = "git@github.com:ORG/"
 ```

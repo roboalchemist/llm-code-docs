@@ -1,12 +1,12 @@
 # Source: https://docs.sandboxes.cloud/docs/secrets.md
 
-# Secrets for storing dev credentials
+## Secrets for storing dev credentials
 
 `Secrets` in the Crafting system are used to store sensitive information which will be encrypted at rest, and with limited access in a sandbox in the cloud. So the services running in the sandbox will have the expected configuration without saving the sensitive information in inappropriate places, like source code.
 
 A cloud-native service may need credentials (like tokens, API keys) to talk to external services. A developer may need certain login information for accessing VPN, cloud storage, etc., in their organization. It's best practice to make sure this information is encrypted at rest and has limited access to only authorized users.
 
-### Create secrets
+## Create secrets
 
 A secret can be created by a user in one of the scopes:
 
@@ -34,7 +34,7 @@ Secrets are allowed to have the same name if they belong to different scopes.
 
 *Note*: secrets are designed for sensitive information. It should be small in size (KB level) and accessed infrequently.
 
-### Access secrets
+## Access secrets
 
 The content of a secret can only be accessed inside a workspace:
 

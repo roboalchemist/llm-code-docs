@@ -1,6 +1,6 @@
 # Source: https://docs.sandboxes.cloud/docs/use-case-compose.md
 
-# Scale beyond Docker Compose
+## Scale beyond Docker Compose
 
 In this section, we will talk about the use case of how to use Crafting to do multi-service development scaling beyond docker compose.
 

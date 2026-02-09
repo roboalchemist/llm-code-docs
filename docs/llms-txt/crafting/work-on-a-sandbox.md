@@ -1,4 +1,4 @@
-# Source: https://docs.sandboxes.cloud/docs/work-on-a-sandbox.md
+<!-- Source: https://docs.sandboxes.cloud/docs/work-on-a-sandbox.md -->
 
 # Work on a sandbox
 
@@ -12,7 +12,7 @@ When the sandbox is launched and ready, we can start using the sandbox. In this 
 
 For additional information, please see [Advanced Topics](https://docs.sandboxes.cloud/docs/advanced-topics)
 
-### Run previews
+## Run previews
 
 For previewing the code changes you have in the sandbox, you can access the sandbox via `endpoints`. These are the URLs exposed by the sandbox which gets routed to some backend services to run the entire product flow end-to-end. For example, in the demo app, we have two HTTPS endpoints, `app` and `api`, routed to the frontend service (with port 3000) and backend service (with port 3001), respectively. We can hit the `app` endpoint as shown below to run the product flow.
 
@@ -24,13 +24,13 @@ After clicking the `app` endpoint, we can see it opens a new page with the sandb
 
 Similarly, you can hit the API endpoint from your web frontend, mobile frontend, or command line tools like `curl`
 
-### Inspect the workspaces
+## Inspect the workspaces
 
 You can see the information of each workspaces running in the sandbox by clicking into any workspace. For example, if we click into the backend workspace, we can see it has one repo checkout `demo-jobs-backend`, which is currently on `master` branch, and it's checked out to the path `backend`. It also has two daemon processes running, one open port (`api` port 3001) with the HTTP protocol, and installed with `ruby` version 2.7.2
 
 <Image align="center" className="border" border={true} src="https://files.readme.io/eacd582-guide-workspace-demo-backend.JPG" />
 
-### View logs generated from your services
+## View logs generated from your services
 
 From here, you can click the page icon to view the logs for specific services or daemon processes.
 
@@ -40,7 +40,7 @@ For example, below is the log for the rails process.
 
 <Image align="center" className="border" border={true} src="https://files.readme.io/799363a-guide-sandbox-log-viewer.JPG" />
 
-### Use Web IDE to write code or run commands
+## Use Web IDE to write code or run commands
 
 When you want to go into the workspace to write code or run commands, you can simply open the Web IDE by clicking any of the buttons highlighted below:
 
@@ -48,13 +48,13 @@ When you want to go into the workspace to write code or run commands, you can si
 
 For example, if we open the Web IDE on the frontend, we can see the following window, a VS Code web version opened with a terminal panel.
 
-![](https://files.readme.io/40fad3d-guide-web-ide.JPG)
+![Web IDE screenshot](https://files.readme.io/40fad3d-guide-web-ide.JPG)
 
 Here we can directly modify the code (e.g., change the title of the page to `Crafting Jobs.` to something else and it will take effect immediately and we can preview it with the endpoint URL.
 
 The terminal here is in the code checkout directory. Given it's a regular Git checkout, you can do git commands such as `git pull`, `git checkout`, `git commit`, `git push`, etc. directly from here. Or you can run any other command here that you want to execute on this dev container.
 
-### Rebuild workspace
+## Rebuild workspace
 
 In some cases you may want to wipe clean one of your workspaces (and dependencies or containers as well) to restart it from scratch. You can rebuild it by clicking the rebuild button highlighted below:
 

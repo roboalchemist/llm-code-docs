@@ -1,10 +1,10 @@
-# Source: https://docs.sandboxes.cloud/docs/docker-in-workspace.md
+<!-- Source: https://docs.sandboxes.cloud/docs/docker-in-workspace.md -->
 
 # Docker in Workspace
 
 The workspace has integrated docker CLI and daemon and will automatically start the docker daemon on the first time it's being used. For isolation and security, the docker daemon is only allowed to run in rootless mode.
 
-### Use My Own Docker Installation
+## Use My Own Docker Installation
 
 If the version of docker daemon provided by the workspace is not the desired one, you can install the full docker suite yourself. Here's an example of installing your own owner version (take `24.0.6` as an example):
 
@@ -93,8 +93,8 @@ And add the following to file `~/.docker/config.json`:
 ```json
 {
   "credHelpers": {
-		"<aws_account_id>.dkr.ecr.<region>.amazonaws.com": "ecr-login"
-	}
+    "<aws_account_id>.dkr.ecr.<region>.amazonaws.com": "ecr-login"
+  }
 }
 ```
 

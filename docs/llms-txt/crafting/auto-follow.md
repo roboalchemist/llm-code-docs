@@ -1,6 +1,7 @@
-# Source: https://docs.sandboxes.cloud/docs/auto-follow.md
 
 # Auto-follow code branch in sandbox
+
+Source: https://docs.sandboxes.cloud/docs/auto-follow.md
 
 In this page, we describe how to use the `auto-follow` feature in Crafting sandbox for your development and preview.
 
@@ -8,7 +9,7 @@ Crafting allows developers to turn some workspaces into `AUTO` mode, where it wo
 
 Note that once the workspace is in `AUTO` mode, developers should not edit the code manually there, because all the edit will be discarded and may potentially interfere with the automation. We recommend turning off `AUTO` mode before editing code and debug in the workspace.
 
-### Turn on/off Auto mode for a workspace
+## Turn on/off Auto mode for a workspace
 
 To turn on auto mode for an existing sandbox, we can simply turn on the toggle on the workspace from the sandbox page as highlighted follows.
 
@@ -17,8 +18,9 @@ To turn on auto mode for an existing sandbox, we can simply turn on the toggle o
 Auto mode can also be controlled via CLI using the following command.
 
 ```shell
-$ cs mode [auto|manual] -W <SANDBOX/WORKSPACE>
-```
+cs mode [auto|manual] -W <SANDBOX/WORKSPACE>
+
+```text
 
 The `-W` option is not needed when running the `cs mode` command in the target workspace.
 
@@ -26,7 +28,7 @@ The `AUTO` mode can also be selected for a newly created sandbox, by toggle the 
 
 <Image align="center" className="border" border={true} src="https://files.readme.io/432f36f-guide-create-auto.JPG" />
 
-### Use cases for Auto mode
+## Use cases for Auto mode
 
 There are several key use cases for Auto mode:
 

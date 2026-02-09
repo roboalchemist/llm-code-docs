@@ -1,4 +1,4 @@
-# Source: https://docs.sandboxes.cloud/docs/concepts-and-architecture.md
+<!-- Source: https://docs.sandboxes.cloud/docs/concepts-and-architecture.md -->
 
 # Concepts and Architecture
 
@@ -6,37 +6,37 @@ In this section, we explain some of the core concepts behind Crafting Sandbox an
 
 ## Core Concepts
 
-#### Sandbox
+### Sandbox
 
 A `sandbox` is a self-contained development environment. It includes one or multiple `workspaces`, and also `containers`, `dependencies`, `resources`, `endpoints` as needed. These components are grouped together in a sandbox and share the same life-cycle, e.g., creation, suspension, deletion, etc. Each sandbox has its own private network to connect the components in it together.
 
-#### Workspace
+### Workspace
 
 A `workspace` is a dev container installed with Linux OS and dev tools, functionally equivalent to a developer VM on cloud. It's the main component that developers interact with because it's where the source code is checked out and where the service being developed runs.
 
-#### Dependency & Container
+### Dependency & Container
 
 `Dependencies` and `containers` act as supporting roles in the sandbox. In addition to the service they actively develop on, developers usually need other services which they don't need to modify available as well.  These include standard services like Postgres database, Redis cache, or other specific services running in their own standard containers.
 
 A `dependency` is a well-known standard service like database, cache, etc. Crafting supports a list of commonly used ones like `MySQL`, `Postgres`, `DynamoDB`, `Redis`, `ElasticSearch`, `Memcache`, `RabbitMQ`, etc., with multiple versions each. Users can just specify name and version to make them available conveniently. In addition, users can bring any custom `container` to the sandbox by specifying container tag/image, environment variables, etc. in order to achieve maximum flexibility.
 
-#### Resource
+### Resource
 
 In addition to `dependencies` and `containers`, developers sometimes need to access or provision additional cloud native components for their development, such as AWS lambda function, Kubernetes namespace, etc. These components are physically outside of the sandbox but they need to work closely with components in the sandbox and their life-cycle should be in-sync with the sandbox.
 
 A `resource` represents an external component that can work alongside with the components in the sandbox. Crafting allows the `resource` to be provisioned by Terraform or user-defined custom scripts. The life-cycle of the `resource` is maintained in-sync with the sandbox so that the provisioned external components can be properly created and destroyed.
 
-#### Endpoint
+### Endpoint
 
 For security, the ports exposed by `workspaces`, `dependencies`, and `containers` are only visible to the internal network in the `sandbox`. An `endpoint` creates an external facing URL serving as the ingress to the sandbox. Traffic to an `endpoint` can be routed to ports on `workspaces`, `dependencies`, and `containers` in the sandbox. Advanced routing rules and authentication can be added to `endpoints`
 
-#### Template
+### Template
 
 To make the development environments standard and replicable, the specific configuration of a `sandbox` can be saved as a `template` . A `template` defines the specs of components within a sandbox such as `workspaces`, `endpoints`, etc., and users can create sandboxes from any templates they define. Since a `template` is often used to represent the entire app end-to-end, it's also called `app`.
 
 <Image align="center" width="80% " src="https://files.readme.io/be12cfa-Draft.png" />
 
-#### Other concepts
+### Other concepts
 
 Other concepts like `Secret`, `Snapshot`, `Repo Manifest`, etc. are discussed in detail in other parts of the documents.
 
