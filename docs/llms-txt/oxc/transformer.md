@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/transformer.md
 
-# Source: https://oxc.rs/docs/contribute/transformer.md
+## Source: https://oxc.rs/docs/contribute/transformer.md
 
----
-url: /docs/contribute/transformer.md
----
-
-# Transformer
+## Transformer
 
 The Oxc transformer is responsible for converting higher versions of ECMAScript and TypeScript to lower versions that can run in older browsers and environments.
 
-### Repository Structure
+## Repository Structure
 
-```
+```text
 crates/oxc_transformer/
 ├── src/
 │   ├── lib.rs                    # Main transformer interface

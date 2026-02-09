@@ -1,9 +1,6 @@
 # Source: https://oxc.rs/docs/guide/troubleshooting.md
 
----
-url: /docs/guide/troubleshooting.md
----
-# Troubleshooting
+## Troubleshooting
 
 ## Cannot find native binding. npm has a bug related to optional dependencies
 
@@ -14,7 +11,7 @@ This is a npm (< v11.3.0) bug, things you can try:
 * `rm -rf node_modules; npm i`
 * Install one of these bindings explicitly in your package.json because package manager is not picking up the optional dependency:
 
-```
+```text
 @{app}/binding-win32-x64-msvc
 @{app}/binding-win32-arm64-msvc
 @{app}/binding-linux-x64-gnu

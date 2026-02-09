@@ -1,11 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/type-aware.md
 
----
-url: /docs/guide/usage/linter/type-aware.md
-description: Linting with type information.
----
-
-# Type-Aware Linting
+## Type-Aware Linting
 
 Type-aware linting enables rules that rely on TypeScript’s type system, such as detecting unhandled promises or unsafe assignments. In Oxlint, type-aware linting is provided by [`tsgolint`](https://github.com/oxc-project/tsgolint) and integrated into the Oxlint CLI and configuration system.
 
@@ -59,7 +54,7 @@ Type-aware linting is opt-in and does not run unless the flag is provided.
 
 In editor and LSP-based integrations like VS Code, type-aware linting can be enabled by setting the `typeAware` option to `true`, see the [Editors](./editors) page for more information.
 
-### Monorepos and build outputs
+## Monorepos and build outputs
 
 Type-aware linting requires resolved type information.
 
@@ -74,7 +69,7 @@ pnpm -r build
 oxlint --type-aware
 ```
 
-### Type checking diagnostics
+## Type checking diagnostics
 
 Enable type checking to report TypeScript errors alongside lint results:
 
@@ -85,11 +80,11 @@ oxlint --type-aware --type-check
 This mode can replace a separate `tsc --noEmit` step in CI:
 
 ```bash
-# before
+## before
 tsc --noEmit
 oxlint
 
-# after
+## after
 oxlint --type-aware --type-check
 ```
 
@@ -154,7 +149,7 @@ Type-aware linting is **alpha**:
 
 ## Troubleshooting
 
-### Performance and debugging
+## Performance and debugging
 
 If type-aware linting is slow or uses excessive memory:
 
@@ -163,7 +158,7 @@ If type-aware linting is slow or uses excessive memory:
 * `oxlint`
 * `oxlint-tsgolint`
 
-2. Enable debug logging:
+1. Enable debug logging:
 
 ```bash
 OXC_LOG=debug oxlint --type-aware
@@ -171,7 +166,7 @@ OXC_LOG=debug oxlint --type-aware
 
 Example output (showing key timing milestones):
 
-```
+```text
 2026/01/01 12:00:00.000000 Starting tsgolint
 2026/01/01 12:00:00.001000 Starting to assign files to programs. Total files: 259
 2026/01/01 12:00:01.000000 Done assigning files to programs. Total programs: 8. Unmatched files: 75
@@ -196,9 +191,9 @@ Finished in 16.4s on 259 files with 161 rules using 12 threads.
   * Look for programs with an unusually high number of source files (e.g., `Program created with 26140 source files`). This may indicate misconfigured tsconfig `includes`/`excludes` pulling in unnecessary files like `node_modules`.
   * Each file path logged indicates when that file is being linted. Large time gaps between files may indicate expensive type resolution for certain files.
 
-### Common performance issues
+## Common performance issues
 
-#### Root tsconfig includes too many files
+### Root tsconfig includes too many files
 
 A root `tsconfig.json` with overly broad `include` patterns can inadvertently include all files in the repository, causing significant slowdowns:
 
@@ -229,7 +224,7 @@ For monorepos, ensure the root `tsconfig.json` does not include source files dir
 
 **Diagnosing the issue:** Enable debug logging and look for programs with an unusually high number of source files:
 
-```
+```text
 2026/01/01 12:00:02.500000 Program created with 26140 source files
 ```
 
