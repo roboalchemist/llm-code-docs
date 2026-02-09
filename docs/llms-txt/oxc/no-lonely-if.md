@@ -1,3 +1,5 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-lonely-if.md
+
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-lonely-if.md
 
 ---

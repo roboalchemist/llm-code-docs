@@ -1,3 +1,5 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-promise-reject-errors.md
+
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/prefer-promise-reject-errors.md
 
 ---

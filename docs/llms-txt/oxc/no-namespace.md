@@ -1,3 +1,7 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-namespace.md
+
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-namespace.md
+
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/import/no-namespace.md
 
 ---

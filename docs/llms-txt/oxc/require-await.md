@@ -1,3 +1,5 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/require-await.md
+
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/require-await.md
 
 ---

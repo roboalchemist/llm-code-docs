@@ -1,3 +1,5 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-anonymous-default-export.md
+
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/import/no-anonymous-default-export.md
 
 ---
